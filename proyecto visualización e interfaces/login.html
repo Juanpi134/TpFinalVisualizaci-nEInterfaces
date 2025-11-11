@@ -3,42 +3,52 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ingreso de Socios | Vida Med</title>
+  <title>Ingreso de Socio | Vida Med</title>
   <link rel="stylesheet" href="css/estilos.css">
-  <link rel="stylesheet" href="css/login.css">
+  <script src="js/usuarios.js"></script>
 </head>
 <body>
-  <header>
-    <div class="logo">
-      <img src="img/vidaMedLogo.png" alt="Vida Med">
-    </div>
-  </header>
 
-  <main class="login-container">
-    <div class="login-card">
-      <h2>Ingreso de Socios</h2>
-      <form id="loginForm" class="login-form">
-        <label for="email">Email, usuario o DNI</label>
-        <input type="text" id="email" required>
+  <div class="login-container">
+    <a href="index.html"><img src="img/vidaMedLogo.png" alt="Logo Vida Med" class="logo-login"></a>
 
-        <label for="password">Contraseña</label>
-        <input type="password" id="password" required>
+    <h2>Ingresar a tu cuenta</h2>
 
-        <button type="submit" class="btn-primario">Ingresar</button>
-      </form>
+    <form id="loginForm">
+      <label for="email">Correo electrónico</label>
+      <input type="email" id="email" required>
 
-      <p class="link-afiliacion">
-        ¿Todavía no tenés cuenta?  
-        <a href="afiliacion.html">Afiliate ahora</a>
-      </p>
-    </div>
-  </main>
+      <label for="password">Contraseña</label>
+      <input type="password" id="password" required>
 
-  <footer>
-    <p>© 2025 Vida Med</p>
-  </footer>
+      <button type="submit" class="btn-principal">Ingresar</button>
+    </form>
 
-  <script src="js/fakeSeed.js"></script> <!-- opcional: solo en pruebas -->
-  <script src="js/login.js"></script>
+    <p class="texto-secundario">¿No tenés cuenta? <a href="afiliados.html">Afiliate aquí</a></p>
+  </div>
+
+  <script>
+    const form = document.getElementById('loginForm');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+
+      // Buscar usuario en la lista (de usuarios.js)
+      const usuario = usuarios.find(u => u.email === email && u.password === password);
+
+      if (usuario) {
+        // Guardar usuario logueado en localStorage
+        localStorage.setItem('socioActivo', JSON.stringify(usuario));
+        alert(`Bienvenido, ${usuario.nombre}`);
+        window.location.href = 'socioHome.html';
+      } else {
+        alert('Usuario o contraseña incorrectos');
+      }
+    });
+  </script>
+
 </body>
 </html>
