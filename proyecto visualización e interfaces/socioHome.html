@@ -3,91 +3,71 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Panel del Socio | Vida Med</title>
-  <link rel="stylesheet" href="css/estilos.css">
+  <title>Mi Panel | Vida Med</title>
   <link rel="stylesheet" href="css/socioHome.css">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-
-  <!-- Header fijo -->
-  <header class="header-socio">
+  <header class="header-home">
     <div class="logo">
-      <a href="index.html">
-        <img src="img/vidaMedLogo.png" alt="Logo Vida Med">
-      </a>
+      <img src="img/vidaMedLogo.png" alt="Vida Med">
     </div>
-
-    <div class="usuario-info">
-      <strong></strong>
-      <small></small>
+    <div class="user-info">
+      <span id="nombreUsuario"></span>
+      <button id="logoutBtn" class="btn-cerrar">Cerrar sesión</button>
     </div>
-
-    <button id="logoutBtn" class="btn-cerrar">Cerrar sesión</button>
   </header>
 
-  <!-- Contenido principal -->
   <main class="dashboard">
     <section class="bienvenida">
-      <h1>Bienvenido/a a tu espacio Vida Med</h1>
-      <p>Gestioná tus turnos, credenciales y beneficios desde un solo lugar.</p>
+      <h1>Bienvenido/a, <span id="nombreBienvenida"></span></h1>
+      <p>Tu salud al alcance de un clic.</p>
     </section>
 
-    <section class="opciones-grid">
-      <div class="opcion">
-        <img src="img/icono_turnos.png" alt="Turnos">
-        <h3>Mis Turnos</h3>
-        <p>Consultá o gestioná tus próximos turnos médicos.</p>
-        <a href="#" class="btn-secundario">Ver turnos</a>
+    <section class="resumen">
+      <div class="card">
+        <h3>Plan Actual</h3>
+        <p id="planUsuario"></p>
+        <a href="planes.html" class="btn">Ver beneficios</a>
       </div>
-
-      <div class="opcion">
-        <img src="img/icono_credencial.png" alt="Credencial">
+      <div class="card">
         <h3>Mi Credencial Digital</h3>
-        <p>Accedé a tu credencial de socio de manera rápida y segura.</p>
-        <a href="#" class="btn-secundario">Ver credencial</a>
+        <p>Descargá tu credencial para presentar en consultorios.</p>
+        <button class="btn-secundario">Ver Credencial</button>
       </div>
-
-      <div class="opcion">
-        <img src="img/icono_beneficios.png" alt="Beneficios">
-        <h3>Beneficios</h3>
-        <p>Descubrí promociones y descuentos exclusivos para afiliados.</p>
-        <a href="#" class="btn-secundario">Ver beneficios</a>
+      <div class="card">
+        <h3>Próximo Turno</h3>
+        <p>Dr. Fernández - Clínica Central (12/11 - 10:30hs)</p>
+        <button class="btn-secundario">Ver detalles</button>
       </div>
+    </section>
 
-      <div class="opcion">
-        <img src="img/icono_datos.png" alt="Mis datos">
-        <h3>Mis Datos</h3>
-        <p>Actualizá tu información personal y contacto.</p>
-        <a href="#" class="btn-secundario">Editar datos</a>
+    <section class="acciones">
+      <div class="accion">
+        <img src="img/icon_turnos.png" alt="">
+        <h4>Mis Turnos</h4>
+        <p>Consultá tus próximos turnos y resultados.</p>
+        <button class="btn">Ver Turnos</button>
+      </div>
+      <div class="accion">
+        <img src="img/icon_pago.png" alt="">
+        <h4>Pagos y Facturas</h4>
+        <p>Accedé a tu historial de pagos o adherite al débito automático.</p>
+        <button class="btn">Ver Pagos</button>
+      </div>
+      <div class="accion">
+        <img src="img/icon_contacto.png" alt="">
+        <h4>Contactar Asesor</h4>
+        <p>Comunicate directamente con tu asesor personal.</p>
+        <button class="btn">Enviar Mensaje</button>
       </div>
     </section>
   </main>
 
-  <!-- Footer -->
-  <footer class="footer-socio">
-    <p>© 2025 Vida Med. Todos los derechos reservados.</p>
+  <footer>
+    <p>© 2025 Vida Med. Tu salud, nuestra prioridad.</p>
   </footer>
 
-  <!-- Script para validación y logout -->
-  <script>
-    // Verificar si el socio está logueado
-    (function(){
-      const socio = JSON.parse(localStorage.getItem('socioActivo'));
-      if (!socio) {
-        window.location.href = 'login.html';
-        return;
-      }
-      document.querySelector('.usuario-info strong').textContent = socio.nombre;
-      document.querySelector('.usuario-info small').textContent = `Plan: ${socio.plan}`;
-    })();
-
-    // Logout
-    document.getElementById('logoutBtn').addEventListener('click', function() {
-      localStorage.removeItem('socioActivo');
-      window.location.href = 'index.html';
-    });
-  </script>
-
+  <script src="js/socioHome.js"></script>
 </body>
 </html>
