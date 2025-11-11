@@ -1,0 +1,136 @@
+body {
+  font-family: 'Open Sans', sans-serif;
+  background-color: #f4f7fa;
+  color: #333;
+  margin: 0;
+}
+
+.socio-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #006fb9;
+  color: #fff;
+  padding: 15px 20px;
+}
+
+.logo img {
+  width: 120px;
+}
+
+.usuario-info {
+  text-align: right;
+}
+
+.usuario-info p {
+  margin: 0;
+  font-weight: 600;
+}
+
+.usuario-info small {
+  font-size: 0.8em;
+  opacity: 0.9;
+}
+
+/* PLAN */
+.tarjeta-plan {
+  background: #fff;
+  margin: 20px;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.plan-detalle h3 {
+  color: #006fb9;
+}
+
+.btn-plan {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 8px 15px;
+  background-color: #006fb9;
+  color: #fff;
+  border-radius: 8px;
+  text-decoration: none;
+}
+
+/* ACCIONES */
+.acciones-rapidas {
+  margin: 20px;
+}
+
+.acciones-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 15px;
+}
+
+.accion {
+  background: #fff;
+  text-align: center;
+  padding: 15px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: #333;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  transition: transform 0.2s ease;
+}
+
+.accion:hover {
+  transform: translateY(-3px);
+}
+
+.accion img {
+  width: 40px;
+  margin-bottom: 10px;
+}
+
+/* NOTICIAS */
+.noticias {
+  margin: 20px;
+}
+
+.noticia-card {
+  background: #fff;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  box-shadow: 0 1px 5px rgba(0,0,0,0.1);
+}
+
+/* FOOTER */
+.socio-footer {
+  text-align: center;
+  padding: 15px;
+  background-color: #f0f0f0;
+  font-size: 0.9em;
+}
+
+.logout {
+  display: inline-block;
+  margin-bottom: 8px;
+  color: #006fb9;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.logout:hover {
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .acciones-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .socio-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .usuario-info {
+    text-align: left;
+  }
+}
