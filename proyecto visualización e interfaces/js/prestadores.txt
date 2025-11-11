@@ -1,0 +1,9 @@
+💡 Explicación
+
+El buscador funciona tanto al presionar el botón como al escribir en el input.
+
+Usa un array de objetos prestadores (simulado como una pequeña base de datos).
+
+Filtra por especialidad o localidad en tiempo real.
+
+Muestra los resultados dinámicamente en el HTML.
