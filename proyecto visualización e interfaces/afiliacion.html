@@ -3,39 +3,42 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Afiliación | Vida Med</title>
-  <link rel="stylesheet" href="css/estilos.css">
+  <title>Afiliate a Vida Med</title>
+  <link rel="stylesheet" href="css/afiliacion.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans&display=swap" rel="stylesheet">
 </head>
 <body>
-  <header>
+  <header class="header">
     <div class="logo">
       <img src="img/vidaMedLogo.png" alt="Vida Med">
     </div>
   </header>
 
   <main class="afiliacion-container">
-    <div class="form-card">
-      <h2>Afiliate a Vida Med</h2>
-      <form id="formAfiliacion">
-        <label>Nombre completo</label>
-        <input type="text" id="nombre" required>
+    <div class="afiliacion-card">
+      <h1>Afiliate a <span>Vida Med</span></h1>
+      <p>Completá tus datos y obtené tu cobertura médica en minutos.</p>
 
-        <label>DNI</label>
-        <input type="text" id="dni" required>
+      <form id="formAfiliacion" class="afiliacion-form">
+        <label for="nombre">Nombre completo</label>
+        <input type="text" id="nombre" placeholder="Ej: Juan Pérez" required>
 
-        <label>Email</label>
-        <input type="email" id="email" required>
+        <label for="dni">DNI</label>
+        <input type="text" id="dni" placeholder="Ej: 12345678" required>
 
-        <label>Teléfono</label>
-        <input type="text" id="telefono">
+        <label for="email">Correo electrónico</label>
+        <input type="email" id="email" placeholder="Ej: juanp@gmail.com" required>
 
-        <label>Usuario</label>
-        <input type="text" id="usuario" required>
+        <label for="telefono">Teléfono</label>
+        <input type="tel" id="telefono" placeholder="Ej: +54 9 11 1234-5678">
 
-        <label>Contraseña</label>
-        <input type="password" id="password" required>
+        <label for="usuario">Usuario</label>
+        <input type="text" id="usuario" placeholder="Ej: juanperez" required>
 
-        <fieldset>
+        <label for="password">Contraseña</label>
+        <input type="password" id="password" placeholder="Mínimo 6 caracteres" required>
+
+        <fieldset class="planes">
           <legend>Elegí tu plan</legend>
           <label><input type="radio" name="plan" value="Esencial" checked> Esencial</label>
           <label><input type="radio" name="plan" value="Plus"> Plus</label>
@@ -43,12 +46,13 @@
         </fieldset>
 
         <button type="submit" class="btn-primario">Completar afiliación</button>
+        <a href="login.html" class="btn-volver">← Volver al inicio de sesión</a>
       </form>
     </div>
   </main>
 
-  <footer>
-    <p>© 2025 Vida Med</p>
+  <footer class="footer">
+    <p>© 2025 Vida Med – Tu salud, nuestra prioridad.</p>
   </footer>
 
   <script src="js/afiliacion.js"></script>
