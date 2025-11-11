@@ -1,0 +1,121 @@
+.afiliacion-container {
+  max-width: 900px;
+  margin: 100px auto 50px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.afiliacion-info {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.afiliacion-info h1 {
+  color: #1e6b5d;
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.afiliacion-form {
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 30px 40px;
+  width: 100%;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.afiliacion-form h2 {
+  color: #1e6b5d;
+  font-size: 1.3rem;
+  margin-top: 20px;
+  margin-bottom: 15px;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+.campo label {
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.campo input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.planes-opciones {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.planes-opciones label {
+  background-color: #f4f4f4;
+  padding: 10px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  flex: 1;
+  text-align: center;
+  margin: 0 5px;
+  transition: background 0.3s;
+}
+
+.planes-opciones label:hover {
+  background-color: #dff3ef;
+}
+
+.btn-primario {
+  background-color: #1e6b5d;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.btn-primario:hover {
+  background-color: #248c7a;
+}
+
+.nota {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 0.9rem;
+}
+
+.nota a {
+  color: #1e6b5d;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.nota a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .planes-opciones {
+    flex-direction: column;
+  }
+
+  .planes-opciones label {
+    margin: 5px 0;
+  }
+
+  .afiliacion-form {
+    padding: 20px;
+  }
+}
