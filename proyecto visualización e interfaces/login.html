@@ -28,26 +28,26 @@
   </div>
 
   <script>
-    const form = document.getElementById('loginForm');
+   const form = document.getElementById('loginForm');
 
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
+form.addEventListener('submit', function(e) {
+  e.preventDefault();
 
-      const email = document.getElementById('email').value;
-      const password = document.getElementById('password').value;
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
 
-      // Buscar usuario en la lista (de usuarios.js)
-      const usuario = usuarios.find(u => u.email === email && u.password === password);
+  // Buscar usuario en localStorage
+  const usuariosGuardados = JSON.parse(localStorage.getItem('usuariosRegistrados')) || [];
+  const usuario = usuariosGuardados.find(u => u.email === email && u.password === password);
 
-      if (usuario) {
-        // Guardar usuario logueado en localStorage
-        localStorage.setItem('socioActivo', JSON.stringify(usuario));
-        alert(`Bienvenido, ${usuario.nombre}`);
-        window.location.href = 'socioHome.html';
-      } else {
-        alert('Usuario o contraseña incorrectos');
-      }
-    });
+  if (usuario) {
+    localStorage.setItem('socioActivo', JSON.stringify(usuario));
+    alert(`Bienvenido, ${usuario.nombre}`);
+    window.location.href = 'socioHome.html';
+  } else {
+    alert('Usuario o contraseña incorrectos');
+  }
+});
   </script>
 
 </body>

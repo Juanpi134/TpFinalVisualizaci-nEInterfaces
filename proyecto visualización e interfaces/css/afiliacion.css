@@ -1,158 +1,61 @@
-/* Fuente y color base */
-body {
-  font-family: 'Open Sans', sans-serif;
-  background: linear-gradient(120deg, #008dcf, #00bfa5);
-  color: #333;
-  margin: 0;
-  padding: 0;
-}
-
-/* Header */
-.header {
-  background: #fff;
-  padding: 15px 30px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+.registro-container, .login-container {
+  width: 90%;
+  max-width: 400px;
+  margin: 60px auto;
+  padding: 30px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
   text-align: center;
 }
 
-.logo img {
-  height: 60px;
+.logo-login {
+  width: 120px;
+  margin-bottom: 20px;
 }
 
-/* Contenedor principal */
-.afiliacion-container {
+h2 {
+  color: #008080;
+  margin-bottom: 15px;
+}
+
+form {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 50px 20px;
-}
-
-/* Tarjeta del formulario */
-.afiliacion-card {
-  background: #fff;
-  padding: 3rem 2.5rem;
-  border-radius: 16px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-  max-width: 450px;
-  width: 100%;
-  text-align: center;
-}
-
-.afiliacion-card h1 {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 700;
-  color: #008dcf;
-  margin-bottom: 10px;
-}
-
-.afiliacion-card h1 span {
-  color: #00bfa5;
-}
-
-.afiliacion-card p {
-  color: #555;
-  margin-bottom: 25px;
-}
-
-/* Formulario */
-.afiliacion-form {
+  flex-direction: column;
+  gap: 10px;
   text-align: left;
 }
 
-.afiliacion-form label {
+label {
   font-weight: 600;
-  display: block;
-  margin: 10px 0 5px;
-  color: #222;
+  font-size: 14px;
+  color: #333;
 }
 
-.afiliacion-form input[type="text"],
-.afiliacion-form input[type="email"],
-.afiliacion-form input[type="password"],
-.afiliacion-form input[type="tel"] {
-  width: 100%;
+input, select {
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 6px;
-  font-size: 15px;
-  transition: border-color 0.3s;
+  font-size: 14px;
 }
 
-.afiliacion-form input:focus {
-  border-color: #00bfa5;
-  outline: none;
-}
-
-/* Planes */
-.planes {
-  margin-top: 20px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 15px;
-}
-
-.planes legend {
-  font-weight: bold;
-  color: #008dcf;
-}
-
-.planes label {
-  display: inline-block;
-  margin-right: 15px;
-  font-weight: 500;
-  cursor: pointer;
-}
-
-/* Botones */
-.btn-primario {
-  background: #008dcf;
-  color: #fff;
+.btn-principal {
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #008080;
+  color: white;
   border: none;
-  border-radius: 8px;
-  padding: 12px 20px;
-  width: 100%;
-  font-size: 16px;
-  font-weight: 600;
-  margin-top: 20px;
+  border-radius: 6px;
   cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-.btn-primario:hover {
-  background: #00aee0;
-}
-
-.btn-volver {
-  display: inline-block;
-  margin-top: 15px;
-  text-decoration: none;
-  color: #008dcf;
   font-weight: 600;
+  transition: 0.3s;
+}
+
+.btn-principal:hover {
+  background-color: #00a0a0;
+}
+
+.texto-secundario {
+  margin-top: 15px;
   font-size: 14px;
-  transition: color 0.3s;
-}
-
-.btn-volver:hover {
-  color: #00bfa5;
-}
-
-/* Footer */
-.footer {
-  text-align: center;
-  color: #fff;
-  font-size: 14px;
-  padding: 25px 10px;
-  background: rgba(0,0,0,0.15);
-  margin-top: 40px;
-}
-
-/* Responsive */
-@media (max-width: 600px) {
-  .afiliacion-card {
-    padding: 2rem;
-  }
-
-  .afiliacion-card h1 {
-    font-size: 1.6rem;
-  }
 }
