@@ -8,38 +8,43 @@
   <link rel="stylesheet" href="css/socios.css">
 </head>
 <body>
-  <header>
-    <nav class="navbar">
-      <a href="index.html" class="logo">Vida Med</a>
-      <ul class="nav-links">
+  <header class="header">
+    <div class="logo">
+      <img src="img/vidaMedLogo.png" alt="Logo Vida Med">
+    </div>
+    <nav class="menu">
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
         <li><a href="planes.html">Planes</a></li>
         <li><a href="prestadores.html">Prestadores</a></li>
         <li><a href="contacto.html">Contacto</a></li>
-        <li><a href="socios.html" class="active">Socios</a></li>
       </ul>
     </nav>
   </header>
 
-  <main class="socios-container">
-    <section class="login">
-      <h1>Acceso para Socios</h1>
-      <p>Ingresá con tu número de socio y contraseña para acceder a tus beneficios.</p>
-
-      <form class="form-login">
-        <label for="numero">Número de socio</label>
-        <input type="text" id="numero" name="numero" placeholder="Ej: 12345678">
+  <main class="login-section">
+    <div class="login-card">
+      <h2>Área de Socios</h2>
+      <p>Ingresá con tu cuenta Vida Med</p>
+      <form class="login-form">
+        <label for="email">Email o número de socio</label>
+        <input type="text" id="email" placeholder="ejemplo@correo.com" required>
 
         <label for="password">Contraseña</label>
-        <input type="password" id="password" name="password" placeholder="********">
+        <input type="password" id="password" placeholder="********" required>
 
-        <button type="submit">Ingresar</button>
-        <p class="registro">¿Aún no sos socio? <a href="#">Asociate ahora</a></p>
+        <button type="submit" class="btn-login">Ingresar</button>
+
+        <div class="extras">
+          <a href="#">¿Olvidaste tu contraseña?</a>
+          <a href="afiliacion.html" class="registro">¿Aún no sos socio? Afiliate ahora</a>
+        </div>
       </form>
-    </section>
+    </div>
   </main>
 
   <footer>
-    <p>&copy; 2025 Vida Med. Todos los derechos reservados.</p>
+    <p>© 2025 Vida Med. Todos los derechos reservados.</p>
   </footer>
 </body>
 </html>
