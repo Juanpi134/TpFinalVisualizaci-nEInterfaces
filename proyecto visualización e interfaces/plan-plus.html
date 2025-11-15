@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Plan Plus — Vida Med</title>
+  <link rel="stylesheet" href="css/planes.css">
+</head>
+<body>
+  <header class="header">
+    <div class="container inner">
+      <a href="index.html" class="logo"><img src="img/vidaMedLogo.png" alt="Vida Med"> Vida Med</a>
+      <nav class="nav">
+        <a href="index.html">Inicio</a>
+        <a href="planes.html" class="active">Planes</a>
+        <a href="prestadores.html">Prestadores</a>
+        <a href="contacto.html">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero-plan">
+    <div class="container">
+      <div class="hero-card">
+        <div class="hero-left">
+          <h1>Plan Plus</h1>
+          <p>Cobertura ampliada con acceso prioritario a especialistas, estudios avanzados y mayor flexibilidad en la red de prestadores.</p>
+          <div class="hero-cta">
+            <a href="cobertura.html" class="btn btn-primary">Consultar cobertura</a>
+            <a href="planes.html" class="btn btn-outline">Volver a planes</a>
+          </div>
+        </div>
+        <div class="hero-right" style="min-width:260px;">
+          <div style="background: #f4f8fc; padding:18px; border-radius:8px; text-align:center;">
+            <p style="color:#666; font-weight:600;">Resumen</p>
+            <p style="font-size:1.8rem; color:var(--azul); font-weight:700; margin-top:6px;">Cobertura ampliada</p>
+            <p style="color:var(--gris-med); margin-top:10px;">Equilibrio entre costo y prestaciones ampliadas.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="benefits">
+    <div class="container">
+      <h2 style="color:var(--azul); margin-bottom:18px;">Beneficios destacados</h2>
+      <div class="benefits-grid">
+        <div class="card">
+          <h4>Especialistas</h4>
+          <p>Acceso a especialistas con menor tiempo de espera.</p>
+        </div>
+        <div class="card">
+          <h4>Estudios avanzados</h4>
+          <p>Cobertura para estudios de mayor complejidad.</p>
+        </div>
+        <div class="card">
+          <h4>Atención prioritaria</h4>
+          <p>Prioridad en turnos y en teleconsulta.</p>
+        </div>
+      </div>
+
+      <div style="margin-top:22px;" class="card">
+        <h4>Qué incluye</h4>
+        <ul class="includes">
+          <li>✔ Consultas médicas y especialistas</li>
+          <li>✔ Internación ampliada</li>
+          <li>✔ Estudios de imagen y laboratorio</li>
+          <li>✔ Telemedicina 24/7</li>
+          <li>✔ Descuentos en farmacias</li>
+          <li>✔ Programas preventivos</li>
+        </ul>
+      </div>
+
+      <div class="compare" aria-label="Comparativa de planes">
+        <table>
+          <thead>
+            <tr>
+              <th>Característica</th>
+              <th>Esencial</th>
+              <th class="highlight">Plus</th>
+              <th>Premium</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Consultas</td><td>Incluidas</td><td>Incluidas + Especialistas</td><td>Sin límites</td></tr>
+            <tr><td>Internación</td><td>Básica</td><td>Ampliada</td><td>Premium</td></tr>
+            <tr><td>Telemedicina</td><td>Limitada</td><td>24/7</td><td>24/7 + Prioridad</td></tr>
+            <tr><td>Descuentos en farmacia</td><td>Parcial</td><td>Mayor</td><td>Máximo</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="faq">
+        <h3 style="color:var(--azul); margin-bottom:12px;">Preguntas frecuentes</h3>
+        <div class="q"><h5>¿Qué cobertura de especialistas tengo?</h5><div class="a"><p>Varía según el profesional y la red de prestadores en la zona.</p></div></div>
+        <div class="q"><h5>¿Incluye estudios de alta complejidad?</h5><div class="a"><p>Sí, cubre estudios avanzados según condiciones del plan.</p></div></div>
+      </div>
+
+      <div class="cta-final">
+        <div>
+          <h3>Solicitá la verificación de cobertura</h3>
+          <p>Completá la consulta para confirmar disponibilidad en tu domicilio.</p>
+        </div>
+        <div>
+          <a href="cobertura.html" class="btn btn-primary">Consultar cobertura</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container inner">
+      <div>
+        <img src="img/vidaMedLogo.png" alt="Vida Med" style="height:36px;">
+        <p style="margin-top:8px; color:#dbeefa;">Tu salud, nuestra prioridad.</p>
+      </div>
+      <div style="color:#dbeefa;">
+        <h4>Enlaces</h4>
+        <p><a href="planes.html" style="color:#cfe7ff; text-decoration:none;">Planes</a></p>
+        <p><a href="prestadores.html" style="color:#cfe7ff; text-decoration:none;">Prestadores</a></p>
+      </div>
+      <div style="color:#dbeefa;">
+        <h4>Contacto</h4>
+        <p>0800-123-VIDA</p>
+        <p>info@vidamed.com.ar</p>
+      </div>
+    </div>
+  </footer>
+
+<script>
+  document.querySelectorAll('.faq .q').forEach(q=>{
+    q.addEventListener('click', ()=> {
+      const a = q.querySelector('.a');
+      a.style.display = a.style.display === 'block' ? 'none' : 'block';
+    });
+  });
+</script>
+</body>
+</html>
