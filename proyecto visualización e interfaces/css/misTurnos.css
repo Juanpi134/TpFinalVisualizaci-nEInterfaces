@@ -1,62 +1,483 @@
+/* --- 1. Variables de Estilo (Basadas en "Vida Med": calma, salud, modernidad) --- */
+:root {
+    --color-primario: #00796B;  /* Un verde azulado (teal): profesional, saludable, calmo */
+    --color-primario-suave: #E0F2F1; /* Tono pastel del primario para fondos */
+    --color-acento: #00BFA5;  /* Un verde más brillante para acciones */
+    --color-fondo: #f4f7f6;   /* Gris muy claro, más cálido que el blanco puro */
+    --color-tarjeta: #ffffff;
+    --color-texto-principal: #263238; /* Gris oscuro (no negro) para mejor lectura */
+    --color-texto-secundario: #546E7A;
+    --color-estrella: #FFC107; /* Amarillo/Oro para estrellas */
+    --sombra-suave: 0 4px 12px rgba(0, 0, 0, 0.05);
+    --sombra-modal: 0 10px 30px rgba(0, 0, 0, 0.15);
+    --borde-radio: 12px; /* Bordes redondeados (humanizado, moderno) */
+}
+
+/* --- 2. Estilos Globales y Reset --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    height: 100%; /* Asegura que el HTML ocupe el 100% */
+}
+
 body {
-  font-family: 'Montserrat', sans-serif;
-  background-color: #f4f9fc;
-  margin: 0;
-  color: #333;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: var(--color-fondo);
+    color: var(--color-texto-principal);
+    line-height: 1.6;
+    
+    /* MODIFICACIÓN: Layout de 100% de altura */
+    height: 100vh; /* Ocupa el 100% de la altura de la ventana */
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* Evita el scroll en el body */
 }
 
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #0077b6;
-  color: white;
-  padding: 1rem 2rem;
+h1, h2, h3 {
+    font-weight: 700;
+    margin-bottom: 0.5em;
 }
 
-.logo img { height: 45px; }
-
-main {
-  padding: 2rem;
+/* --- 3. Cabecera y Perfil --- */
+.cabecera-app {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 20px 30px;
+    background-color: var(--color-tarjeta);
+    border-bottom: 1px solid #e0e0e0;
+    flex-shrink: 0; /* Evita que la cabecera se encoja */
 }
 
-h1 {
-  text-align: center;
-  color: #0077b6;
+.icono-perfil {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background-color: var(--color-texto-principal);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    cursor: pointer;
 }
 
-.turnos-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1rem;
-  margin-top: 1.5rem;
+/* --- 4. Layout Principal del Hub --- */
+.hub-container {
+    padding: 30px;
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
+
+    /* MODIFICACIÓN: Ocupa el espacio restante */
+    flex-grow: 1; 
+    display: flex;
+    flex-direction: column;
+}
+
+.hub-titulo {
+    font-size: 2rem;
+    margin-bottom: 24px;
+    flex-shrink: 0; /* No se encoge */
+}
+
+.hub-grid {
+    display: grid;
+    grid-template-columns: 1fr; 
+    gap: 24px;
+    
+    /* MODIFICACIÓN: Ocupa el espacio restante del grid */
+    flex-grow: 1;
+    /* Ayuda a que las columnas manejen su altura */
+    min-height: 0; 
+}
+
+.col-principal, .col-lateral {
+    display: grid; /* <-- CAMBIADO DE FLEX A GRID */
+    gap: 24px;
+    
+    /* Alinear el contenido al inicio, por si acaso */
+    align-content: start; 
+}
+/* --- 13. AJUSTE DE ALTURA DEFINITIVO (NUEVO) --- */
+
+/* Le decimos a la columna principal (izquierda) que su
+  primera fila (Agregar Turno) tenga altura automática 'auto'
+  y su segunda fila (Próximos Turnos) ocupe el resto '1fr'.
+*/
+.col-principal {
+    grid-template-rows: auto 1fr;
+}
+
+/* Hacemos lo mismo con la columna lateral (derecha):
+  Su primera fila (Órdenes) 'auto',
+  y su segunda fila (Historial) '1fr'.
+*/
+.col-lateral {
+    grid-template-rows: auto 1fr;
+}
+
+/* --- 5. Responsive --- */
+@media (min-width: 1024px) {
+    .hub-grid {
+        grid-template-columns: 2fr 1fr;
+    }
+}
+
+/* --- 6. Estilo de los Módulos --- */
+.hub-modulo {
+    background-color: var(--color-tarjeta);
+    border-radius: var(--borde-radio);
+    padding: 24px;
+    box-shadow: var(--sombra-suave);
+    
+    /* MODIFICACIÓN: Permite que los módulos crezcan si es necesario */
+    display: flex;
+    flex-direction: column;
+}
+
+.hub-modulo h2 {
+    font-size: 1.25rem;
+    color: var(--color-texto-principal);
+    border-bottom: 1px solid #eee;
+    padding-bottom: 12px;
+    margin-bottom: 20px;
+}
+
+/* --- 7. Módulo: Agregar Nuevo Turno --- */
+.btn-agregar-turno {
+    display: block;
+    width: 100%;
+    padding: 18px;
+    background-color: var(--color-primario);
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    border-radius: var(--borde-radio);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-agregar-turno:hover {
+    background-color: #005a4f;
+}
+
+/* --- 8. Módulo: Próximos Turnos (Tarjetas) --- */
+.grilla-turnos {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+}
+
+@media (min-width: 768px) and (max-width: 1200px) {
+    /* En tablets, 1 columna */
+    .grilla-turnos {
+        grid-template-columns: 1fr;
+    }
+}
+@media (min-width: 1201px) {
+    /* En desktop, 2 columnas */
+    .grilla-turnos {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 .turno-card {
-  background: white;
-  border-radius: 10px;
-  padding: 1.5rem;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    border: 1px solid #e0e0e0;
+    border-radius: var(--borde-radio);
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
 }
 
-.turno-card h3 { margin-top: 0; }
-
-.btn-volver {
-  display: block;
-  text-align: center;
-  margin: 2rem auto;
-  padding: 0.7rem 1.2rem;
-  background-color: #0077b6;
-  color: white;
-  border-radius: 6px;
-  text-decoration: none;
+.turno-card-icono {
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background-color: var(--color-primario-suave);
+    color: var(--color-primario);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
 }
 
-.btn-cerrar {
-  background-color: #023e8a;
-  border: none;
-  color: white;
-  padding: 0.5rem 1rem;
-  border-radius: 5px;
-  cursor: pointer;
+.turno-card-info h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+.turno-card-info p {
+    font-size: 0.9rem;
+    color: var(--color-texto-secundario);
+    margin: 0;
+}
+
+/* --- 9. Módulo: Órdenes Médicas --- */
+.lista-ordenes {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.orden-card {
+    border: 1px solid var(--color-primario);
+    background-color: var(--color-primario-suave);
+    border-radius: var(--borde-radio);
+    padding: 16px;
+    text-align: left;
+}
+
+.orden-card h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-primario);
+}
+
+.orden-card p {
+    font-size: 0.9rem;
+    color: var(--color-texto-secundario);
+    margin-bottom: 12px;
+}
+
+.btn-agendar-estudio {
+    display: inline-block;
+    width: 100%;
+    padding: 10px;
+    background-color: var(--color-acento);
+    color: white;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.btn-agendar-estudio:hover {
+    background-color: #00a086;
+}
+
+/* --- 10. Módulo: Historial de Turnos (NUEVO ESTILO BOTÓN) --- */
+.historial-descripcion {
+    font-size: 0.9rem;
+    color: var(--color-texto-secundario);
+    margin-bottom: 20px;
+    flex-grow: 1; /* Ocupa espacio para empujar el botón abajo */
+}
+
+.btn-ver-historial {
+    width: 100%;
+    padding: 14px;
+    background-color: transparent;
+    color: var(--color-primario);
+    border: 2px solid var(--color-primario);
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: var(--borde-radio);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.btn-ver-historial:hover {
+    background-color: var(--color-primario-suave);
+}
+
+
+/* --- 11. ESTILOS DEL MODAL (NUEVO) --- */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(38, 50, 56, 0.6); /* Color: texto-principal con opacidad */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    
+    /* Oculto por defecto */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.modal-overlay.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background-color: var(--color-tarjeta);
+    border-radius: var(--borde-radio);
+    padding: 30px;
+    width: 90%;
+    max-width: 800px; /* Ancho máximo del modal */
+    max-height: 90vh; /* Alto máximo */
+    box-shadow: var(--sombra-modal);
+    position: relative;
+    
+    /* Permite scroll INTERNO si el historial es largo */
+    display: flex;
+    flex-direction: column;
+
+    /* Animación de entrada */
+    transform: scale(0.95);
+    transition: transform 0.3s ease;
+}
+
+.modal-overlay.visible .modal-content {
+    transform: scale(1);
+}
+
+.modal-content h2 {
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #eee;
+}
+
+.modal-close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: var(--color-texto-secundario);
+    cursor: pointer;
+    line-height: 1;
+}
+
+.modal-lista-historial {
+    overflow-y: auto; /* Scroll SÓLO en esta lista */
+    flex-grow: 1;
+    margin-bottom: 24px;
+    /* Pequeño hack para 'padding' en zona de scroll */
+    padding-right: 10px; 
+    margin-right: -10px;
+}
+
+.modal-historial-item {
+    display: grid;
+    grid-template-columns: 1fr; /* Mobile */
+    gap: 12px;
+    padding: 16px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+.modal-historial-item:last-child {
+    border-bottom: none;
+}
+
+@media (min-width: 600px) {
+    /* En pantallas más anchas, alinea en una fila */
+    .modal-historial-item {
+        grid-template-columns: 1fr auto;
+        align-items: center;
+    }
+}
+
+.historial-info p {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0;
+}
+.historial-info span {
+    font-size: 0.9rem;
+    color: var(--color-texto-secundario);
+}
+
+.historial-acciones {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    justify-content: flex-start;
+}
+@media (min-width: 600px) {
+    .historial-acciones {
+        justify-content: flex-end;
+    }
+}
+
+.btn-volver-a-pedir {
+    padding: 8px 12px;
+    background-color: transparent;
+    color: var(--color-primario);
+    border: 1px solid var(--color-primario-suave);
+    font-size: 0.85rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.btn-volver-a-pedir:hover {
+    background-color: var(--color-primario-suave);
+}
+
+/* Sistema de Estrellas (NUEVO) */
+.estrellas-rating {
+    display: flex;
+    flex-direction: row-reverse; /* Hace que el hover funcione de izq a der */
+    justify-content: flex-end;
+}
+
+.estrellas-rating input[type="radio"] {
+    display: none; /* Oculta los radios reales */
+}
+
+.estrellas-rating label {
+    font-size: 1.5rem;
+    color: #ccc;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+/* Cuando se pasa el mouse por encima de una estrella (label) */
+.estrellas-rating label:hover,
+.estrellas-rating label:hover ~ label {
+    color: var(--color-estrella); /* Pinta esa y las anteriores */
+}
+
+/* Cuando un radio está seleccionado (checked) */
+.estrellas-rating input[type="radio"]:checked ~ label {
+    color: var(--color-estrella); /* Pinta las seleccionadas */
+}
+
+
+/* Botón de Exportar (NUEVO) */
+.btn-exportar-pdf {
+    width: 100%;
+    padding: 14px;
+    background-color: var(--color-primario);
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    border-radius: var(--borde-radio);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: auto; /* Se pega abajo */
+    flex-shrink: 0;
+}
+.btn-exportar-pdf:hover {
+    background-color: #005a4f;
+}
+
+/* Esto hace que el último módulo de la columna lateral 
+  crezca para llenar el espacio vacío.
+*/
+.col-lateral .hub-modulo:last-child {
+    flex-grow: 1;
 }
