@@ -1,88 +1,286 @@
+:root {
+  --azul: #0a6cf1;
+  --azul-oscuro: #084db3;
+  --celeste: #eaf3ff;
+  --gris-claro: #f5f7fa;
+  --gris: #6b7280;
+  --gris-med: #94a3b8;
+  --negro: #1e293b;
+  --blanco: #ffffff;
+  --radius: 14px;
+  --shadow: 0 4px 15px rgba(0, 56, 136, 0.12);
+  --transition: all 0.25s ease;
+}
+
 body {
-    margin: 0;
-    font-family: "Inter", Arial, sans-serif;
-    background: #f5f7fa;
-    color: #333;
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+  background: #f8fafc;
+  color: var(--negro);
 }
 
-/* CONTENEDOR GENERAL */
-.plan-container {
-    max-width: 1000px;
-    margin: 60px auto;
-    padding: 40px;
-    background: #ffffff;
-    border-radius: 16px;
-    box-shadow: 0 4px 25px rgba(0,0,0,0.08);
+/* ===========================
+   HEADER
+=========================== */
+.header {
+  background: var(--blanco);
+  box-shadow: var(--shadow);
+  padding: 14px 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
-/* TITULO */
-.plan-container h1 {
-    font-size: 38px;
-    color: #1F8AC0;
-    margin-bottom: 10px;
+.header .inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.plan-container p.subtitle {
-    font-size: 18px;
-    margin-bottom: 30px;
-    color: #666;
+.logo img {
+  height: 40px;
+  vertical-align: middle;
 }
 
-/* SECCIÓN BENEFICIOS */
-.benefits {
-    margin-top: 20px;
+.logo {
+  font-weight: 700;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--azul-oscuro);
+  text-decoration: none;
 }
 
-.benefits h2 {
-    font-size: 26px;
-    color: #1F8AC0;
-    margin-bottom: 15px;
+.nav a {
+  margin-left: 24px;
+  text-decoration: none;
+  font-weight: 500;
+  color: var(--gris);
+  transition: var(--transition);
 }
 
-.benefits ul {
-    list-style: none;
-    padding: 0;
+.nav a:hover,
+.nav a.active {
+  color: var(--azul);
 }
 
-.benefits ul li {
-    padding: 12px 0;
-    font-size: 17px;
-    border-bottom: 1px solid #e5e5e5;
-    display: flex;
-    align-items: center;
+/* ===========================
+   HERO PLAN
+=========================== */
+.hero-plan {
+  padding: 40px 0 60px;
+  background: var(--celeste);
 }
 
-.benefits ul li::before {
-    content: "✔";
-    color: #1F8AC0;
-    font-weight: bold;
-    margin-right: 10px;
+.hero-card {
+  background: var(--blanco);
+  border-radius: var(--radius);
+  padding: 40px;
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  box-shadow: var(--shadow);
 }
 
-/* BOTÓN PRINCIPAL */
+.hero-left h1 {
+  font-size: 2.2rem;
+  margin-bottom: 12px;
+  color: var(--azul-oscuro);
+}
+
+.hero-left p {
+  color: var(--gris-med);
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.hero-cta .btn {
+  margin-right: 10px;
+}
+
+/* ===========================
+   BOTONES
+=========================== */
+.btn {
+  padding: 12px 22px;
+  border-radius: var(--radius);
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: var(--transition);
+}
+
 .btn-primary {
-    display: inline-block;
-    background: #1F8AC0;
-    color: white;
-    padding: 14px 28px;
-    border-radius: 10px;
-    font-size: 17px;
-    text-decoration: none;
-    margin-top: 25px;
-    transition: 0.3s;
+  background: var(--azul);
+  color: var(--blanco);
 }
 
 .btn-primary:hover {
-    background: #15658D;
+  background: var(--azul-oscuro);
 }
 
-/* RESPONSIVE */
-@media (max-width: 768px) {
-    .plan-container {
-        padding: 25px;
-    }
+.btn-outline {
+  border: 2px solid var(--azul);
+  color: var(--azul);
+}
 
-    .plan-container h1 {
-        font-size: 30px;
-    }
+.btn-outline:hover {
+  background: var(--azul);
+  color: var(--blanco);
+}
+
+/* ===========================
+   BENEFICIOS
+=========================== */
+.benefits {
+  padding: 60px 0;
+}
+
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: var(--blanco);
+  padding: 22px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+}
+
+.card h4 {
+  margin: 0 0 8px;
+  color: var(--azul-oscuro);
+}
+
+.card p {
+  color: var(--gris-med);
+}
+
+/* ===========================
+   INCLUDES
+=========================== */
+.includes li {
+  margin-bottom: 8px;
+  list-style: none;
+  font-weight: 500;
+  color: var(--gris);
+}
+
+/* ===========================
+   TABLA COMPARATIVA
+=========================== */
+.compare {
+  margin-top: 34px;
+  overflow-x: auto;
+}
+
+.compare table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--blanco);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.compare th,
+.compare td {
+  padding: 14px 18px;
+  text-align: center;
+}
+
+.compare th {
+  background: var(--celeste);
+  color: var(--azul-oscuro);
+}
+
+.compare .highlight {
+  background: var(--azul);
+  color: var(--blanco);
+}
+
+/* ===========================
+   FAQ
+=========================== */
+.faq .q {
+  margin-bottom: 12px;
+  background: var(--blanco);
+  padding: 16px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  cursor: pointer;
+}
+
+.faq .a {
+  display: none;
+  margin-top: 8px;
+  color: var(--gris-med);
+}
+
+.q:hover {
+  background: #f0f6ff;
+}
+
+/* ===========================
+   CTA FINAL
+=========================== */
+.cta-final {
+  margin-top: 40px;
+  padding: 24px;
+  background: var(--azul);
+  border-radius: var(--radius);
+  color: var(--blanco);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cta-final p {
+  margin-top: 6px;
+  color: #bdd7ff;
+}
+
+/* ===========================
+   FOOTER
+=========================== */
+.footer {
+  background: #082c5b;
+  padding: 40px 0;
+  color: var(--blanco);
+  margin-top: 40px;
+}
+
+.footer .inner {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+@media (max-width: 800px) {
+  .hero-card {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .cta-final {
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+  }
+
+  .footer .inner {
+    flex-direction: column;
+    text-align: center;
+  }
 }
