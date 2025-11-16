@@ -1,0 +1,226 @@
+/* ================================
+   PERFIL – Vida Med (CSS COMPLETO)
+   NO depende de socioHome.css
+   ================================ */
+
+/* ---------- RESET ---------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #f5f7fa;
+  font-family: 'Montserrat', sans-serif;
+  color: #333;
+}
+
+/* ---------- HEADER ---------- */
+.header-home {
+  background-color: #00a8a8;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 25px;
+  color: white;
+  flex-wrap: wrap;
+}
+
+.logo img {
+  height: 50px;
+  cursor: pointer;
+}
+
+/* NAV */
+.menu-socio {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.menu-socio a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  transition: opacity 0.3s ease;
+}
+
+.menu-socio a.active {
+  border-bottom: 2px solid white;
+}
+
+.menu-socio a:hover {
+  opacity: 0.8;
+}
+
+/* USER INFO */
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-cerrar {
+  background: white;
+  color: #00a8a8;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 5px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-cerrar:hover {
+  background: #e6f4f4;
+}
+
+/* ---------- TITULO ---------- */
+
+.perfil-titulo {
+  color: #00a8a8;
+  font-weight: 600;
+  text-align: center;
+  margin: 30px 0;
+}
+
+/* ---------- CARDS ---------- */
+
+.perfil-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  padding: 25px;
+}
+
+.perfil-subtitulo {
+  font-size: 1.15rem;
+  color: #00a8a8;
+  font-weight: 600;
+  margin-bottom: 18px;
+}
+
+/* ---------- FOTO DE PERFIL ---------- */
+
+.perfil-foto {
+  width: 110px;
+  height: 110px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 15px;
+  border: 3px solid #00a8a8;
+}
+
+/* ---------- INPUTS ---------- */
+
+.perfil-input {
+  border-radius: 8px;
+  border: 1px solid #d9d9d9;
+  background: #fafafa;
+  padding: 10px;
+  width: 100%;
+  transition: 0.2s ease-in-out;
+}
+
+.perfil-input:focus {
+  background: white;
+  border-color: #00a8a8;
+  box-shadow: 0 0 5px rgba(0,168,168,0.3);
+}
+
+.perfil-label {
+  font-weight: 600;
+  margin-bottom: 4px;
+  color: #555;
+  display: block;
+}
+
+/* ---------- BOTONES ---------- */
+
+.btn-vida {
+  background: #00a8a8;
+  color: white !important;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 20px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.btn-vida:hover {
+  background: #008c8c;
+}
+
+.btn-vida-sec {
+  background: #f0f0f0;
+  color: #333 !important;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 20px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.btn-vida-sec:hover {
+  background: #e3e3e3;
+}
+
+/* Botones alineados a la derecha */
+.perfil-btns {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+/* ---------- SECCIÓN DEL PLAN ---------- */
+
+.perfil-plan {
+    text-align: center;
+    width: 66%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.perfil-plan p {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #444;
+  margin-bottom: 15px;
+}
+
+/* ---------- FOOTER ---------- */
+
+footer {
+  text-align: center;
+  background: #00a8a8;
+  color: white;
+  padding: 15px;
+  margin-top: 40px;
+}
+
+/* ---------- RESPONSIVE ---------- */
+
+@media (max-width: 768px) {
+  .header-home {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .menu-socio {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .perfil-btns {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .btn-vida, .btn-vida-sec {
+    width: 100%;
+  }
+}
