@@ -1,0 +1,310 @@
+/* === Zona superior dentro del panel === */
+.panel-topbar-credencial {
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+.panel-topbar-credencial h1 {
+  margin: 0;
+  font-size: 1.6rem;
+  color: #222;
+}
+
+.panel-topbar-credencial p {
+  margin: 0.3rem 0 0;
+  color: #6c757d;
+  font-size: 0.95rem;
+}
+
+/* Contenedor centrado de la credencial */
+.credencial-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+/* Tarjeta principal */
+.credencial-card {
+  width: 100%;
+  max-width: 420px;
+  background: #ffffff;
+  border-radius: 12px;
+  border: 1px solid #e0e4ea;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  padding: 1rem 1.2rem 0.8rem;
+  font-size: 0.9rem;
+}
+
+/* Header token + logo */
+.credencial-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.5rem;
+}
+
+.token-box {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.token-label {
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  color: #6c757d;
+}
+
+.token-value {
+  display: inline-block;
+  padding: 0.22rem 0.55rem;
+  border-radius: 999px;
+  background-color: #e6f8f8;
+  border: 1px solid #00a8a8;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #006f70;
+}
+
+.credencial-logo-mini img {
+  max-width: 90px;
+}
+
+/* Cuerpo de la credencial */
+.credencial-card-body p {
+  margin: 0.1rem 0;
+}
+
+.credencial-nombre {
+  margin-top: 0.4rem;
+  margin-bottom: 0.2rem;
+}
+
+.credencial-extra {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.85rem;
+  color: #555;
+}
+
+.credencial-vigencia p {
+  margin: 0.1rem 0;
+  font-size: 0.85rem;
+}
+
+.credencial-iva {
+  text-align: right;
+  margin-top: 0.4rem;
+  font-size: 0.75rem;
+  color: #777;
+}
+
+/* Botones */
+.credencial-actions {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 420px;
+  gap: 0.7rem;
+}
+
+.btn-credencial {
+  width: 100%;
+  padding: 0.7rem 1rem;
+  border-radius: 999px;
+  border: 1px solid #00a8a8;
+  font-size: 0.9rem;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-credencial.primario {
+  background-color: #00a8a8;
+  color: #ffffff;
+}
+
+.btn-credencial.primario:hover {
+  background-color: #008c8c;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+}
+
+.btn-credencial.secundario {
+  background-color: #f0f0f0;
+  color: #333;
+  border-color: #d0d0d0;
+}
+
+.btn-credencial.secundario:hover {
+  background-color: #e2e2e2;
+}
+
+/* Responsive credencial */
+@media (max-width: 900px) {
+  .panel-container {
+    grid-template-columns: 1fr;
+  }
+
+  .panel-sidebar {
+    width: 100%;
+    flex-direction: row;
+    overflow-x: auto;
+  }
+
+  .sidebar-menu {
+    display: flex;
+    flex-wrap: nowrap;
+  }
+
+  .panel-main {
+    padding: 1.4rem 1rem 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .credencial-card {
+    font-size: 0.85rem;
+  }
+
+  .credencial-logo-mini img {
+    max-width: 70px;
+  }
+
+  .btn-credencial {
+    font-size: 0.85rem;
+  }
+}
+
+/* ========== LAYOUT CREDENCIAL CON SIDEBAR ========== */
+
+.panel-credencial-layout {
+  display: grid;
+  grid-template-columns: 260px minmax(0, 1fr);
+  min-height: calc(100vh - 120px); /* aprox header+footer */
+}
+
+/* Sidebar solo en la credencial */
+.panel-credencial-layout .panel-sidebar {
+  width: 260px;
+  background-color: #f1f3f5;
+  border-right: 1px solid #d0d4da;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Tarjeta de usuario (arriba del sidebar) */
+.panel-credencial-layout .sidebar-user-card {
+  display: flex;
+  padding: 1.2rem;
+  border-bottom: 1px solid #d0d4da;
+  background-color: #ffffff;
+}
+
+.panel-credencial-layout .user-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #00a8a8;  
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.2rem;
+  margin-right: 0.8rem;
+}
+
+.panel-credencial-layout .user-data h3 {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.panel-credencial-layout .user-plan {
+  font-size: 0.8rem;
+  color: #555;
+}
+
+.panel-credencial-layout .user-numero {
+  font-size: 0.75rem;
+  color: #777;
+}
+
+/* Menú lateral */
+.panel-credencial-layout .sidebar-menu {
+  padding: 0.5rem 0;
+  overflow-y: auto;
+}
+
+.panel-credencial-layout .sidebar-section-title {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #888;
+  padding: 0.6rem 1.4rem 0.3rem;
+}
+
+.panel-credencial-layout .sidebar-item {
+  width: 100%;
+  border: none;
+  background: none;
+  display: flex;
+  align-items: center;
+  padding: 0.7rem 1.4rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: #333;
+  border-left: 4px solid transparent;
+  transition: background-color 0.2s ease, border-left-color 0.2s ease;
+}
+
+.panel-credencial-layout .sidebar-item .sidebar-icon {
+  width: 26px;
+  text-align: center;
+  margin-right: 0.6rem;
+  font-size: 1rem;
+}
+
+.panel-credencial-layout .sidebar-item:hover {
+  background-color: #e4f3f6;
+}
+
+.panel-credencial-layout .sidebar-item.active {
+  background-color: #e4f3f6;
+  border-left-color: #00a8a8; 
+  font-weight: 600;
+}
+
+/* Contenido derecho (solo credencial) */
+.panel-credencial-layout .panel-main {
+  padding: 1.8rem 2.2rem;
+  background-color: #f5f7fa;
+}
+
+/* Responsive*/
+@media (max-width: 900px) {
+  .panel-credencial-layout {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .panel-credencial-layout .panel-sidebar {
+    width: 100%;
+    flex-direction: row;
+    overflow-x: auto;
+  }
+
+  .panel-credencial-layout .sidebar-menu {
+    display: flex;
+    flex-wrap: nowrap;
+  }
+
+  .panel-credencial-layout .sidebar-item,
+  .panel-credencial-layout .sidebar-section-title {
+    white-space: nowrap;
+  }
+
+  .panel-credencial-layout .panel-main {
+    padding: 1.4rem 1rem 2rem;
+  }
+}
