@@ -1,0 +1,240 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #f5f7fa;
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* BOTÓN VOLVER */
+.btn-volver {
+  background: none;
+  border: none;
+  font-weight: 600;
+  color: #666;
+  cursor: pointer;
+}
+
+.btn-volver:hover {
+  opacity: 0.7;
+}
+
+.flecha {
+  font-size: 18px;
+  margin-right: 4px;
+}
+
+/* TÍTULO */
+.titulo-tramite {
+  color: #00a8a8;
+  font-weight: 700;
+}
+
+/* PASOS */
+.steps-container {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-bottom: 30px;
+}
+
+.step-item {
+  display: flex;
+}
+
+.step-circle {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background: #d9d9d9;
+  color: #555;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+.step-label {
+  margin-top: 8px;
+  color: #777;
+  font-weight: 600;
+  font-size: 14px;
+  transition: 0.3s;
+  margin-left: 0.5em;
+}
+
+/* --- Estado ACTIVO --- */
+.step-item.active .step-circle {
+  background: #00a8a8;
+  color: white;
+}
+
+.step-item.active .step-label {
+  color: #00a8a8;
+}
+
+/* CARD */
+.card-contenido {
+  max-width: 650px;
+  margin: auto;
+  border-radius: 14px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  border: none;
+}
+
+/* INFO BOX */
+.info-box {
+  background: #f2f7f7;
+  padding: 20px;
+  border-radius: 12px;
+  line-height: 1.9;
+  border-left: 4px solid #00a8a8;
+}
+
+/* BOTONES */
+.btn-vidamed {
+  background: #00a8a8;
+  color: white;
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: none;
+}
+
+.btn-vidamed:hover {
+  background: #008c8c;
+}
+
+.btn-secundario {
+  background: #e6f1f1;
+  color: #008c8c;
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: none;
+}
+
+.btn-secundario:hover {
+  background: #d4ecec;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .step-line {
+    width: 40px;
+  }
+}
+
+
+/* HEADER */
+.header-tramite {
+  background-color: #00a8a8;
+  padding: 12px 0;
+  color: white;
+  margin-bottom: 25px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.header-tramite .logo img {
+  height: 45px;
+  cursor: pointer;
+}
+
+.menu-tramite a {
+  color: white;
+  text-decoration: none;
+  margin: 0 15px;
+  font-weight: 600;
+  transition: 0.3s ease;
+}
+
+.menu-tramite a:hover {
+  opacity: 0.7;
+}
+
+.menu-tramite a.active {
+  border-bottom: 2px solid white;
+  padding-bottom: 2px;
+}
+
+.usuario-box {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.usuario-nombre {
+  font-weight: 600;
+}
+
+.btn-cerrar-sesion {
+  background-color: white;
+  color: #00a8a8;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-cerrar-sesion:hover {
+  background-color: #e6f4f4;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .menu-tramite {
+    display: none; /* opcional */
+  }
+}
+
+.header-home {
+  background-color: #00a8a8;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 25px;
+  flex-wrap: wrap;
+  color: #fff;
+}
+
+.logo img {
+  height: 50px;
+  cursor: pointer;
+}
+
+.menu-socio {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.menu-socio a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.menu-socio a.active {
+  border-bottom: 2px solid #fff;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-cerrar {
+  background: white;
+  color: #00a8a8;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 5px;
+  font-weight: 600;
+  cursor: pointer;
+}

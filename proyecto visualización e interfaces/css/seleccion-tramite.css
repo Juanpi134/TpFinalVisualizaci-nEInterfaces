@@ -1,0 +1,120 @@
+body {
+  background: #f5f7fa;
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* HEADER */
+.header-home {
+  background-color: #00a8a8;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 25px;
+  flex-wrap: wrap;
+  color: #fff;
+}
+
+.logo img {
+  height: 50px;
+  cursor: pointer;
+}
+
+.menu-socio {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.menu-socio a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.menu-socio a.active {
+  border-bottom: 2px solid #fff;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-cerrar {
+  background: white;
+  color: #00a8a8;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 5px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* TÍTULOS */
+.titulo {
+  color: #00a8a8;
+  font-weight: 700;
+}
+
+.subtitulo {
+  color: #555;
+  font-size: 16px;
+}
+
+/* TARJETAS */
+.tramite-card {
+  background: white;
+  border-radius: 16px;
+  padding: 30px 20px;
+  text-align: center;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  cursor: pointer;
+  transition: 0.25s ease;
+  border-left: 5px solid #00a8a8;
+}
+
+.tramite-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 16px rgba(0,0,0,0.15);
+}
+
+.tramite-card img {
+  height: 55px;
+  margin-bottom: 15px;
+}
+
+.tramite-card h4 {
+  color: #00a8a8;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.tramite-card p {
+  color: #666;
+  font-size: 15px;
+}
+
+/* BOTÓN VOLVER */
+.btn-volver {
+  background: none;
+  border: none;
+  font-weight: 600;
+  color: #666;
+  cursor: pointer;
+}
+
+.btn-volver:hover {
+  opacity: 0.7;
+}
+
+.flecha {
+  font-size: 18px;
+  margin-right: 4px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .menu-tramite {
+    display: none;
+  }
+}
