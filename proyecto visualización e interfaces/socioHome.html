@@ -24,32 +24,35 @@
       <a href="mi-perfil.html">Mi Perfil</a>
       <a href="tramites.html">Mis Trámites</a>
       <a href="pagos.html">Pagos</a>
+      <a href="socioPrevencion.html">Prevencion</a>
     </nav>
 
-    <div class="user-info">
-      <span id="nombreUsuario"></span>
-      <button id="logoutBtn" class="btn-cerrar">Cerrar sesión</button>
-    </div>
-  </header>
-
-  <main class="dashboard">
-    <section class="bienvenida">
-      <h1>Bienvenido/a, <span id="nombreBienvenida"></span></h1>
-      <p>Tu salud al alcance de un clic.</p>
-    </section>
-
-    <section class="resumen">
-      <div class="card">
-        <h3>Plan Actual</h3>
-        <p id="planUsuario"></p>
-        <a href="planes.html" class="btn">Ver beneficios</a>
+      <div class="user-info">
+        <span id="nombreUsuario"></span>
+        <button id="logoutBtn" class="btn-cerrar">Cerrar sesión</button>
       </div>
+    </header>
 
-      <div class="card">
-        <h3>Mi Credencial Digital</h3>
-        <p>Descargá tu credencial para presentar en consultorios.</p>
-        <button id="btnCredencial" class="btn-secundario">Ver Credencial</button>
-      </div>
+    <main class="dashboard">
+      <section class="bienvenida">
+        <h1>Bienvenido/a, <span id="nombreBienvenida"></span></h1>
+        <p>Tu salud al alcance de un clic.</p>
+      </section>
+
+      <section class="resumen">
+        <div class="card">
+          <h3>Plan Actual</h3>
+          <p id="planUsuario"></p>
+          <a href="planes.html" class="btn">Ver beneficios</a>
+        </div>
+
+        <div class="card">
+          <h3>Mi Credencial Digital</h3>
+          <p>Descargá tu credencial para presentar en consultorios.</p>
+          <button id="btnCredencial" class="btn-secundario">
+            Ver Credencial
+          </button>
+        </div>
 
       <div class="card">
         <h3>Próximo Turno</h3>
@@ -58,29 +61,31 @@
       </div>
     </section>
 
-    <section class="acciones">
-      <div class="accion">
-        <img src="img/icon_turnos.png" alt="Turnos">
-        <h4>Mis Turnos</h4>
-        <p>Consultá tus próximos turnos y resultados.</p>
-        <button id="btnTurnos" class="btn">Ver Turnos</button>
-      </div>
+      <section class="acciones">
+        <div class="accion">
+          <img src="img/icon_turnos.png" alt="Turnos" />
+          <h4>Mis Turnos</h4>
+          <p>Consultá tus próximos turnos y resultados.</p>
+          <button id="btnTurnos" class="btn">Ver Turnos</button>
+        </div>
 
-      <div class="accion">
-        <img src="img/icon_pago.png" alt="Pagos">
-        <h4>Pagos y Facturas</h4>
-        <p>Accedé a tu historial de pagos o adherite al débito automático.</p>
-        <button class="btn" onclick="window.location.href='pagos.html'">Ver Pagos</button>
-      </div>
+        <div class="accion">
+          <img src="img/icon_pago.png" alt="Pagos" />
+          <h4>Pagos y Facturas</h4>
+          <p>Accedé a tu historial de pagos o adherite al débito automático.</p>
+          <button class="btn" onclick="window.location.href='pagos.html'">
+            Ver Pagos
+          </button>
+        </div>
 
-      <div class="accion">
-        <img src="img/icon_contacto.png" alt="Contacto">
-        <h4>Contactar Asesor</h4>
-        <p>Comunicate directamente con tu asesor personal.</p>
-        <button class="btn">Enviar Mensaje</button>
-      </div>
-    </section>
-  </main>
+        <div class="accion">
+          <img src="img/icon_contacto.png" alt="Contacto" />
+          <h4>Contactar Asesor</h4>
+          <p>Comunicate directamente con tu asesor personal.</p>
+          <button class="btn">Enviar Mensaje</button>
+        </div>
+      </section>
+    </main>
 
   <footer class="vm-footer">
   <div class="vm-footer-container">
@@ -102,6 +107,6 @@
   </div>
 </footer>
 
-  <script src="js/socioHome.js"></script>
-</body>
+    <script src="js/socioHome.js"></script>
+  </body>
 </html>
