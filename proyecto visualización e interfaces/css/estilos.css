@@ -170,7 +170,10 @@ header .logo img {
 }
 
 .beneficio img {
-  width: 60px;
+  width: 100%;
+  height: 140px;      /* todas tendrán la misma altura */
+  object-fit: cover;  /* recorta para rellenar */
+  border-radius: 8px; /* opcional para estética */
   margin-bottom: 20px;
 }
 
@@ -495,5 +498,141 @@ footer {
   .texto-carrusel {
     left: 5%;
     right: 5%;
+  }
+}
+
+/* =========================
+   MEJORAS RESPONSIVE
+   ========================= */
+
+/* Tablet y mobile */
+@media (max-width: 768px) {
+  /* Que todo se apile en columna */
+  .panel-container {
+    flex-direction: column;
+    min-height: auto;
+  }
+
+  /* Sidebar pasa arriba como “barra” */
+  .panel-sidebar {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid #d0d4da;
+    flex-direction: column;
+  }
+
+  .sidebar-user-card {
+    padding: 0.9rem 1rem;
+    justify-content: flex-start;
+  }
+
+  .user-avatar {
+    width: 42px;
+    height: 42px;
+    font-size: 1rem;
+  }
+
+  .user-data h3 {
+    font-size: 0.9rem;
+  }
+
+  .user-plan,
+  .user-numero {
+    font-size: 0.75rem;
+  }
+
+  /* Menú lateral como “tabs” horizontales scrolleables */
+  .sidebar-menu {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding: 0.4rem 0.4rem 0.7rem;
+  }
+
+  .sidebar-section-title {
+    display: none; /* para que no meta ruido en mobile */
+  }
+
+  .sidebar-item {
+    flex: 0 0 auto;
+    padding: 0.5rem 0.8rem;
+    border-left: none;
+    border-radius: 999px;
+    margin-right: 0.4rem;
+    font-size: 0.8rem;
+    background-color: #f5f7fa;
+  }
+
+  .sidebar-item.active {
+    background-color: #e4f3f6;
+    border-left: none;
+  }
+
+  .sidebar-item .sidebar-icon {
+    margin-right: 0.3rem;
+    font-size: 0.9rem;
+  }
+
+  /* Contenido principal con menos padding lateral */
+  .panel-main {
+    padding: 1.4rem 1rem 2rem;
+  }
+
+  .panel-welcome h1 {
+    font-size: 1.2rem;
+  }
+
+  .panel-welcome p {
+    font-size: 0.85rem;
+  }
+
+  /* Tarjetas grandes: una por fila */
+  .panel-acciones-principales {
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
+  }
+
+  .accion-card {
+    padding: 0.85rem 1rem;
+  }
+
+  .accion-texto h3 {
+    font-size: 0.95rem;
+  }
+
+  /* Info útil: 2 columnas para que no se estire demasiado */
+  .info-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.7rem;
+  }
+
+  .info-card {
+    min-height: 100px;
+    padding: 0.8rem 0.5rem;
+  }
+
+  .info-card h4 {
+    font-size: 0.85rem;
+  }
+}
+
+/* Mobile chico */
+@media (max-width: 480px) {
+  /* Menú principal del header más compacto (si lo necesitás) */
+  header .menu ul {
+    gap: 0.8rem;
+  }
+
+  header .menu ul li a {
+    font-size: 0.8rem;
+  }
+
+  /* Info útil: una sola columna en pantallas muy chicas */
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .panel-main {
+    padding-inline: 0.8rem;
   }
 }

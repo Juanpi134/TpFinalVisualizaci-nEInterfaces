@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Credencial Virtual | Vida Med</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/socioHome.css">
+  <link rel="stylesheet" href="css/plan-socio.css">
+  <link rel="stylesheet" href="css/panel-credencial.css">
+</head>
+<body>
+
+  <header class="header-home">
+    <div class="logo">
+      <img src="img/vidaMedLogo.png" alt="Vida Med" onclick="window.location.href='index.html'">
+    </div>
+
+    <nav class="menu-socio">
+      <a href="socioHome.html">Inicio</a>
+      <a href="misTurnos.html">Mis Turnos</a>
+      <a href="credencial.html" class="active">Credencial</a>
+    </nav>
+
+    <div class="user-info">
+      <span id="nombreUsuario"></span>
+      <button id="logoutBtn" class="btn-cerrar">Cerrar sesión</button>
+    </div>
+  </header>
+
+  <!-- CONTENIDO PRINCIPAL -->
+   <main class="panel-container panel-credencial-layout">
+    <!-- SIDEBAR IZQUIERDO -->
+    <aside class="panel-sidebar">
+      <section class="sidebar-user-card">
+        <div class="user-avatar user-avatar--panel">
+          <span>P</span>
+        </div>
+        <div class="user-data">
+          <h3><span id="nombreBienvenida"></h3>
+          <p class="user-plan"><span id="planUsuario"></p>
+          <p class="user-numero">N° Socio 44813037</p>
+        </div>
+      </section>
+
+      <nav class="sidebar-menu">
+        <button class="sidebar-item">
+          <div class="sidebar-icon">🏠</div>
+          <span>Inicio</span>
+        </button>
+
+        <button class="sidebar-item">
+          <div class="sidebar-icon">💬</div>
+          <span>Atención al Cliente</span>
+        </button>
+
+        <h4 class="sidebar-section-title">Credencial</h4>
+        <button class="sidebar-item active">
+          <div class="sidebar-icon">💳</div>
+          <span>Credencial Virtual</span>
+        </button>
+
+        <h4 class="sidebar-section-title">Sucursal Virtual</h4>
+        <button class="sidebar-item">
+          <div class="sidebar-icon">📝</div>
+          <span>Mis Trámites</span>
+        </button>
+        <button class="sidebar-item">
+          <div class="sidebar-icon">💊</div>
+          <span>Medicamentos</span>
+        </button>
+
+        <h4 class="sidebar-section-title">Atención Médica</h4>
+        <button class="sidebar-item">
+          <div class="sidebar-icon">👨‍⚕️</div>
+          <span>Médico en línea</span>
+        </button>
+        <button class="sidebar-item">
+          <div class="sidebar-icon">📄</div>
+          <span>Solicitar receta</span>
+        </button>
+        <button class="sidebar-item">
+          <div class="sidebar-icon">📆</div>
+          <span>Programar turno</span>
+        </button>
+      </nav>
+    </aside>
+
+    <!-- CONTENIDO DERECHO -->
+    <section class="panel-main">
+      <!-- Título superior -->
+      <div class="panel-topbar-credencial">
+        <h1>Mi Credencial Digital</h1>
+        <p>Mostrá esta credencial en consultorios y farmacias.</p>
+      </div>
+
+      <div class="credencial-wrapper">
+        <!-- TARJETA PRINCIPAL -->
+        <article class="credencial-card">
+          <header class="credencial-card-header">
+            <div class="token-box">
+              <span class="token-label">TOKEN</span>
+              <span class="token-value" id="tokenActual">7852</span>
+            </div>
+            <div class="credencial-logo-mini">
+              <img src="img/vidaMedLogo.png" alt="VidaMed">
+            </div>
+          </header>
+
+          <section class="credencial-card-body">
+            <p class="credencial-nombre"><strong id="nombreSocioCredencial">Nombre del Socio</strong></p>
+            <p id="numeroSocioCredencial">N° Socio 44813037</p>
+            <p id="planSocioCredencial">Plan Premium</p>
+
+            <p class="credencial-extra">
+              Región: AMBA | Farmacia: SI<br>
+              Factor Sanguíneo: RH+<br>
+              Teléfono de contacto: 1144588577
+            </p>
+
+            <hr>
+
+            <div class="credencial-vigencia">
+              <p>Vigencia desde: 10/11/25</p>
+              <p>Hasta: 10/05/30</p>
+            </div>
+
+            <p class="credencial-iva">IVA: NO GRAV</p>
+          </section>
+        </article>
+
+        <!-- BOTONES -->
+        <div class="credencial-actions">
+          <button class="btn-credencial secundario" id="btnNuevoToken">
+            Generar nuevo Token
+          </button>
+
+          <button class="btn-credencial primario" id="btnCompartir">
+            Compartir Credencial
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Vida Med. Tu salud, nuestra prioridad.</p>
+  </footer>
+
+  <script src="js/socioHome.js"></script>
+  <script>
+    const tokenSpan = document.getElementById("tokenActual");
+    const btnNuevoToken = document.getElementById("btnNuevoToken");
+    const btnCompartir = document.getElementById("btnCompartir");
+
+    btnNuevoToken.addEventListener("click", () => {
+      const nuevo = Math.floor(1000 + Math.random() * 9000);
+      tokenSpan.textContent = nuevo;
+    });
+
+    btnCompartir.addEventListener("click", () => {
+      alert("Tu credencial se puede compartir por mail o WhatsApp.\n(Esta acción es solo demostrativa en el TP).");
+    });
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const socioJSON = localStorage.getItem("socioActivo");
+      if (!socioJSON) return;
+      const socio = JSON.parse(socioJSON);
+
+      const nombreCred = document.getElementById("nombreSocioCredencial");
+      const planCred = document.getElementById("planSocioCredencial");
+
+      if (nombreCred) nombreCred.textContent = socio.nombre;
+      if (planCred) planCred.textContent = socio.plan;
+    });
+  </script>
+</body>
+</html>

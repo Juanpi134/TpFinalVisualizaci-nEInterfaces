@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mi Panel | Vida Med</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/socioHome.css">
+  <link rel="stylesheet" href="css/plan-socio.css">
+</head>
+<body>
+
+
+  <header class="header-home">
+    <div class="logo">
+      <img src="img/vidaMedLogo.png" alt="Vida Med" onclick="window.location.href='index.html'">
+    </div>
+
+    <nav class="menu-socio">
+      <a href="socioHome.html" class="active">Inicio</a>
+      <a href="misTurnos.html">Mis Turnos</a>
+      <a href="credencial.html">Credencial</a>
+    </nav>
+
+    <div class="user-info">
+      <span id="nombreUsuario"></span>
+      <button id="logoutBtn" class="btn-cerrar">Cerrar sesión</button>
+    </div>
+  </header>
+
+  <main class="panel-container panel-container--sin-sidebar">
+    <section class="panel-main">
+      <!-- Bloque de bienvenida -->
+      <div class="panel-welcome panel-welcome--centrado">
+        <div class="panel-user-resumen">
+          <div class="user-avatar user-avatar--panel">
+            <span>P</span>
+          </div>
+          <div class="user-data">
+            <h3><span id="nombreBienvenida"></span></h3>
+            <p class="user-plan"><span id="planUsuario"></p>
+            <p class="user-numero">N° Socio 44813037</p>
+          </div>
+        </div>
+
+        <div class="panel-welcome-textos">
+          <h1>¡Bienvenido <span id="nombreBienvenida"></span>!</h1>
+          <p>¿En qué te podemos ayudar?</p>
+        </div>
+      </div>
+
+      <!-- Acciones principales -->
+      <section class="panel-acciones-principales">
+        <button class="accion-card grande">
+          <div class="accion-icon">📅</div>
+          <div class="accion-texto">
+            <h3>Sacar Turno</h3>
+          </div>
+          <div class="accion-flecha">➜</div>
+        </button>
+
+        <button class="accion-card grande">
+          <div class="accion-icon">📝</div>
+          <div class="accion-texto">
+            <h3>Iniciar Trámite</h3>
+          </div>
+          <div class="accion-flecha">➜</div>
+        </button>
+
+        <button class="accion-card grande">
+          <div class="accion-icon">📚</div>
+          <div class="accion-texto">
+            <h3>Ver Cartilla</h3>
+          </div>
+          <div class="accion-flecha">➜</div>
+        </button>
+      </section>
+
+      <!-- Botones flotantes-->
+      <section class="panel-atajos">
+        <h2>Gestiones rápidas</h2>
+
+        <div class="info-grid atajos-grid">
+          <article class="info-card">
+            <div class="info-icon">🏠</div>
+            <h4>Inicio</h4>
+          </article>
+
+          <article class="info-card">
+            <div class="info-icon">💬</div>
+            <h4>Atención al Cliente</h4>
+          </article>
+
+          <article class="info-card">
+            <div class="info-icon">💳</div>
+            <h4>Credencial Virtual</h4>
+          </article>
+
+          <article class="info-card">
+            <div class="info-icon">📝</div>
+            <h4>Mis Trámites</h4>
+          </article>
+
+          <article class="info-card">
+            <div class="info-icon">💊</div>
+            <h4>Medicamentos</h4>
+          </article>
+
+          <article class="info-card">
+            <div class="info-icon">👨‍⚕️</div>
+            <h4>Médico en línea</h4>
+          </article>
+
+          <article class="info-card">
+            <div class="info-icon">📄</div>
+            <h4>Solicitar receta</h4>
+          </article>
+
+          <article class="info-card">
+            <div class="info-icon">📆</div>
+            <h4>Programar turno</h4>
+          </article>
+        </div>
+      </section>
+
+      <!-- Información útil -->
+      <section class="panel-info-util">
+        <h2>Información útil sobre tu cobertura</h2>
+
+        <div class="info-grid">
+          <article class="info-card">
+            <div class="info-icon">ℹ️</div>
+            <h4>Constancia Covid-19</h4>
+          </article>
+
+          <article class="info-card">
+            <div class="info-icon">📄</div>
+            <h4>Detalle Facturas</h4>
+          </article>
+
+          <article class="info-card">
+            <div class="info-icon">✈️</div>
+            <h4>Cobertura Viajeros</h4>
+          </article>
+
+          <article class="info-card">
+            <div class="info-icon">❓</div>
+            <h4>Preguntas Frecuentes</h4>
+          </article>
+
+          <article class="info-card">
+            <div class="info-icon">🤖</div>
+            <h4>Habla con nuestro Bot</h4>
+          </article>
+
+          <article class="info-card">
+            <div class="info-icon">☎️</div>
+            <h4>Teléfonos útiles</h4>
+          </article>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Vida Med. Tu salud, nuestra prioridad.</p>
+  </footer>
+
+  <script src="js/socioHome.js"></script>
+  <script>
+    // Solo para el TP
+    document.querySelectorAll(".accion-card, .info-card").forEach(btn => {
+      btn.addEventListener("click", () => {
+        alert("Funcionalidad de ejemplo para el TP 🙂");
+      });
+    });
+  </script>
+</body>
+</html>
