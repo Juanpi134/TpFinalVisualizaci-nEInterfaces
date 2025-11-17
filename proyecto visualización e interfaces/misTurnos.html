@@ -5,34 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mis Turnos - Vida Med</title>
 
+    <!-- 1. Fuente (Montserrat) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
     
-    <link rel="stylesheet" type="text/css" href="/proyecto visualización e interfaces/css/misTurnos.css">
+    <!-- 2. Link al CSS Unificado -->
+    <link rel="stylesheet" type="text/css" href="css/misTurnos.css">
+    <link rel="stylesheet" type="text/css" href="css/turnosglobal.css">
 
 </head>
 <body>
 
-    <header class="cabecera-app">
+    <!-- Header adaptado al nuevo estilo -->
+    <header class="header-home">
         <div class="icono-perfil" title="Mi Perfil">JP</div>
     </header>
 
     <main class="hub-container">
         
-        <h1 class="hub-titulo">Mis Turnos</h1>
+        <!-- Título adaptado -->
+        <h1 class="titulo-pagina">Mis Turnos</h1>
 
         <div class="hub-grid">
 
+            <!-- Columna Principal -->
             <div class="col-principal">
                 
-                <section class="hub-modulo">
-                    <h2>Agregar nuevo turno</h2>
-                    <a href="#" class="btn-agregar-turno">Agendar una nueva consulta</a>
+                <!-- Card adaptada -->
+                <section class="card-vida-med">
+                    <h2 class="card-subtitulo">Agregar nuevo turno</h2>
+                    <!-- Botón adaptado -->
+                    <a href="agregar-turno.html" class="btn btn-primario btn-grande full-width">Agendar una nueva consulta</a>
                 </section>
 
-                <section class="hub-modulo">
-                    <h2>Próximos turnos</h2>
+                <section class="card-vida-med">
+                    <h2 class="card-subtitulo">Próximos turnos</h2>
                     <div class="grilla-turnos">
                         
                         <article class="turno-card">
@@ -65,31 +73,35 @@
                 </section>
             </div>
 
+            <!-- Columna Lateral -->
             <div class="col-lateral">
 
-                <section class="hub-modulo">
-                    <h2>Órdenes médicas</h2>
+                <section class="card-vida-med">
+                    <h2 class="card-subtitulo">Órdenes médicas</h2>
                     <div class="lista-ordenes">
                         
                         <article class="orden-card">
                             <h3>¡Es hora de tu chequeo preventivo!</h3>
                             <p>Tu plan incluye un chequeo anual para cuidarte.</p>
-                            <a href="#" class="btn-agendar-estudio">Agendar chequeo</a>
+                            <!-- Botón adaptado -->
+                            <a href="#" class="btn btn-primario full-width">Agendar chequeo</a>
                         </article>
 
                         <article class="orden-card">
                             <h3>Análisis de laboratorio</h3>
                             <p>Ordenado por: Dr. Martín López</p>
-                            <a href="#" class="btn-agendar-estudio">Buscar laboratorio</a>
+                            <!-- Botón adaptado -->
+                            <a href="#" class="btn btn-primario full-width">Buscar laboratorio</a>
                         </article>
 
                     </div>
                 </section>
 
-                <section class="hub-modulo">
-                    <h2>Historial de turnos</h2>
+                <section class="card-vida-med">
+                    <h2 class="card-subtitulo">Historial de turnos</h2>
                     <p class="historial-descripcion">Revisá tus consultas pasadas, calificá la atención y volvé a pedir un turno con el mismo profesional.</p>
-                    <button id="btn-abrir-historial" class="btn-ver-historial">Ver historial completo</button>
+                    <!-- Botón adaptado -->
+                    <button id="btn-abrir-historial" class="btn btn-outline full-width">Ver historial completo</button>
                 </section>
             </div>
 
@@ -97,13 +109,15 @@
 
     </main>
 
+    <!-- Modal (la estructura interna se actualiza con las nuevas clases de botones) -->
     <div id="modal-historial" class="modal-overlay">
         <div class="modal-content">
             <button id="btn-cerrar-modal" class="modal-close-btn" title="Cerrar">&times;</button>
-            <h2>Historial de Turnos</h2>
+            <h2 class="card-subtitulo">Historial de Turnos</h2>
             
             <div class="modal-lista-historial">
                 
+                <!-- Item Historial 1 -->
                 <div class="modal-historial-item">
                     <div class="historial-info">
                         <p>Cardiología</p>
@@ -117,10 +131,12 @@
                             <input type="radio" id="h1-star2" name="rating1" value="2"><label for="h1-star2" title="2 estrellas">★</label>
                             <input type="radio" id="h1-star1" name="rating1" value="1"><label for="h1-star1" title="1 estrella">★</label>
                         </div>
-                        <button class="btn-volver-a-pedir">Volver a pedir</button>
+                        <!-- Botón adaptado -->
+                        <button class="btn btn-secundario">Volver a pedir</button>
                     </div>
                 </div>
 
+                <!-- Item Historial 2 -->
                 <div class="modal-historial-item">
                     <div class="historial-info">
                         <p>Clínica Médica</p>
@@ -134,61 +150,41 @@
                             <input type="radio" id="h2-star2" name="rating2" value="2"><label for="h2-star2" title="2 estrellas">★</label>
                             <input type="radio" id="h2-star1" name="rating2" value="1"><label for="h2-star1" title="1 estrella">★</label>
                         </div>
-                        <button class="btn-volver-a-pedir">Volver a pedir</button>
+                        <button class="btn btn-secundario">Volver a pedir</button>
                     </div>
                 </div>
 
-                <div class="modal-historial-item">
-                    <div class="historial-info">
-                        <p>Dermatología</p>
-                        <span>Dr. Juan Vélez - 11/07/2025</span>
-                    </div>
-                    <div class="historial-acciones">
-                        <div class="estrellas-rating">
-                            <input type="radio" id="h3-star5" name="rating3" value="5"><label for="h3-star5" title="5 estrellas">★</label>
-                            <input type="radio" id="h3-star4" name="rating3" value="4"><label for="h3-star4" title="4 estrellas">★</label>
-                            <input type="radio" id="h3-star3" name="rating3" value="3"><label for="h3-star3" title="3 estrellas">★</label>
-                            <input type="radio" id="h3-star2" name="rating3" value="2"><label for="h3-star2" title="2 estrellas">★</label>
-                            <input type="radio" id="h3-star1" name="rating3" value="1"><label for="h3-star1" title="1 estrella">★</label>
-                        </div>
-                        <button class="btn-volver-a-pedir">Volver a pedir</button>
-                    </div>
-                </div>
-
-                </div>
-
-            <button class="btn-exportar-pdf">Exportar Historial a PDF</button>
+            </div>
+            
+            <!-- Botón adaptado -->
+            <button class="btn btn-primario btn-grande full-width">Exportar Historial a PDF</button>
         </div>
     </div>
 
-
+    <!-- JavaScript (sin cambios) -->
     <script>
-        // Espera a que el documento esté listo
         document.addEventListener('DOMContentLoaded', () => {
-            
-            // Selecciona los elementos del DOM
             const modal = document.getElementById('modal-historial');
             const btnAbrir = document.getElementById('btn-abrir-historial');
             const btnCerrar = document.getElementById('btn-cerrar-modal');
-
-            // Función para abrir el modal
-            btnAbrir.addEventListener('click', () => {
-                modal.classList.add('visible');
-            });
-
-            // Función para cerrar el modal con el botón 'X'
-            btnCerrar.addEventListener('click', () => {
-                modal.classList.remove('visible');
-            });
-
-            // Función para cerrar el modal haciendo clic en el fondo oscuro
-            modal.addEventListener('click', (e) => {
-                // Si el clic fue directamente en el overlay (fondo)
-                if (e.target === modal) {
+            
+            if (btnAbrir) {
+                btnAbrir.addEventListener('click', () => {
+                    modal.classList.add('visible');
+                });
+            }
+            if (btnCerrar) {
+                btnCerrar.addEventListener('click', () => {
                     modal.classList.remove('visible');
-                }
-            });
-
+                });
+            }
+            if (modal) {
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) {
+                        modal.classList.remove('visible');
+                    }
+                });
+            }
         });
     </script>
     

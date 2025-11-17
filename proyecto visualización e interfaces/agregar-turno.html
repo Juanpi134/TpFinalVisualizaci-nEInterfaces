@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Turno - Vida Med</title>
+
+    <!-- Fuente (Montserrat) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Links a los CSS (Común + Específico) -->
+    <link rel="stylesheet" type="text/css" href="css/turnosglobal.css">
+    <link rel="stylesheet" type="text/css" href="css/agregar-turno.css">
+
+</head>
+<body>
+
+    <header class="header-home">
+        <div class="icono-perfil" title="Mi Perfil">JP</div>
+    </header>
+
+    <main class="form-container">
+        
+        <h1 class="titulo-pagina centrado">Agregar un nuevo turno</h1>
+
+        <!-- El 'action' te lleva a la siguiente pantalla -->
+        <form class="form-agregar-turno" action="elegir-turno.html" method="GET">
+            
+            <div class="form-group-vida-med">
+                <label for="especialidad" class="form-label-vida-med">Especialidad</label>
+                <!-- El 'name' es importante para pasar el dato a la siguiente página -->
+                <select id="especialidad" name="especialidad" class="form-input-vida-med">
+                    <option value="" disabled selected>Seleccioná una especialidad</option>
+                    <option value="clinica">Clínica Médica</option>
+                    <option value="cardiologia">Cardiología</option>
+                    <option value="traumatologia">Traumatología</option>
+                    <option value="salud-mental">Salud Mental</option>
+                </select>
+            </div>
+            
+            <div class="form-group-vida-med">
+                <label for="centro-medico" class="form-label-vida-med">Centro médico</label>
+                <!-- El 'name' es importante para pasar el dato a la siguiente página -->
+                <select id="centro-medico" name="centro" class="form-input-vida-med">
+                    <option value="" disabled selected>Seleccioná un centro</option>
+                    <option value="belgrano">Centro Médico Belgrano</option>
+                    <option value="abasto">Centro Médico Abasto</option>
+                    <option value="virtual">Atención Virtual</option>
+                </select>
+            </div>
+            
+            <button type="submit" class="btn btn-primario btn-grande full-width">CONTINUAR</button>
+            
+            <a href="index.html" class="form-volver">Volver al inicio</a>
+        </form>
+
+    </main>
+    
+</body>
+</html>

@@ -1,0 +1,206 @@
+/* ================================
+   4. ESTILOS: Elegir Turno (elegir_turno.html)
+   ================================ */
+
+/* Barra de Contexto (Especialidad / Centro) */
+.context-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 24px;
+    padding: 16px;
+    background-color: var(--color-tarjeta);
+    border-radius: var(--radio-input);
+    border: 1px solid var(--color-borde);
+    margin-bottom: 20px;
+    align-items: center;
+}
+.context-label {
+    font-size: 0.9rem;
+    color: var(--color-texto-secundario);
+}
+.context-value {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-texto-principal);
+}
+.context-change-link {
+    margin-left: auto;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-primario);
+    text-decoration: none;
+}
+.context-change-link:hover {
+    text-decoration: underline;
+}
+
+/* Grid de Selección (Profesionales / Horarios) */
+.turno-selection-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* Mobile-first */
+    gap: 24px;
+    flex-grow: 1;
+}
+@media (min-width: 1024px) {
+    .turno-selection-grid {
+        grid-template-columns: 1fr 1fr; /* Dos columnas en desktop */
+    }
+}
+
+.profesional-list-col, .horarios-col {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    min-height: 0; /* Fix para flex anidado en grid */
+}
+
+/* Columna Izquierda: Profesionales */
+.profesional-list-filters {
+    display: flex;
+    gap: 10px;
+    padding-bottom: 10px;
+}
+
+.profesional-list-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    overflow-y: auto;
+    max-height: 450px; /* Altura máxima para la lista, activa scroll */
+    padding-right: 5px; /* Espacio para el scrollbar */
+}
+
+.profesional-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px;
+    border: 2px solid var(--color-borde);
+    border-radius: var(--radio-input);
+    background-color: var(--color-tarjeta);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.profesional-card:hover {
+    border-color: var(--color-primario-hover);
+    box-shadow: 0 4px 8px rgba(0,168,168,0.1);
+}
+.profesional-card.selected {
+    border-color: var(--color-primario);
+    background-color: var(--color-primario-suave);
+    box-shadow: 0 4px 8px rgba(0,168,168,0.1);
+}
+
+.profesional-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+.profesional-info h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--color-texto-principal);
+    margin: 0;
+}
+.profesional-info p {
+    font-size: 0.9rem;
+    color: var(--color-texto-secundario);
+    margin: 0;
+}
+
+/* Columna Derecha: Calendario y Horarios */
+
+/* Este div ahora es el contenedor de FullCalendar */
+#calendario {
+    padding: 10px;
+}
+
+.horarios-list-container {
+    display: grid;
+    /* Grilla responsive para los horarios */
+    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+    gap: 10px;
+}
+
+.horarios-placeholder {
+    font-size: 0.9rem;
+    color: var(--color-texto-secundario);
+    text-align: center;
+    grid-column: 1 / -1; /* Ocupa toda la grilla */
+}
+
+/* El .horario-slot usa las clases .btn y .btn-outline */
+.horario-slot.selected {
+    background-color: var(--color-primario);
+    color: white !important;
+}
+
+/* Barra de Confirmación */
+.confirm-bar {
+    margin-top: 24px;
+    padding-top: 24px;
+    border-top: 1px solid var(--color-borde);
+    display: flex;
+    justify-content: flex-end; /* Botón a la derecha */
+    align-items: center;
+}
+
+
+/* ================================================
+   --- 8. NUEVOS ESTILOS: FullCalendar Overrides --- 
+   ================================================ */
+
+/* Fuente y color del Título (ej. "noviembre 2025") */
+.fc .fc-toolbar-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.25rem;
+    color: var(--color-texto-principal);
+}
+
+/* Estilo de los botones Prev/Next */
+.fc .fc-button {
+    background-color: var(--color-primario);
+    border: none;
+    opacity: 1;
+    transition: background-color 0.3s ease;
+}
+.fc .fc-button:hover {
+    background-color: var(--color-primario-hover);
+}
+.fc .fc-button:disabled {
+    background-color: #ccc;
+}
+.fc .fc-button .fc-icon {
+    /* Ajusta el ícono de la flecha si es necesario */
+    vertical-align: middle;
+}
+
+/* Color del día de HOY */
+.fc .fc-daygrid-day.fc-day-today {
+    background-color: var(--color-primario-suave);
+}
+
+/* Color del día SELECCIONADO (cuando se hace clic) */
+.fc .fc-daygrid-day.fc-day-selected {
+    background-color: var(--color-primario) !important;
+    color: white;
+}
+.fc .fc-daygrid-day.fc-day-selected .fc-daygrid-day-number {
+    color: white;
+    font-weight: 700;
+}
+
+/* Color de los números de los días */
+.fc .fc-daygrid-day-number {
+    color: var(--color-texto-secundario);
+    font-weight: 600;
+    text-decoration: none; /* Quita el subrayado feo */
+    padding: 4px;
+}
+
+/* Quita el borde de la celda de la tabla */
+.fc th, .fc td, .fc table {
+    border-color: var(--color-borde);
+}

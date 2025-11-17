@@ -1,0 +1,203 @@
+/* ================================
+   1. ESTILOS COMUNES - Vida Med
+   (Cargar en TODAS las páginas)
+   ================================ */
+
+/* ---------- 1. Variables y Reset ---------- */
+:root {
+    --color-primario: #00a8a8;
+    --color-primario-hover: #008c8c;
+    --color-primario-suave: #e6f4f4;
+    --color-secundario: #f0f0f0;
+    --color-secundario-hover: #e3e3e3;
+    --color-fondo: #f5f7fa;
+    --color-tarjeta: #ffffff;
+    --color-texto-principal: #333;
+    --color-texto-secundario: #555;
+    --color-borde: #d9d9d9;
+    --color-input-fondo: #fafafa;
+    --color-estrella: #FFC107;
+    --sombra-tarjeta: 0 2px 6px rgba(0,0,0,0.1);
+    --radio-tarjeta: 12px;
+    --radio-input: 8px;
+    --radio-boton: 6px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--color-fondo);
+    font-family: 'Montserrat', sans-serif;
+    color: var(--color-texto-principal);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+h1, h2, h3, p {
+    line-height: 1.6;
+}
+
+/* ---------- 2. Header ---------- */
+.header-home {
+    background-color: var(--color-primario);
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 12px 25px;
+    color: white;
+    flex-shrink: 0;
+}
+
+.icono-perfil {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background-color: var(--color-tarjeta);
+    color: var(--color-primario);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+
+/* ---------- 3. Componentes Genéricos ---------- */
+
+/* Títulos */
+.titulo-pagina {
+    color: var(--color-primario);
+    font-weight: 600;
+    margin: 30px 0;
+    font-size: 2rem;
+}
+.titulo-pagina.centrado {
+    text-align: center;
+}
+
+/* Card (Base) */
+.card-vida-med {
+    background: var(--color-tarjeta);
+    border-radius: var(--radio-tarjeta);
+    box-shadow: var(--sombra-tarjeta);
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-subtitulo {
+    font-size: 1.15rem;
+    color: var(--color-primario);
+    font-weight: 600;
+    margin-bottom: 18px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 12px;
+}
+
+/* Botones (Base) */
+.btn {
+    border: none;
+    border-radius: var(--radio-boton);
+    padding: 10px 20px;
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+.btn.btn-grande {
+    padding: 16px;
+    font-size: 1.1rem;
+}
+.btn.btn-small {
+    padding: 8px 12px;
+    font-size: 0.9rem;
+}
+.btn.full-width {
+    width: 100%;
+}
+
+.btn-primario {
+    background: var(--color-primario);
+    color: white !important;
+}
+.btn-primario:hover {
+    background: var(--color-primario-hover);
+}
+.btn-primario:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+.btn-secundario {
+    background: var(--color-secundario);
+    color: var(--color-texto-principal) !important;
+}
+.btn-secundario:hover {
+    background: var(--color-secundario-hover);
+}
+
+.btn-outline {
+    background-color: transparent;
+    color: var(--color-primario) !important;
+    border: 2px solid var(--color-primario);
+}
+.btn-outline:hover {
+    background-color: var(--color-primario-suave);
+}
+.btn-outline.selected {
+    background-color: var(--color-primario);
+    color: white !important;
+}
+
+/* Inputs (Base) */
+.form-input-vida-med {
+    border-radius: var(--radio-input);
+    border: 1px solid var(--color-borde);
+    background: var(--color-input-fondo);
+    padding: 12px;
+    width: 100%;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    color: var(--color-texto-principal);
+    transition: 0.2s ease-in-out;
+}
+.form-input-vida-med:focus {
+    background: var(--color-tarjeta);
+    border-color: var(--color-primario);
+    box-shadow: 0 0 5px rgba(0,168,168,0.3);
+    outline: none;
+}
+select.form-input-vida-med {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%23555" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    background-size: 24px;
+}
+.form-label-vida-med {
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: var(--color-texto-secundario);
+    display: block;
+}
+
+/* Layout (Contenedor principal) */
+.hub-container {
+    padding: 30px;
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
+    flex-grow: 1; 
+    display: flex;
+    flex-direction: column;
+}

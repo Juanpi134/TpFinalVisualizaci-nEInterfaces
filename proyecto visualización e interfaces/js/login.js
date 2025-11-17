@@ -6,7 +6,8 @@ function inicializarUsuarios() {
     const usuariosIniciales = [
       { id: 1, nombre: "Juan Pérez", dni: "12345678", email: "juanperez@mail.com", usuario: "juanperez", password: "1234", plan: "Plan Esencial" },
       { id: 2, nombre: "María López", dni: "87654321", email: "marialopez@mail.com", usuario: "marialopez", password: "abcd", plan: "Plan Plus" },
-      { id: 3, nombre: "Carlos Gómez", dni: "22334455", email: "carlosg@mail.com", usuario: "carlosg", password: "pass2024", plan: "Plan Premium" }
+      { id: 3, nombre: "Carlos Gómez", dni: "22334455", email: "a", usuario: "carlosg", password: "a", plan: "Plan Premium" },
+      
     ];
     localStorage.setItem("sociosVidaMedList", JSON.stringify(usuariosIniciales));
   }
