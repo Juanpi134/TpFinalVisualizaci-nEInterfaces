@@ -113,7 +113,7 @@
 /* Columna Derecha: Calendario y Horarios */
 
 /* Este div ahora es el contenedor de FullCalendar */
-#calendario {
+#calendar { /* Tu HTML usa 'calendar', no 'calendario' */
     padding: 10px;
 }
 
@@ -149,7 +149,7 @@
 
 
 /* ================================================
-   --- 8. NUEVOS ESTILOS: FullCalendar Overrides --- 
+   --- 8. ESTILOS FullCalendar Overrides --- 
    ================================================ */
 
 /* Fuente y color del Título (ej. "noviembre 2025") */
@@ -177,18 +177,24 @@
     vertical-align: middle;
 }
 
-/* Color del día de HOY */
+/* * CAMBIO CLAVE: Color del día de HOY 
+ */
 .fc .fc-daygrid-day.fc-day-today {
-    background-color: var(--color-primario-suave);
+    background-color: transparent !important; /* Quitamos el fondo confuso */
 }
+.fc .fc-daygrid-day.fc-day-today .fc-daygrid-day-number {
+    color: var(--color-primario); /* Solo el número se resalta */
+    font-weight: 700;
+}
+
 
 /* Color del día SELECCIONADO (cuando se hace clic) */
 .fc .fc-daygrid-day.fc-day-selected {
     background-color: var(--color-primario) !important;
-    color: white;
+    color: white !important;
 }
 .fc .fc-daygrid-day.fc-day-selected .fc-daygrid-day-number {
-    color: white;
+    color: white !important;
     font-weight: 700;
 }
 
