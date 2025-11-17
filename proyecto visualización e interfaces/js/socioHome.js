@@ -11,23 +11,4 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("nombreUsuario").textContent = socioActivo.nombre;
   document.getElementById("nombreBienvenida").textContent = socioActivo.nombre;
   document.getElementById("planUsuario").textContent = socioActivo.plan;
-
-  // Botón cerrar sesión
-  document.getElementById("logoutBtn").addEventListener("click", () => {
-    localStorage.removeItem("socioActivo");
-    window.location.href = "socios.html";
-  });
-
-  // Navegación hacia otras páginas del socio
-  document.getElementById("btnTurnos").addEventListener("click", () => {
-    window.location.href = "misTurnos.html";
-  });
-
-  document.getElementById("btnCredencial").addEventListener("click", () => {
-    window.location.href = "credencial.html";
-  });
-
-  document.getElementById("btnProximoTurno").addEventListener("click", () => {
-    window.location.href = "proximoTurno.html";
-  });
 });

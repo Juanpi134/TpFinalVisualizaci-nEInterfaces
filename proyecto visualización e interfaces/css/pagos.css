@@ -1,32 +1,4 @@
-.header-home.minimal {
-  display: flex;
-  align-items: center;          /* Centra logo y menú verticalmente */
-  justify-content: space-between; /* Logo a izq – menú a der */
-  padding: 10px 30px;
-  background-color: #fff;
-  border-bottom: 1px solid #e5e5e5;
-}
 
-.header-home.minimal .logo img {
-  height: 55px;
-  cursor: pointer;
-}
-
-.menu-socio {
-  display: flex;
-  gap: 25px;                     /* Separación entre items */
-}
-
-.menu-socio a {
-  text-decoration: none;
-  color: #333;
-  font-weight: 500;
-}
-
-.menu-socio a.active {
-  color: #007bff;
-  font-weight: 600;
-}
 /* Contenedor pagos */
 .pagos-wrapper {
   max-width: 700px;

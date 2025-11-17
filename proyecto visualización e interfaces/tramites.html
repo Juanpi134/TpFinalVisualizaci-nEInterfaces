@@ -13,6 +13,8 @@
 
   <!-- CSS propio -->
   <link rel="stylesheet" href="css/tramites.css">
+  <link rel="stylesheet" href="css/header.css">
+  <link rel="stylesheet" href="css/footer.css">
 </head>
 
 <body>
@@ -20,15 +22,16 @@
   <!-- HEADER -->
   <header class="header-home">
     <div class="logo">
-      <img src="img/vidaMedLogo.png" alt="Vida Med" onclick="window.location.href='index.html'">
+      <img src="img/vidaMedLogo.png" alt="Vida Med" onclick="window.location.href='socioHome.html'">
     </div>
 
     <nav class="menu-socio">
-      <a href="socioHome.html">Inicio</a>
+      <a href="socioHome.html" >Inicio</a>
       <a href="misTurnos.html">Mis Turnos</a>
       <a href="credencial.html">Credencial</a>
       <a href="mi-perfil.html">Mi Perfil</a>
-      <a href="misTramites.html" class="active">Mis Trámites</a>
+      <a href="tramites.html" class="active">Mis Trámites</a>
+      <a href="pagos.html">Pagos</a>
     </nav>
 
     <div class="user-info">
@@ -78,9 +81,25 @@
 
   </main>
 
-  <footer>
-    <p>© 2025 Vida Med. Tu salud, nuestra prioridad.</p>
-  </footer>
+  <footer class="vm-footer">
+  <div class="vm-footer-container">
 
+    <img src="img/vidaMedLogo.png" class="vm-footer-logo" alt="Vida Med">
+
+    <div class="vm-footer-links">
+      <a href="socioHome.html">Inicio</a>
+      <a href="misTurnos.html">Turnos</a>
+      <a href="tramites.html">Trámites</a>
+      <a href="pagos.html">Pagos</a>
+      <a href="mi-perfil.html">Mi Perfil</a>
+    </div>
+
+    <p class="vm-footer-copy">
+      © 2025 Vida Med — Todos los derechos reservados.
+    </p>
+
+  </div>
+</footer>
+<script src="js/socioHome.js"></script>
 </body>
 </html>

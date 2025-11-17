@@ -1,0 +1,50 @@
+.vm-footer {
+  background: #00a8a8; /* MISMO COLOR QUE EL HEADER */
+  padding: 35px 20px;
+  margin-top: 50px;
+  border-radius: 20px 20px 0 0;
+  font-family: 'Montserrat', sans-serif;
+  color: white;
+}
+
+.vm-footer-container {
+  max-width: 950px;
+  margin: auto;
+  text-align: center;
+}
+
+.vm-footer-logo {
+  height: 65px;
+  margin-bottom: 18px;
+  opacity: 0.95;
+}
+
+/* LINKS */
+.vm-footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.vm-footer-links a {
+  text-decoration: none;
+  color: white;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 20px;
+  transition: 0.3s;
+  opacity: 0.85;
+}
+
+.vm-footer-links a:hover {
+  opacity: 1;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* COPYRIGHT */
+.vm-footer-copy {
+  font-size: 0.85rem;
+  opacity: 0.9;
+}
