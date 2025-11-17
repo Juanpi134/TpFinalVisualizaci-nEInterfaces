@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/socioPrevencion.css" />
+  </head>
+  <body>
+    <header class="header-home">
+      <div class="logo">
+        <img
+          src="img/vidaMedLogo.png"
+          alt="Vida Med"
+          onclick="window.location.href='index.html'"
+        />
+      </div>
+
+      <nav class="menu-socio">
+        <a href="socioHome.html" >Inicio</a>
+        <a href="misTurnos.html">Mis Turnos</a>
+        <a href="credencial.html">Credencial</a>
+        <a href="socioPrevencion.html" class="active">Prevencion y Bienestar</a>
+      </nav>
+
+      <div class="user-info">
+        <span id="nombreUsuario"></span>
+        <button id="logoutBtn" class="btn-cerrar">Cerrar sesión</button>
+      </div>
+    </header>
+    <main></main>
+    <div class="bienvenida">
+      <h1>Bienvenido a tu resumen sobre bienestar y prevención</h1>
+    </div>
+    <div class="prevencion1">
+      <div class="score">
+        <strong>Puntaje de Bienestar</strong><br /><br />
+        Tu estado general: <span style="color: green">80/100 - Muy Bien!</span>
+
+        <p class="textoBienestar">
+          Tu puntaje se calcula en base a tus controles de salud.<br /><br />
+          Último chequeo general ✅<br /><br />
+          Control odontológico: hace más de 6 meses ⚠<br /><br />
+          Agendá un nuevo turno para subir tu puntaje.
+        </p>
+        <button class="btn">Ir a Turnos</button>
+      </div>
+
+      <div class="controls">
+        <h2>Tus Controles y Análisis</h2>
+        <p><strong>Último chequeo médico:</strong> Hace 2 meses.</p>
+        <p><strong>Análisis de sangre:</strong> Hace 3 meses.</p>
+        <p><strong>Próximo control recomendado:</strong> Odontología.</p>
+        <button class="btn">Ver mis estudios</button>
+      </div>
+    </div>
+    </main>
+    <h2 class="tituloProgramas">Programas</h2>
+     <section class="resumen">
+        <div class="card">
+          <h3>Nutricion Saludable</h3>
+          <img src="./img/nutricion.jpg" alt="comida saludable" class="imgPrograma">
+          <p id="textoNutricion">Accedé a asesoramiento nutricional y planes de alimentación adaptados a tus necesidades.</p>
+          <a href="" class="btn">Mas Infromacion</a>
+        </div>
+
+        <div class="card">
+          <h3>Salud Mental</h3>
+          <img src="./img/salud mental.jpg" alt="salud mental"class= "imgPrograma">
+          <p>Encontrá apoyo psicológico y espacios de contención para cuidar tu bienestar emocional.</p>
+          <a  class="btn">
+            Mas Informacion
+          </a>
+        </div>
+
+        <div class="card">
+          <h3>Actividad Fisica</h3>
+          <img src="./img/descarga.jpeg" alt="act fisica" class="imgPrograma">
+          <p>Participá de programas y convenios para mantenerte activo de manera segura y guiada.</p>
+          <a  class="btn">
+            Mas Informacion
+          </a>
+        </div>
+        <div class="card">
+          <h3>Chequeos Preventivos</h3>
+          <img src="./img/Chequeos medicos.png" alt="chequeo de salud" class="imgPrograma">
+          <p>Te recordamos los estudios recomendados según tu edad y estilo de vida.</p>
+           <a  class="btn">
+            Mas Informacion
+          </a>
+        </div>
+      </section>
+    <footer>
+      <p>© 2025 Vida Med. Tu salud, nuestra prioridad.</p>
+    </footer>
+  </body>
+</html>
