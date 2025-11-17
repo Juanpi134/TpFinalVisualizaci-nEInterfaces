@@ -46,8 +46,8 @@
         <p>Mostrá esta credencial en consultorios y farmacias.</p>
       </div>
 
+      <!-- Tarjeta de credencial -->
       <div class="credencial-wrapper">
-        <!-- TARJETA PRINCIPAL -->
         <article class="credencial-card">
           <header class="credencial-card-header">
             <div class="token-box">
@@ -60,7 +60,9 @@
           </header>
 
           <section class="credencial-card-body">
-            <p class="credencial-nombre"><strong id="nombreSocioCredencial">Nombre del Socio</strong></p>
+            <p class="credencial-nombre">
+              <strong id="nombreSocioCredencial">Nombre del Socio</strong>
+            </p>
             <p id="numeroSocioCredencial">N° Socio 44813037</p>
             <p id="planSocioCredencial">Plan Premium</p>
 
@@ -81,7 +83,7 @@
           </section>
         </article>
 
-        <!-- BOTONES -->
+        <!-- Botones -->
         <div class="credencial-actions">
           <button class="btn-credencial secundario" id="btnNuevoToken">
             Generar nuevo Token
@@ -149,11 +151,21 @@
       if (!socioJSON) return;
       const socio = JSON.parse(socioJSON);
 
+      // Nombre y plan en la tarjeta
       const nombreCred = document.getElementById("nombreSocioCredencial");
-      const planCred = document.getElementById("planSocioCredencial");
+      const planCred   = document.getElementById("planSocioCredencial");
 
       if (nombreCred) nombreCred.textContent = socio.nombre;
-      if (planCred) planCred.textContent = socio.plan;
+      if (planCred)   planCred.textContent   = socio.plan;
+
+      // Nombre y plan en el bloque de la izquierda (avatar)
+      const nombreSidebar = document.getElementById("nombreSidebar");
+      const planSidebar   = document.getElementById("planSidebar");
+      const avatarSpan    = document.querySelector(".user-avatar--panel span");
+
+      if (nombreSidebar) nombreSidebar.textContent = socio.nombre;
+      if (planSidebar)   planSidebar.textContent   = socio.plan;
+      if (avatarSpan)    avatarSpan.textContent    = socio.nombre.charAt(0).toUpperCase();
     });
   </script>
 </body>

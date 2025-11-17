@@ -1,20 +1,34 @@
-/* === Zona superior dentro del panel === */
 .panel-topbar-credencial {
-  margin-bottom: 1.5rem;
-  text-align: left;
+  width: 100%;
+  max-width: 420px;         
+  margin: 0 auto 1.5rem;   
+  text-align: center;
 }
+
 
 .panel-topbar-credencial h1 {
   margin: 0;
-  font-size: 1.6rem;
-  color: #222;
+  font-size: 1.7rem;
+  color: #003c4d;
+  font-weight: 600;
 }
 
 .panel-topbar-credencial p {
-  margin: 0.3rem 0 0;
+  margin: 0.4rem 0 0;
   color: #6c757d;
   font-size: 0.95rem;
 }
+
+/* Contenido derecho del panel de credencial */
+.panel-credencial-layout {
+  padding: 1.8rem 2.2rem;
+  background-color: #f5f7fa;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;   /* centra título + tarjeta + botones */
+}
+
 
 /* Contenedor centrado de la credencial */
 .credencial-wrapper {
@@ -140,171 +154,70 @@
   background-color: #e2e2e2;
 }
 
-/* Responsive credencial */
-@media (max-width: 900px) {
-  .panel-container {
-    grid-template-columns: 1fr;
-  }
+/* ===== RESPONSIVE CREDENCIAL ===== */
 
-  .panel-sidebar {
+/* Tablet y mobile */
+@media (max-width: 768px) {
+  /* Contenedor del panel sin sidebar: que no se pase de ancho */
+  .panel-container.panel-container--sin-sidebar .panel-main {
+    padding: 1.5rem 1rem 2rem;
+    max-width: 100%;
     width: 100%;
-    flex-direction: row;
-    overflow-x: auto;
+    box-sizing: border-box;
   }
 
-  .sidebar-menu {
-    display: flex;
-    flex-wrap: nowrap;
+  /* bloque avatar + título en columna */
+  .panel-welcome--centrado {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
   }
 
-  .panel-main {
-    padding: 1.4rem 1rem 2rem;
+  .panel-user-resumen {
+    width: 100%;
+  }
+
+  .user-avatar--panel {
+    width: 52px;
+    height: 52px;
+    font-size: 1.1rem;
+  }
+
+  .panel-welcome-textos h1 {
+    font-size: 1.45rem;
+  }
+
+  .panel-welcome-textos p {
+    font-size: 0.95rem;
+  }
+
+  /* tarjeta y botones ocupan todo el ancho */
+  .credencial-wrapper {
+    align-items: stretch;
+  }
+
+  .credencial-card,
+  .credencial-actions {
+    max-width: 100%;
   }
 }
 
+/* móviles chicos */
 @media (max-width: 480px) {
-  .credencial-card {
-    font-size: 0.85rem;
+  .panel-welcome-textos h1 {
+    font-size: 1.3rem;
   }
 
-  .credencial-logo-mini img {
-    max-width: 70px;
+  .panel-welcome-textos p {
+    font-size: 0.9rem;
+  }
+
+  .credencial-card {
+    padding: 0.9rem 1rem 0.7rem;
+    font-size: 0.85rem;
   }
 
   .btn-credencial {
     font-size: 0.85rem;
-  }
-}
-
-/* ========== LAYOUT CREDENCIAL CON SIDEBAR ========== */
-
-.panel-credencial-layout {
-  display: grid;
-  grid-template-columns: 260px minmax(0, 1fr);
-  min-height: calc(100vh - 120px); /* aprox header+footer */
-}
-
-/* Sidebar solo en la credencial */
-.panel-credencial-layout .panel-sidebar {
-  width: 260px;
-  background-color: #f1f3f5;
-  border-right: 1px solid #d0d4da;
-  display: flex;
-  flex-direction: column;
-}
-
-/* Tarjeta de usuario (arriba del sidebar) */
-.panel-credencial-layout .sidebar-user-card {
-  display: flex;
-  padding: 1.2rem;
-  border-bottom: 1px solid #d0d4da;
-  background-color: #ffffff;
-}
-
-.panel-credencial-layout .user-avatar {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background-color: #00a8a8;  
-  color: #ffffff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
-  font-size: 1.2rem;
-  margin-right: 0.8rem;
-}
-
-.panel-credencial-layout .user-data h3 {
-  margin: 0;
-  font-size: 0.95rem;
-}
-
-.panel-credencial-layout .user-plan {
-  font-size: 0.8rem;
-  color: #555;
-}
-
-.panel-credencial-layout .user-numero {
-  font-size: 0.75rem;
-  color: #777;
-}
-
-/* Menú lateral */
-.panel-credencial-layout .sidebar-menu {
-  padding: 0.5rem 0;
-  overflow-y: auto;
-}
-
-.panel-credencial-layout .sidebar-section-title {
-  font-size: 0.7rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: #888;
-  padding: 0.6rem 1.4rem 0.3rem;
-}
-
-.panel-credencial-layout .sidebar-item {
-  width: 100%;
-  border: none;
-  background: none;
-  display: flex;
-  align-items: center;
-  padding: 0.7rem 1.4rem;
-  cursor: pointer;
-  font-size: 0.9rem;
-  color: #333;
-  border-left: 4px solid transparent;
-  transition: background-color 0.2s ease, border-left-color 0.2s ease;
-}
-
-.panel-credencial-layout .sidebar-item .sidebar-icon {
-  width: 26px;
-  text-align: center;
-  margin-right: 0.6rem;
-  font-size: 1rem;
-}
-
-.panel-credencial-layout .sidebar-item:hover {
-  background-color: #e4f3f6;
-}
-
-.panel-credencial-layout .sidebar-item.active {
-  background-color: #e4f3f6;
-  border-left-color: #00a8a8; 
-  font-weight: 600;
-}
-
-/* Contenido derecho (solo credencial) */
-.panel-credencial-layout .panel-main {
-  padding: 1.8rem 2.2rem;
-  background-color: #f5f7fa;
-}
-
-/* Responsive*/
-@media (max-width: 900px) {
-  .panel-credencial-layout {
-    grid-template-columns: 1fr;
-    min-height: auto;
-  }
-
-  .panel-credencial-layout .panel-sidebar {
-    width: 100%;
-    flex-direction: row;
-    overflow-x: auto;
-  }
-
-  .panel-credencial-layout .sidebar-menu {
-    display: flex;
-    flex-wrap: nowrap;
-  }
-
-  .panel-credencial-layout .sidebar-item,
-  .panel-credencial-layout .sidebar-section-title {
-    white-space: nowrap;
-  }
-
-  .panel-credencial-layout .panel-main {
-    padding: 1.4rem 1rem 2rem;
   }
 }
