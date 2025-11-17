@@ -4,16 +4,191 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Elegir Profesional - Vida Med</title>
-
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" type="text/css" href="css/turnosglobal.css">
     <link rel="stylesheet" type="text/css" href="css/elegir-turno.css">
+    
+    <!-- Scripts de FullCalendar (¡Asegurate de que es.js esté!) -->
+    <script src='js/index.global.min.js'></script>
+    <script src='js/es.js'></script> <!-- SCRIPT DE IDIOMA ESPAÑOL -->
 
-    <link href='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/main.min.css' rel='stylesheet' />
+    <script>
+      // Todo nuestro código ahora vive dentro de este evento
+      document.addEventListener('DOMContentLoaded', function() {
+        
+        // --- 0. Simulación de Datos ---
+        const doctorTimes = {
+            '1': { 
+                '2025-11-18': ['09:00', '09:30', '10:00', '10:30'],
+                '2025-11-19': ['09:00', '09:30'],
+                '2025-11-20': ['10:00', '10:30']
+            },
+            '2': { 
+                '2025-11-18': ['14:00', '14:30', '15:00'],
+                '2025-11-20': ['14:00', '14:30']
+            },
+            '3': { 
+                '2025-11-19': ['11:00', '11:30', '12:00']
+            },
+            '4': { 
+                '2025-11-18': ['09:00', '10:00'],
+                '2025-11-19': ['16:00', '16:30'],
+                '2025-11-20': ['09:00', '16:00', '16:30']
+            }
+        };
+        const MOCK_DATA = {
+            "clinica": "Clínica Médica", "cardiologia": "Cardiología", "traumatologia": "Traumatología",
+            "salud-mental": "Salud Mental", "belgrano": "Centro Médico Belgrano",
+            "abasto": "Centro Médico Abasto", "virtual": "Atención Virtual"
+        };
 
+        // --- 1. Leer datos de la URL ---
+        const params = new URLSearchParams(window.location.search);
+        const especialidadKey = params.get('especialidad');
+        const centroKey = params.get('centro');
+        const espEl = document.getElementById('context-especialidad');
+        const cenEl = document.getElementById('context-centro');
+        espEl.textContent = MOCK_DATA[especialidadKey] || 'No seleccionada';
+        cenEl.textContent = MOCK_DATA[centroKey] || 'No seleccionado';
+
+        // --- 2. Seleccionar Elementos del DOM ---
+        const profesionalList = document.getElementById('profesional-list');
+        const allProfesionalCards = document.querySelectorAll('.profesional-card');
+        const btnSelectAll = document.getElementById('btn-select-all');
+        const btnClearAll = document.getElementById('btn-clear-all');
+        const horariosList = document.getElementById('horarios-list');
+        const horariosPlaceholder = document.getElementById('horarios-placeholder');
+        const btnConfirmar = document.getElementById('btn-confirmar');
+        
+        // Esta línea es la que vos pusiste (¡está perfecta!)
+        var calendarEl = document.getElementById('calendar');
+
+        // --- 3. Variables de Estado ---
+        let selectedDoctorIDs = [];
+        let selectedTimeSlot = null;
+        let selectedDate = null; 
+        let selectedDateEl = null; // NUEVO: Para guardar el *elemento* del día seleccionado
+
+        // --- 4. Inicializar FullCalendar (Fusionado) ---
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+            initialView: 'dayGridMonth',
+            locale: 'es', // Habilita el idioma español (requiere es.js)
+            headerToolbar: {
+                left: 'prev',
+                center: 'title',
+                right: 'next'
+            },
+            selectable: false, // CAMBIO: De 'true' a 'false'. Lo manejamos manualmente.
+            dateClick: function(info) {
+                // CAMBIO: Lógica para "fijar" la selección
+                
+                // 1. Si ya había un día seleccionado, le quitamos la clase
+                if (selectedDateEl) {
+                    selectedDateEl.classList.remove('fc-day-selected');
+                }
+                
+                // 2. Agregamos la clase al nuevo día y lo guardamos
+                info.dayEl.classList.add('fc-day-selected');
+                selectedDateEl = info.dayEl;
+
+                // 3. Guardamos la fecha (string) y actualizamos horarios
+                selectedDate = info.dateStr; 
+                updateHorarios(); 
+            },
+            validRange: {
+                start: new Date().toISOString().split('T')[0] // Deshabilita días pasados
+            }
+        });
+        calendar.render();
+
+        // --- 5. Funciones Principales ---
+        function updateHorarios() {
+            selectedTimeSlot = null; 
+            
+            selectedDoctorIDs = Array.from(allProfesionalCards)
+                .filter(card => card.classList.contains('selected'))
+                .map(card => card.dataset.id);
+            
+            if (selectedDoctorIDs.length === 0 || !selectedDate) {
+                horariosList.innerHTML = ''; 
+                horariosPlaceholder.style.display = 'block';
+                horariosPlaceholder.textContent = (selectedDoctorIDs.length === 0)
+                    ? "Seleccioná uno o más profesionales."
+                    : "Seleccioná un día en el calendario.";
+                updateConfirmButtonState();
+                return;
+            }
+
+            horariosPlaceholder.style.display = 'none';
+            
+            const allTimes = new Set();
+            selectedDoctorIDs.forEach(id => {
+                if (doctorTimes[id] && doctorTimes[id][selectedDate]) {
+                    doctorTimes[id][selectedDate].forEach(time => allTimes.add(time));
+                }
+            });
+
+            const sortedTimes = Array.from(allTimes).sort();
+            
+            if (sortedTimes.length === 0) {
+                    horariosList.innerHTML = '<p class="horarios-placeholder">No hay horarios disponibles para los filtros seleccionados.</p>';
+            } else {
+                    horariosList.innerHTML = sortedTimes
+                    .map(time => `<button class="horario-slot btn btn-outline">${time}</button>`)
+                    .join('');
+            }
+            
+            updateConfirmButtonState();
+        }
+
+        function updateConfirmButtonState() {
+            btnConfirmar.disabled = !selectedTimeSlot;
+        }
+
+        // --- 6. Asignar Event Listeners ---
+        profesionalList.addEventListener('click', (e) => {
+            const card = e.target.closest('.profesional-card');
+            if (card) {
+                card.classList.toggle('selected');
+                updateHorarios();
+            }
+        });
+
+        btnSelectAll.addEventListener('click', () => {
+            allProfesionalCards.forEach(card => card.classList.add('selected'));
+            updateHorarios();
+        });
+
+        btnClearAll.addEventListener('click', () => {
+            allProfesionalCards.forEach(card => card.classList.remove('selected'));
+            updateHorarios();
+        });
+
+        horariosList.addEventListener('click', (e) => {
+            const slot = e.target.closest('.horario-slot');
+            if (slot) {
+                if (selectedTimeSlot && selectedTimeSlot !== slot) {
+                    selectedTimeSlot.classList.remove('selected', 'btn-primario');
+                    selectedTimeSlot.classList.add('btn-outline');
+                }
+                slot.classList.toggle('selected');
+                slot.classList.toggle('btn-outline');
+                slot.classList.toggle('btn-primario');
+                
+                selectedTimeSlot = slot.classList.contains('selected') ? slot : null;
+                updateConfirmButtonState();
+            }
+        });
+
+        // --- 7. Estado Inicial ---
+        updateHorarios(); // Llama al inicio (mostrará placeholder)
+
+      });
+    </script>
 </head>
 <body>
 
@@ -32,7 +207,7 @@
                 <span class="context-label">Centro Médico:</span>
                 <span id="context-centro" class="context-value">Cargando...</span>
             </div>
-            <a href="agregar-turno.html" class="context-change-link">Cambiar</a>
+            <a href="agregar_turno.html" class="context-change-link">Cambiar</a>
         </div>
         
         <h1 class="titulo-pagina">Elegir profesional</h1>
@@ -44,8 +219,9 @@
                     <h2 class="card-subtitulo">Profesionales disponibles</h2>
                     
                     <div class="profesional-list-filters">
-                        <button id="btn-select-all" class="btn btn-secundario btn-small">Seleccionar Todos</button>
-                        <button id="btn-clear-all" class="btn btn-outline btn-small">Limpiar</button>
+                        <!-- CAMBIO: Clases de botones invertidas -->
+                        <button id="btn-select-all" class="btn btn-outline btn-small">Seleccionar Todos</button>
+                        <button id="btn-clear-all" class="btn btn-secundario btn-small">Limpiar</button>
                     </div>
 
                     <div id="profesional-list" class="profesional-list-container">
@@ -90,7 +266,8 @@
                 
                 <div class="card-vida-med">
                     <h2 class="card-subtitulo">Elegí una fecha</h2>
-                    <div id="calendario"></div>
+                    <!-- Tu ID 'calendar' es el correcto -->
+                    <div id="calendar"></div>
                 </div>
 
                 <div class="card-vida-med">
@@ -109,204 +286,5 @@
 
     </main>
 
-    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/main.min.js'></script>
-    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/locales/es.js'></script> <script>
-        // Simulación de datos: qué horarios tiene cada doctor EN CADA FECHA
-        // (En un caso real, esto vendría de una API)
-        const doctorTimes = {
-            '1': { // Dr. López
-                '2025-11-18': ['09:00', '09:30', '10:00', '10:30'],
-                '2025-11-19': ['09:00', '09:30'],
-                '2025-11-20': ['10:00', '10:30']
-            },
-            '2': { // Lic. Fernández
-                '2025-11-18': ['14:00', '14:30', '15:00'],
-                '2025-11-20': ['14:00', '14:30']
-            },
-            '3': { // Dra. Giménez
-                '2025-11-19': ['11:00', '11:30', '12:00']
-            },
-            '4': { // Dra. Costa
-                '2025-11-18': ['09:00', '10:00'],
-                '2025-11-19': ['16:00', '16:30'],
-                '2025-11-20': ['09:00', '16:00', '16:30']
-            }
-        };
-        // Nota: Cambié las fechas de la simulación para que sean válidas (hoy es 17-11-2025)
-
-        // Simulación para los nombres de la URL
-        const MOCK_DATA = {
-            "clinica": "Clínica Médica",
-            "cardiologia": "Cardiología",
-            "traumatologia": "Traumatología",
-            "salud-mental": "Salud Mental",
-            "belgrano": "Centro Médico Belgrano",
-            "abasto": "Centro Médico Abasto",
-            "virtual": "Atención Virtual"
-        };
-
-        document.addEventListener('DOMContentLoaded', () => {
-            
-            // --- 1. Leer datos de la URL ---
-            const params = new URLSearchParams(window.location.search);
-            const especialidadKey = params.get('especialidad');
-            const centroKey = params.get('centro');
-
-            const espEl = document.getElementById('context-especialidad');
-            const cenEl = document.getElementById('context-centro');
-
-            // Muestra los datos (o un default si no llegan)
-            espEl.textContent = MOCK_DATA[especialidadKey] || 'No seleccionada';
-            cenEl.textContent = MOCK_DATA[centroKey] || 'No seleccionado';
-
-            // --- 2. Seleccionar Elementos del DOM ---
-            const profesionalList = document.getElementById('profesional-list');
-            const allProfesionalCards = document.querySelectorAll('.profesional-card');
-            const btnSelectAll = document.getElementById('btn-select-all');
-            const btnClearAll = document.getElementById('btn-clear-all');
-            
-            const horariosList = document.getElementById('horarios-list');
-            const horariosPlaceholder = document.getElementById('horarios-placeholder');
-            const btnConfirmar = document.getElementById('btn-confirmar');
-            
-            const calendarEl = document.getElementById('calendario');
-
-            // --- 3. Variables de Estado ---
-            let selectedDoctorIDs = [];
-            let selectedTimeSlot = null;
-            let selectedDate = null; // Guardará la fecha seleccionada (ej: '2025-11-17')
-
-            // --- 4. Inicializar FullCalendar ---
-            const calendar = new FullCalendar.Calendar(calendarEl, {
-                initialView: 'dayGridMonth',
-                locale: 'es', // Idioma español
-                headerToolbar: {
-                    left: 'prev',
-                    center: 'title',
-                    right: 'next'
-                },
-                selectable: true,
-                dateClick: function(info) {
-                    // info.dateStr es la fecha en formato 'YYYY-MM-DD'
-                    selectedDate = info.dateStr;
-                    
-                    // Actualiza los horarios
-                    updateHorarios();
-                },
-                // Deshabilitar días pasados
-                validRange: {
-                    start: new Date().toISOString().split('T')[0] // Hoy
-                }
-            });
-            calendar.render();
-
-
-            // --- 5. Funciones Principales ---
-
-            // Actualiza la lista de horarios (AHORA DEPENDE DE MÉDICOS Y FECHA)
-            function updateHorarios() {
-                selectedTimeSlot = null; // Resetea el horario
-                
-                // 1. Encuentra los IDs de los médicos seleccionados
-                selectedDoctorIDs = Array.from(allProfesionalCards)
-                    .filter(card => card.classList.contains('selected'))
-                    .map(card => card.dataset.id);
-                
-                // 2. Si no hay médicos O NO HAY FECHA, muestra el placeholder
-                if (selectedDoctorIDs.length === 0 || !selectedDate) {
-                    horariosList.innerHTML = ''; // Limpia horarios anteriores
-                    horariosPlaceholder.style.display = 'block';
-                    horariosPlaceholder.textContent = (selectedDoctorIDs.length === 0)
-                        ? "Seleccioná uno o más profesionales."
-                        : "Seleccioná un día en el calendario.";
-                    updateConfirmButtonState();
-                    return;
-                }
-
-                // 3. Si hay médicos Y FECHA, esconde el placeholder
-                horariosPlaceholder.style.display = 'none';
-                
-                // 4. Combina todos los horarios de los médicos seleccionados PARA ESA FECHA
-                const allTimes = new Set();
-                selectedDoctorIDs.forEach(id => {
-                    // Verifica que el doctor exista Y que tenga agenda para ese día
-                    if (doctorTimes[id] && doctorTimes[id][selectedDate]) {
-                        doctorTimes[id][selectedDate].forEach(time => allTimes.add(time));
-                    }
-                });
-
-                // 5. Convierte el Set a un Array, lo ordena y crea el HTML
-                const sortedTimes = Array.from(allTimes).sort();
-                
-                if (sortedTimes.length === 0) {
-                     horariosList.innerHTML = '<p class="horarios-placeholder">No hay horarios disponibles para los filtros seleccionados.</p>';
-                } else {
-                     horariosList.innerHTML = sortedTimes
-                        .map(time => `<button class="horario-slot btn btn-outline">${time}</button>`)
-                        .join('');
-                }
-                
-                updateConfirmButtonState();
-            }
-
-            // Habilita o deshabilita el botón de Confirmar
-            function updateConfirmButtonState() {
-                // Solo se puede confirmar si se seleccionó un horario (la fecha y médicos ya están implícitos)
-                btnConfirmar.disabled = !selectedTimeSlot;
-            }
-
-            // --- 6. Asignar Event Listeners ---
-
-            // Evento para Clickeo de Profesionales
-            profesionalList.addEventListener('click', (e) => {
-                const card = e.target.closest('.profesional-card');
-                if (card) {
-                    card.classList.toggle('selected');
-                    // Actualiza la lista de horarios
-                    updateHorarios();
-                }
-            });
-
-            // Evento para "Seleccionar Todos"
-            btnSelectAll.addEventListener('click', () => {
-                allProfesionalCards.forEach(card => card.classList.add('selected'));
-                updateHorarios();
-            });
-
-            // Evento para "Limpiar"
-            btnClearAll.addEventListener('click', () => {
-                allProfesionalCards.forEach(card => card.classList.remove('selected'));
-                updateHorarios();
-            });
-
-            // Evento para Clickeo de Horarios
-            horariosList.addEventListener('click', (e) => {
-                const slot = e.target.closest('.horario-slot');
-                if (slot) {
-                    // Des-selecciona el horario anterior (si lo había)
-                    if (selectedTimeSlot && selectedTimeSlot !== slot) {
-                        selectedTimeSlot.classList.remove('selected', 'btn-primario');
-                        selectedTimeSlot.classList.add('btn-outline');
-                    }
-
-                    // Alterna el horario actual
-                    slot.classList.toggle('selected');
-                    slot.classList.toggle('btn-outline');
-                    slot.classList.toggle('btn-primario');
-                    
-                    // Actualiza la variable de estado
-                    selectedTimeSlot = slot.classList.contains('selected') ? slot : null;
-
-                    // Actualiza el botón de confirmar
-                    updateConfirmButtonState();
-                }
-            });
-
-            // --- 7. Estado Inicial ---
-            updateHorarios(); // Llama al inicio (mostrará placeholder)
-        });
-
-    </script>
-    
 </body>
 </html>
