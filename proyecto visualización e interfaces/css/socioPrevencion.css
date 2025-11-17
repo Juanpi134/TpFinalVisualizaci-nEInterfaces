@@ -1,51 +1,3 @@
-html,
-body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-}
-body {
-  font-family: "Montserrat", sans-serif;
-  background: #f5f7fa;
-  color: #333;
-  display: flex;
-  flex-direction: column;
-}
-
-.header-home {
-  background-color: #00a8a8;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 12px 25px;
-  color: white;
-  flex-wrap: wrap;
-}
-
-.logo img {
-  height: 50px;
-  cursor: pointer;
-}
-
-.menu-socio {
-  display: flex;
-  gap: 1.5rem;
-}
-
-.menu-socio a {
-  color: white;
-  text-decoration: none;
-  font-weight: 600;
-  transition: opacity 0.3s ease;
-}
-
-.menu-socio a.active {
-  border-bottom: 2px solid white;
-}
-
-.menu-socio a:hover {
-  opacity: 0.8;
-}
 .prevencion1 {
   display: flex;
   align-items: center;
@@ -116,12 +68,4 @@ body {
 
 .btn:hover {
   background: #008c8c;
-}
-
-footer {
-  text-align: center;
-  background: #00a8a8;
-  color: white;
-  padding: 15px;
-  margin-top: auto;
 }

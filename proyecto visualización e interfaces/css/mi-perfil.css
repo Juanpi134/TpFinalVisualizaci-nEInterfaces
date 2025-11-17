@@ -125,16 +125,6 @@
   margin-bottom: 15px;
 }
 
-/* ---------- FOOTER ---------- */
-
-footer {
-  text-align: center;
-  background: #00a8a8;
-  color: white;
-  padding: 15px;
-  margin-top: 40px;
-}
-
 /* ---------- RESPONSIVE ---------- */
 
 @media (max-width: 768px) {

@@ -12,3 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("nombreBienvenida").textContent = socioActivo.nombre;
   document.getElementById("planUsuario").textContent = socioActivo.plan;
 });
+
+function cerrarSesion() {
+  window.location.href = "index.html";
+}
