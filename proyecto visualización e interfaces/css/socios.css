@@ -123,6 +123,23 @@ footer {
   color: #666;
 }
 
+.login-form select {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 15px;
+  background-color: white;
+  cursor: pointer;
+  transition: border 0.3s ease;
+}
+
+.login-form select:focus {
+  border-color: #1e7a8a;
+  outline: none;
+}
+
 /* Responsive */
 @media (max-width: 600px) {
   .login-card {
