@@ -1,3 +1,4 @@
+/* CONTENEDORES */
 .prevencion1 {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -5,16 +6,15 @@
   padding: 20px;
 }
 
-
-.score, .controls {
-  background: #ffffff;
+.score,
+.controls {
+  background: #fff;
   border: 2px solid #008c8c;
   border-radius: 12px;
   padding: 20px;
   width: 100%;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 
-  /* 🔥 Magic: hace que ambas crezcan al mismo alto */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -29,6 +29,7 @@
   text-align: left;
 }
 
+/* TITULO PROGRAMAS */
 .tituloProgramas {
   text-align: center;
   margin-top: 40px;
@@ -50,6 +51,11 @@
   padding: 20px;
   text-align: center;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  max-width: 230px;
+  margin: 2px auto;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
 }
 
 .card h3 {
@@ -78,68 +84,33 @@
   background: #008c8c;
 }
 
-/* ---------- RESPONSIVE ---------- */
+/* ------------------ RESPONSIVE ------------------ */
+
+/* Tablets y celulares */
 @media (max-width: 768px) {
   .prevencion1 {
-    flex-direction: column;
-    align-items: center;
+    grid-template-columns: 1fr;
   }
-
-  .imgPrograma {
-    max-height: 150px;
-  }
-}
-
-
-
-/* 📱 Celulares (≤ 768px) */
-@media (max-width: 768px) {
-
-  .prevencion1 {
-    flex-direction: column;
-    align-items: center;
-    padding: 15px;
-  }
-
-  .score, .controls {
-    width: 100%;      /* Ocupan todo el ancho */
-    min-width: auto;
-  }
-
-  .score strong {
-    font-size: 1.2rem;
-  }
-
-  .controls h2 {
-    font-size: 1.3rem;
-  }
-
-  .textoBienestar {
-    font-size: 0.95rem;
-  }
-}
-
-/* 📱📱 Teléfonos muy chicos (≤ 430px, ejemplo iPhone SE) */
-@media (max-width: 430px) {
 
   .bienvenida h1 {
-    font-size: 1.2rem !important;
+    font-size: 1.4rem;
+  }
+}
+
+/* Teléfonos chicos */
+@media (max-width: 430px) {
+  .bienvenida h1 {
+    font-size: 1.2rem;
     padding: 0 10px;
   }
 
-  .score, .controls {
+  .score,
+  .controls {
     padding: 15px;
   }
 
   .btn {
     width: 100%;
     text-align: center;
-  }
-}
-
-
-@media (max-width: 768px) {
-  .prevencion1 {
-    grid-template-columns: 1fr;
   }
 }
