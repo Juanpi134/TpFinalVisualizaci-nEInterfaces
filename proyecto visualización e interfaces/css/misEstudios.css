@@ -1,0 +1,196 @@
+.estudios {
+  max-width: 980px;
+  margin: auto;
+  padding: 22px;
+}
+
+.encabezado-estudios h1 {
+  font-size: 2rem;
+  color: #1d4ed8;
+  margin-bottom: 6px;
+}
+
+.encabezado-estudios .sub {
+  color: #64748b;
+  font-size: 1rem;
+}
+
+/* Tarjetas coloridas */
+.cards-estudios {
+  margin-top: 24px;
+  display: grid;
+  gap: 18px;
+}
+
+.card-estudio {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 14px;
+  box-shadow: 0 4px 10px rgba(30, 64, 175, 0.15);
+  border-left: 6px solid #1d4ed8;
+  transition: transform 0.15s ease;
+}
+
+.card-estudio:hover {
+  transform: translateY(-3px);
+}
+
+/* Íconos */
+.icono {
+  font-size: 34px;
+  background: #e0ebff;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+
+/* Estados */
+.card-estudio.ok {
+  border-left-color: #22c55e;
+}
+
+.card-estudio.ok .icono {
+  background: #d1f7db;
+}
+
+.card-estudio.warn {
+  border-left-color: #facc15;
+}
+
+.card-estudio.warn .icono {
+  background: #fef3c7;
+}
+
+.fecha {
+  color: #6b7280;
+  margin: 6px 0;
+}
+
+.estado {
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+/* Recomendaciones */
+.recomendaciones {
+  margin-top: 34px;
+}
+
+.recomendaciones h2 {
+  margin-bottom: 12px;
+  font-size: 1.4rem;
+  color: #1d4ed8;
+}
+
+.rec-box {
+  padding: 18px;
+  background: #e8f1ff;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(30, 64, 175, 0.12);
+}
+
+.rec-box ul {
+  list-style: none;
+  padding: 0;
+}
+
+.rec-box li {
+  margin-bottom: 10px;
+  font-size: 1rem;
+}
+
+/* Historial */
+.historial {
+  margin-top: 34px;
+}
+
+.historial h2 {
+  color: #1d4ed8;
+  margin-bottom: 12px;
+}
+
+.timeline {
+  border-left: 3px solid #d0d7e6;
+  padding-left: 18px;
+}
+
+.item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.punto {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  margin-left: -25px;
+  margin-right: 12px;
+}
+
+.punto.ok {
+  background: #22c55e;
+}
+
+.punto.warn {
+  background: #facc15;
+}
+
+.item .contenido span {
+  color: #6b7280;
+  font-size: 0.9rem;
+  display: block;
+}
+
+.btn-small {
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: none;
+  background:#2e2f75;
+  color: white;
+  font-weight:600;
+  cursor:pointer;
+  margin:6px 6px 0 0;
+}
+.btn-small:hover{ opacity:0.95; }
+
+.card-actions { margin-top:10px; display:flex; gap:8px; justify-content:center; flex-wrap:wrap; }
+
+/* Modal */
+.modal {
+  position: fixed;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background: rgba(0,0,0,0.45);
+  z-index: 120;
+}
+.modal.hidden { display:none; }
+.modal-inner {
+  width: 92%;
+  max-width: 520px;
+  background: #fff;
+  padding: 18px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+.modal-close {
+  background:transparent;
+  border:none;
+  font-size:22px;
+  float:right;
+  cursor:pointer;
+}
+.modal-actions { display:flex; gap:8px; margin-top:12px; justify-content:flex-end; flex-wrap:wrap;}
+
+/* Responsive */
+@media (min-width: 700px) {
+  .cards-estudios {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
