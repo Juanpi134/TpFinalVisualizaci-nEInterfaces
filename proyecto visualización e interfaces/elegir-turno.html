@@ -15,180 +15,8 @@
     <!-- Scripts de FullCalendar (¡Asegurate de que es.js esté!) -->
     <script src='js/index.global.min.js'></script>
     <script src='js/es.js'></script> <!-- SCRIPT DE IDIOMA ESPAÑOL -->
+    <script src='js/elegir-turno.js'></script>
 
-    <script>
-      // Todo nuestro código ahora vive dentro de este evento
-      document.addEventListener('DOMContentLoaded', function() {
-        
-        // --- 0. Simulación de Datos ---
-        const doctorTimes = {
-            '1': { 
-                '2025-11-18': ['09:00', '09:30', '10:00', '10:30'],
-                '2025-11-19': ['09:00', '09:30'],
-                '2025-11-20': ['10:00', '10:30']
-            },
-            '2': { 
-                '2025-11-18': ['14:00', '14:30', '15:00'],
-                '2025-11-20': ['14:00', '14:30']
-            },
-            '3': { 
-                '2025-11-19': ['11:00', '11:30', '12:00']
-            },
-            '4': { 
-                '2025-11-18': ['09:00', '10:00'],
-                '2025-11-19': ['16:00', '16:30'],
-                '2025-11-20': ['09:00', '16:00', '16:30']
-            }
-        };
-        const MOCK_DATA = {
-            "clinica": "Clínica Médica", "cardiologia": "Cardiología", "traumatologia": "Traumatología",
-            "salud-mental": "Salud Mental", "belgrano": "Centro Médico Belgrano",
-            "abasto": "Centro Médico Abasto", "virtual": "Atención Virtual"
-        };
-
-        // --- 1. Leer datos de la URL ---
-        const params = new URLSearchParams(window.location.search);
-        const especialidadKey = params.get('especialidad');
-        const centroKey = params.get('centro');
-        const espEl = document.getElementById('context-especialidad');
-        const cenEl = document.getElementById('context-centro');
-        espEl.textContent = MOCK_DATA[especialidadKey] || 'No seleccionada';
-        cenEl.textContent = MOCK_DATA[centroKey] || 'No seleccionado';
-
-        // --- 2. Seleccionar Elementos del DOM ---
-        const profesionalList = document.getElementById('profesional-list');
-        const allProfesionalCards = document.querySelectorAll('.profesional-card');
-        const btnSelectAll = document.getElementById('btn-select-all');
-        const btnClearAll = document.getElementById('btn-clear-all');
-        const horariosList = document.getElementById('horarios-list');
-        const horariosPlaceholder = document.getElementById('horarios-placeholder');
-        const btnConfirmar = document.getElementById('btn-confirmar');
-        
-        // Esta línea es la que vos pusiste (¡está perfecta!)
-        var calendarEl = document.getElementById('calendar');
-
-        // --- 3. Variables de Estado ---
-        let selectedDoctorIDs = [];
-        let selectedTimeSlot = null;
-        let selectedDate = null; 
-        let selectedDateEl = null; // NUEVO: Para guardar el *elemento* del día seleccionado
-
-        // --- 4. Inicializar FullCalendar (Fusionado) ---
-        var calendar = new FullCalendar.Calendar(calendarEl, {
-            initialView: 'dayGridMonth',
-            locale: 'es', // Habilita el idioma español (requiere es.js)
-            headerToolbar: {
-                left: 'prev',
-                center: 'title',
-                right: 'next'
-            },
-            selectable: false, // CAMBIO: De 'true' a 'false'. Lo manejamos manualmente.
-            dateClick: function(info) {
-                // CAMBIO: Lógica para "fijar" la selección
-                
-                // 1. Si ya había un día seleccionado, le quitamos la clase
-                if (selectedDateEl) {
-                    selectedDateEl.classList.remove('fc-day-selected');
-                }
-                
-                // 2. Agregamos la clase al nuevo día y lo guardamos
-                info.dayEl.classList.add('fc-day-selected');
-                selectedDateEl = info.dayEl;
-
-                // 3. Guardamos la fecha (string) y actualizamos horarios
-                selectedDate = info.dateStr; 
-                updateHorarios(); 
-            },
-            validRange: {
-                start: new Date().toISOString().split('T')[0] // Deshabilita días pasados
-            }
-        });
-        calendar.render();
-
-        // --- 5. Funciones Principales ---
-        function updateHorarios() {
-            selectedTimeSlot = null; 
-            
-            selectedDoctorIDs = Array.from(allProfesionalCards)
-                .filter(card => card.classList.contains('selected'))
-                .map(card => card.dataset.id);
-            
-            if (selectedDoctorIDs.length === 0 || !selectedDate) {
-                horariosList.innerHTML = ''; 
-                horariosPlaceholder.style.display = 'block';
-                horariosPlaceholder.textContent = (selectedDoctorIDs.length === 0)
-                    ? "Seleccioná uno o más profesionales."
-                    : "Seleccioná un día en el calendario.";
-                updateConfirmButtonState();
-                return;
-            }
-
-            horariosPlaceholder.style.display = 'none';
-            
-            const allTimes = new Set();
-            selectedDoctorIDs.forEach(id => {
-                if (doctorTimes[id] && doctorTimes[id][selectedDate]) {
-                    doctorTimes[id][selectedDate].forEach(time => allTimes.add(time));
-                }
-            });
-
-            const sortedTimes = Array.from(allTimes).sort();
-            
-            if (sortedTimes.length === 0) {
-                    horariosList.innerHTML = '<p class="horarios-placeholder">No hay horarios disponibles para los filtros seleccionados.</p>';
-            } else {
-                    horariosList.innerHTML = sortedTimes
-                    .map(time => `<button class="horario-slot btn btn-outline">${time}</button>`)
-                    .join('');
-            }
-            
-            updateConfirmButtonState();
-        }
-
-        function updateConfirmButtonState() {
-            btnConfirmar.disabled = !selectedTimeSlot;
-        }
-
-        // --- 6. Asignar Event Listeners ---
-        profesionalList.addEventListener('click', (e) => {
-            const card = e.target.closest('.profesional-card');
-            if (card) {
-                card.classList.toggle('selected');
-                updateHorarios();
-            }
-        });
-
-        btnSelectAll.addEventListener('click', () => {
-            allProfesionalCards.forEach(card => card.classList.add('selected'));
-            updateHorarios();
-        });
-
-        btnClearAll.addEventListener('click', () => {
-            allProfesionalCards.forEach(card => card.classList.remove('selected'));
-            updateHorarios();
-        });
-
-        horariosList.addEventListener('click', (e) => {
-            const slot = e.target.closest('.horario-slot');
-            if (slot) {
-                if (selectedTimeSlot && selectedTimeSlot !== slot) {
-                    selectedTimeSlot.classList.remove('selected', 'btn-primario');
-                    selectedTimeSlot.classList.add('btn-outline');
-                }
-                slot.classList.toggle('selected');
-                slot.classList.toggle('btn-outline');
-                slot.classList.toggle('btn-primario');
-                
-                selectedTimeSlot = slot.classList.contains('selected') ? slot : null;
-                updateConfirmButtonState();
-            }
-        });
-
-        // --- 7. Estado Inicial ---
-        updateHorarios(); // Llama al inicio (mostrará placeholder)
-
-      });
-    </script>
 </head>
 <body>
 
@@ -224,7 +52,7 @@
                 <span class="context-label">Centro Médico:</span>
                 <span id="context-centro" class="context-value">Cargando...</span>
             </div>
-            <a href="agregar_turno.html" class="context-change-link">Cambiar</a>
+            <a href="agregar-turno.html" class="context-change-link">Cambiar</a>
         </div>
         
         <h1 class="titulo-pagina">Elegir profesional</h1>
@@ -302,6 +130,48 @@
         </div>
 
     </main>
+    <div id="modal-confirmacion" class="modal-overlay">
+    <div class="modal-content card-vida-med">
+        
+        <div class="modal-header">
+            <h3>Confirmar Turno</h3>
+            <button id="btn-cerrar-modal" class="btn-close-icon">&times;</button>
+        </div>
+
+        <div class="modal-body">
+            <p class="modal-description">Por favor verificá los datos antes de confirmar.</p>
+            
+            <div class="modal-data-grid">
+                <div class="modal-data-item">
+                    <span class="data-label">Especialidad:</span>
+                    <span id="modal-especialidad" class="data-value">...</span>
+                </div>
+                <div class="modal-data-item">
+                    <span class="data-label">Centro Médico:</span>
+                    <span id="modal-centro" class="data-value">...</span>
+                </div>
+                <div class="modal-data-item">
+                    <span class="data-label">Profesional:</span>
+                    <span id="modal-medico" class="data-value">...</span>
+                </div>
+                <div class="modal-data-item">
+                    <span class="data-label">Fecha:</span>
+                    <span id="modal-fecha" class="data-value">...</span>
+                </div>
+                <div class="modal-data-item">
+                    <span class="data-label">Hora:</span>
+                    <span id="modal-hora" class="data-value">...</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <button id="btn-cancelar-turno" class="btn btn-secundario">Cancelar</button>
+            <button id="btn-confirmar-final" class="btn btn-primario">¡Confirmar!</button>
+        </div>
+
+    </div>
+</div>
     <footer class="vm-footer">
   <div class="vm-footer-grid">
 

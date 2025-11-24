@@ -10,12 +10,12 @@
 
 /* GRID */
 .vm-footer-grid {
-  max-width: 1050px;
   margin: auto;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
   gap: 2.2rem;
   align-items: start;
+  justify-items: center;
 }
 
 /* LOGO */
