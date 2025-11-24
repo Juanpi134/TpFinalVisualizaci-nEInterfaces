@@ -20,6 +20,7 @@
   border-radius: 12px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
   text-align: center;
+  display: block;
 }
 
 .card h3 {
@@ -87,4 +88,28 @@
   .resumen, .acciones {
     grid-template-columns: 1fr;
   }
+}
+
+.seccion-titulo {
+  font-size: 22px;
+  font-weight: 600;
+  color: #00a8a8;
+  margin: 30px 0 15px 5px;
+}
+
+
+/* Forzar que los botones NO se estiren */
+.card .btn,
+.card .btn-secundario,
+.accion .btn,
+.accion .btn-secundario {
+  width: auto !important;
+  display: inline-block !important;
+  white-space: nowrap;
+}
+
+.card button,
+.card a.btn {
+  width: auto !important;
+  display: inline-block !important;
 }
