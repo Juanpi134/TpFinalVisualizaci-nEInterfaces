@@ -205,7 +205,9 @@
     text-decoration: none; /* Quita el subrayado feo */
     padding: 4px;
 }
-
+.fc-col-header-cell-cushion{
+    color: var(--color-primario)
+}
 /* Quita el borde de la celda de la tabla */
 .fc th, .fc td, .fc table {
     border-color: var(--color-borde);
