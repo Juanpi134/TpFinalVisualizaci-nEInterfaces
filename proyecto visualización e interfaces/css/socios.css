@@ -8,32 +8,6 @@ body {
   margin: 0;
 }
 
-/* Encabezado */
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 40px;
-  background: white;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-
-.logo img {
-  height: 50px;
-}
-
-.menu ul {
-  list-style: none;
-  display: flex;
-  gap: 20px;
-}
-
-.menu a {
-  text-decoration: none;
-  color: #333;
-  font-weight: 600;
-}
-
 /* Sección del login */
 .login-section {
   flex: 1;
