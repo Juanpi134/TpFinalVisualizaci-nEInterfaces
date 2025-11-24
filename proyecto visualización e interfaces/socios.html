@@ -50,5 +50,26 @@
   </footer>
 
   <script src="js/login.js"></script>
+  <script>
+    const form = document.getElementById('loginForm');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+
+      const usuariosGuardados = JSON.parse(localStorage.getItem('usuariosRegistrados')) || [];
+      const usuario = usuariosGuardados.find(u => u.email === email && u.password === password);
+
+      if (usuario) {
+        localStorage.setItem('socioActivo', JSON.stringify(usuario));
+        alert(`Bienvenido, ${usuario.nombre}`);
+        window.location.href = 'socioHome.html';
+      } else {
+        alert('Usuario o contraseña incorrectos');
+      }
+    });
+  </script>
 </body>
 </html>

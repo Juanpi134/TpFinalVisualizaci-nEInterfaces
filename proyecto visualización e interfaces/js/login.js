@@ -51,7 +51,8 @@ document.getElementById("loginForm").addEventListener("submit", e => {
     id: socio.id,
     nombre: socio.nombre,
     plan: socio.plan,
-    email: socio.email
+    email: socio.email,
+    dni: socio.dni
   }));
 
   // 🔹 Redirigir al home del socio

@@ -33,48 +33,84 @@
     </div>
   </header>
 
-<div class="pagos-wrapper">
-  <h2 class="titulo-pagos">Historial de Pagos</h2>
+  <header class="header">
+    <h2>Pagos</h2>
+  </header>
 
-  <div class="lista-pagos">
+  <main class="main">
 
-    <div class="pago-card">
-      <div>
-        <h4>Cuota mensual — Plan Premium</h4>
-        <p>01/11/2025</p>
+    <!-- Estado -->
+    <section class="card">
+      <h3>Tu estado</h3>
+      <div class="saldo">
+        <p class="label">Saldo actual</p>
+        <p class="monto">$12.450</p>
       </div>
-      <div class="pago-info">
-        <span class="monto">$18.500</span>
-        <span class="chip pagado">Pagado</span>
+
+      <div class="acciones">
+        <button class="btn primary" onclick="abrirModal()">Nuevo pago</button>
+        <button class="btn outline">Descargar comprobantes</button>
+      </div>
+    </section>
+
+    <!-- Métodos -->
+    <section class="card">
+      <h3>Métodos de pago</h3>
+
+      <div class="cards-list">
+        <div class="card-method">
+          <span>Visa •••• 4123</span>
+          <small class="meta">Preferido</small>
+        </div>
+
+        <div class="card-method">
+          <span>MercadoPago</span>
+        </div>
+      </div>
+
+      <button class="btn sec">Agregar método</button>
+    </section>
+
+    <!-- Historial -->
+    <section class="card">
+      <div class="hist-head">
+        <h3>Historial</h3>
+      </div>
+
+      <table class="table" id="tabla">
+        <thead>
+          <tr>
+            <th>Fecha</th>
+            <th>Detalle</th>
+            <th>Monto</th>
+            <th>Estado</th>
+          </tr>
+        </thead>
+
+        <tbody id="listaPagos"></tbody>
+      </table>
+    </section>
+
+  </main>
+
+  <!-- Modal -->
+  <div id="modal" class="modal hidden">
+    <div class="modal-content">
+      <h4>Registrar pago</h4>
+
+      <label>Detalle</label>
+      <input type="text" id="detalle">
+
+      <label>Monto</label>
+      <input type="number" id="monto">
+
+      <div class="modal-actions">
+        <button class="btn outline" onclick="cerrarModal()">Cancelar</button>
+        <button class="btn primary" onclick="guardarPago()">Guardar</button>
       </div>
     </div>
-
-    <div class="pago-card">
-      <div>
-        <h4>Cuota mensual — Plan Premium</h4>
-        <p>01/10/2025</p>
-      </div>
-      <div class="pago-info">
-        <span class="monto">$18.500</span>
-        <span class="chip pagado">Pagado</span>
-      </div>
-    </div>
-
-    <div class="pago-card">
-      <div>
-        <h4>Cuota mensual — Plan Premium</h4>
-        <p>01/12/2025</p>
-      </div>
-      <div class="pago-info">
-        <span class="monto">$18.500</span>
-        <span class="chip pendiente">Pendiente</span>
-      </div>
-    </div>
-
   </div>
 
-  <a href="socioHome.html" class="btn-volver-min">← Volver</a>
-</div>
 
 <footer class="vm-footer">
   <div class="vm-footer-grid">
@@ -112,5 +148,6 @@
 
 
 <script src="js/socioHome.js"></script>
+<script src="js/pagos.js"></script>
 </body>
 </html>

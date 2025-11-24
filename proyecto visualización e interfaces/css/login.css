@@ -1,44 +1,94 @@
-.login-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 80vh;
-  background: linear-gradient(120deg, #008dcf, #00bfa5);
-}
-
-.login-card {
-  background: #fff;
-  padding: 2rem 3rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  width: 100%;
+/* CONTENEDOR GENERAL */
+.vm-login-container {
   max-width: 400px;
-}
-
-.login-card h2 {
+  margin: 80px auto;
+  padding: 40px;
+  background: white;
+  border-radius: 18px;
+  box-shadow: 0px 6px 18px rgba(0,0,0,0.12);
   text-align: center;
-  color: #008dcf;
-  margin-bottom: 1.5rem;
+  font-family: 'Montserrat', sans-serif;
 }
 
-.login-form input {
+/* LOGO */
+.vm-login-logo {
+  width: 150px;
+  margin-bottom: 25px;
+}
+
+/* TÍTULO */
+.vm-login-title {
+  font-size: 1.7rem;
+  margin-bottom: 25px;
+  color: #008b8b;
+  font-weight: 700;
+}
+
+/* FORMULARIO */
+.vm-login-form {
+  text-align: left;
+}
+
+.vm-login-form label {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-top: 15px;
+  color: #333;
+}
+
+.vm-login-form input {
   width: 100%;
-  padding: 10px;
-  margin-bottom: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 6px;
+  padding: 12px;
+  margin-top: 6px;
+  border: 1px solid #d4d4d4;
+  border-radius: 10px;
+  font-size: 1rem;
+  transition: 0.2s;
 }
 
-.btn-primario {
-  background: #008dcf;
-  color: #fff;
+.vm-login-form input:focus {
+  border-color: #00a8a8;
+  box-shadow: 0 0 0 3px rgba(0,168,168,0.25);
+  outline: none;
+}
+
+/* BOTÓN */
+.vm-btn {
+  width: 100%;
+  padding: 14px;
   border: none;
-  padding: 10px 20px;
-  border-radius: 6px;
+  border-radius: 12px;
+  font-size: 1rem;
   cursor: pointer;
+  font-weight: 700;
+  margin-top: 25px;
+  transition: 0.25s;
 }
 
-.link-afiliacion {
-  text-align: center;
-  margin-top: 1rem;
+.vm-btn-primary {
+  background: #00a8a8;
+  color: white;
+}
+
+.vm-btn-primary:hover {
+  background: #007f7f;
+}
+
+/* TEXTO SECUNDARIO */
+.vm-login-footer {
+  margin-top: 25px;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+/* LINK */
+.vm-link {
+  color: #00a8a8;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.vm-link:hover {
+  text-decoration: underline;
 }

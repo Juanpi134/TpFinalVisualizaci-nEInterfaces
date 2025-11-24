@@ -1,39 +1,4 @@
-html {
-  box-sizing: border-box;
-  font-size: 16px;
-}
 
-*, *::before, *::after {
-  box-sizing: inherit;
-}
-
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
-
-
-
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 40px;
-  background-color: #fff;
-}
-
-.menu ul {
-  display: flex;
-  list-style: none;
-  gap: 20px;
-}
-
-.menu a {
-  text-decoration: none;
-  color: #0077b6;
-  font-weight: 600;
-}
 
 /* BOTÓN HAMBURGUESA (oculto en escritorio) */
 .boton-menu {

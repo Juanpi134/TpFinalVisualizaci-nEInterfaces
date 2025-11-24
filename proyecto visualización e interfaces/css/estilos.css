@@ -24,51 +24,6 @@ body {
   background-color: #f2f5f8;
 }
 
-/* HEADER */
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1.5rem 5%;
-  background-color: var(--blanco);
-  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-}
-
-header .logo img {
-  width: 150px;
-}
-
-.menu ul {
-  display: flex;
-  list-style: none;
-  gap: 2rem;
-}
-
-.menu a {
-  text-decoration: none;
-  color: var(--azul-oscuro);
-  font-weight: 600;
-}
-
-.menu a:hover,
-.menu a.active {
-  color: var(--azul-principal);
-}
-
-.boton-socios .btn {
-  background-color: var(--azul-principal);
-  color: var(--blanco);
-  padding: 0.6rem 1.2rem;
-  border-radius: 25px;
-  text-decoration: none;
-  font-weight: 600;
-  transition: 0.3s;
-}
-
-.boton-socios .btn:hover {
-  background-color: var(--verde-menta);
-}
-
 /* HERO */
 .hero {
   background: url('../img/hero.jpg') center/cover no-repeat;
@@ -76,10 +31,13 @@ header .logo img {
   text-align: center;
   padding: 8rem 2rem;
   position: relative;
+  margin-top: 0;
+  padding-top: 1%;
+  margin-bottom: 0;
+  padding-bottom: 1%;
 }
 
 .hero::after {
-  content: "";
   position: absolute;
   inset: 0;
   background-color: rgba(15,46,58,0.4);
@@ -616,23 +574,3 @@ footer {
   }
 }
 
-/* Mobile chico */
-@media (max-width: 480px) {
-  /* Menú principal del header más compacto (si lo necesitás) */
-  header .menu ul {
-    gap: 0.8rem;
-  }
-
-  header .menu ul li a {
-    font-size: 0.8rem;
-  }
-
-  /* Info útil: una sola columna en pantallas muy chicas */
-  .info-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .panel-main {
-    padding-inline: 0.8rem;
-  }
-}

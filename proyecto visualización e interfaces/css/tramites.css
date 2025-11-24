@@ -58,6 +58,10 @@
   background: #d50000;
 }
 
+.clickeable {
+  cursor: pointer;
+}
+
 /* BOTÓN */
 .btn-vida {
   background: #00a8a8;

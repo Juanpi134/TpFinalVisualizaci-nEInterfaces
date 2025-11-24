@@ -1,41 +1,61 @@
+/* CONTENEDORES */
 .prevencion1 {
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  padding: 20px;
 }
+
+.score,
+.controls {
+  background: #fff;
+  border: 2px solid #008c8c;
+  border-radius: 12px;
+  padding: 20px;
+  width: 100%;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 .bienvenida {
   text-align: center;
   margin-bottom: 30px;
 }
+
 .textoBienestar {
   text-align: left;
-  display: flex;
-  justify-content: center;
 }
+
+/* TITULO PROGRAMAS */
 .tituloProgramas {
   text-align: center;
+  margin-top: 40px;
   text-decoration: underline;
 }
+
+/* GRID PROGRAMAS */
 .resumen {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(75px, 50vh));
-  grid-auto-rows: minmax(450px, auto); /* altura mínima */
-  gap: 15px;
-  margin-bottom: 40px;
-  margin-left: 15px;
-  margin-top: 40px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  padding: 20px;
 }
-.imgPrograma {
-  max-width: 30vh;
-}
+
 .card {
   background: white;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  text-align: center;
   border: 2px solid #008c8c;
-  margin: 5px;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  max-width: 230px;
+  margin: 2px auto;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
 }
 
 .card h3 {
@@ -43,29 +63,54 @@
   margin-bottom: 10px;
 }
 
-.btn,
-.btn-secundario {
-  display: inline-block;
-  margin-top: 10px;
-  padding: 8px 16px;
-  border-radius: 6px;
-  text-decoration: none;
-  cursor: pointer;
-  font-weight: 600;
+.imgPrograma {
+  width: 100%;
+  max-height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
 }
 
+/* BOTONES */
 .btn {
   background: #00a8a8;
   color: white;
-  border: none;
-}
-
-.btn-secundario {
-  background: #f0f0f0;
-  color: #333;
-  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  display: inline-block;
+  margin-top: 12px;
 }
 
 .btn:hover {
   background: #008c8c;
+}
+
+/* ------------------ RESPONSIVE ------------------ */
+
+/* Tablets y celulares */
+@media (max-width: 768px) {
+  .prevencion1 {
+    grid-template-columns: 1fr;
+  }
+
+  .bienvenida h1 {
+    font-size: 1.4rem;
+  }
+}
+
+/* Teléfonos chicos */
+@media (max-width: 430px) {
+  .bienvenida h1 {
+    font-size: 1.2rem;
+    padding: 0 10px;
+  }
+
+  .score,
+  .controls {
+    padding: 15px;
+  }
+
+  .btn {
+    width: 100%;
+    text-align: center;
+  }
 }
