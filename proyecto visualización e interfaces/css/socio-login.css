@@ -22,7 +22,7 @@ body {
   border-radius: 12px;
   box-shadow: 0 4px 20px rgba(0,0,0,0.15);
   padding: 40px 50px;
-  width: 50%;
+  width: 26%;
   text-align: center;
 }
 
@@ -104,26 +104,6 @@ body {
   border-color: #1e7a8a;
   outline: none;
 }
-
-.login-form {
-  display: grid;
-  grid-template-columns: 1fr 1fr; /* 2 columnas */
-  gap: 20px 25px; /* separación entre filas y columnas */
-}
-
-.login-form div {
-  display: flex;
-  flex-direction: column;
-}
-
-.btn-login {
-  grid-column: span 2;
-}
-
-.extras {
-  grid-column: span 2;
-}
-
 
 /* Responsive */
 @media (max-width: 600px) {

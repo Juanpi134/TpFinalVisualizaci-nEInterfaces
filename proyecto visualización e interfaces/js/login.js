@@ -4,9 +4,9 @@
 function inicializarUsuarios() {
   if (!localStorage.getItem("sociosVidaMedList")) {
     const usuariosIniciales = [
-      { id: 1, nombre: "Juan Pérez", dni: "12345678", email: "juanperez@mail.com", usuario: "juanperez", password: "1234", plan: "Plan Esencial" },
-      { id: 2, nombre: "María López", dni: "87654321", email: "marialopez@mail.com", usuario: "marialopez", password: "abcd", plan: "Plan Plus" },
-      { id: 3, nombre: "Carlos Gómez", dni: "22334455", email: "a", usuario: "carlosg", password: "a", plan: "Plan Premium" },
+      { id: 1, nombre: "Juan Pérez", dni: "12345678", email: "juanperez@mail.com", usuario: "juanperez", password: "1234", plan: "Plan Esencial", direccion: "Calle Falsa 123", telefono: "1234567890", localidad: "Ciudad Ejemplo" },
+      { id: 2, nombre: "María López", dni: "87654321", email: "marialopez@mail.com", usuario: "marialopez", password: "abcd", plan: "Plan Plus", direccion: "Calle Falsa 123", telefono: "1234567890", localidad: "Ciudad Ejemplo" },
+      { id: 3, nombre: "Carlos Gómez", dni: "22334455", email: "a", usuario: "carlosg", password: "a", plan: "Plan Premium", direccion: "Calle Falsa 123", telefono: "1234567890", localidad: "Ciudad Ejemplo" },
       
     ];
     localStorage.setItem("sociosVidaMedList", JSON.stringify(usuariosIniciales));
@@ -52,7 +52,10 @@ document.getElementById("loginForm").addEventListener("submit", e => {
     nombre: socio.nombre,
     plan: socio.plan,
     email: socio.email,
-    dni: socio.dni
+    dni: socio.dni,
+    direccion: socio.direccion,
+    telefono: socio.telefono,
+    localidad: socio.localidad
   }));
 
   // 🔹 Redirigir al home del socio

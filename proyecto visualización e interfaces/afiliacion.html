@@ -4,26 +4,33 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Afiliate | Vida Med</title>
-
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <link rel="stylesheet" href="css/estilos.css" />
   <link rel="stylesheet" href="css/socios.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/home-header.css">
 </head>
 
 <body>
 
-  <header class="header">
+  <header>
     <div class="logo">
-      <a href="index.html"><img src="img/vidaMedLogo.png" alt="Logo Vida Med"></a>
+      <img src="img/vidaMedLogo.png" alt="Logo Vida Med">
     </div>
+
     <nav class="menu">
       <ul>
         <li><a href="index.html">Inicio</a></li>
         <li><a href="planes.html">Planes</a></li>
-        <li><a href="prestadores.html">Prestadores</a></li>
+        <li><a href="cartilla.html">Cartilla</a></li>
         <li><a href="contacto.html">Contacto</a></li>
       </ul>
     </nav>
+
+    <div class="invisible">
+      <a href="socios.html" class="btn">Área de socios</a>
+    </div>
   </header>
 
   <main class="login-section">
@@ -33,25 +40,45 @@
 
       <form id="registroForm" class="login-form">
 
-        <label for="nombre">Nombre completo</label>
-        <input type="text" id="nombre" required>
 
-        <label for="dni">DNI</label>
-        <input type="text" id="dni" required>
+        <div>
+            <label for="nombre">Nombre completo</label>
+            <input type="text" id="nombre" required>
 
-        <label for="email">Correo electrónico</label>
-        <input type="email" id="email" required>
+            <label for="email">Correo electrónico</label>
+            <input type="email" id="email" required>
 
-        <label for="password">Contraseña</label>
-        <input type="password" id="password" required>
+            <label for="direccion">Direccion</label>
+            <input type="text" id="direccion" required>
 
-        <label for="plan">Seleccioná tu plan</label>
-        <select id="plan" required>
-          <option value="">-- Elegí un plan --</option>
-          <option value="Plan Esencial">Plan Esencial</option>
-          <option value="Plan Plus">Plan Plus</option>
-          <option value="Plan Premium">Plan Premium</option>
-        </select>
+            <label for="telefono">Telefono</label>
+            <input type="text" id="telefono" required>
+
+        </div>
+        
+        <div>
+            <label for="dni">DNI</label>
+            <input type="text" id="dni" required>
+
+            <label for="password">Contraseña</label>
+            <input type="password" id="password" required>
+
+            <label for="localidad">Localidad</label>
+            <select id="localidad" required>
+              <option value="">-- Seleccioná una localidad --</option>
+              <option value="La Plata">La Plata</option>
+              <option value="Mar del Plata">Mar del Plata</option>
+              <option value="Bahía Blanca">Bahía Blanca</option>
+            </select>
+
+            <label for="plan">Seleccioná tu plan</label>
+            <select id="plan" required>
+              <option value="">-- Elegí un plan --</option>
+              <option value="Plan Esencial">Plan Esencial</option>
+              <option value="Plan Plus">Plan Plus</option>
+              <option value="Plan Premium">Plan Premium</option>
+            </select>
+        </div>
 
         <button type="submit" class="btn-login">Crear cuenta</button>
 
@@ -64,7 +91,27 @@
   </main>
 
   <footer>
-    <p>© 2025 Vida Med. Todos los derechos reservados.</p>
+    <div class="footer-contenedor">
+      <div class="footer-logo">
+        <img src="img/vidaMedLogo.png" alt="Logo VidaMed">
+        <p>Tu salud, nuestra prioridad.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Enlaces útiles</h4>
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="planes.html">Planes</a></li>
+          <li><a href="cartilla.html">Cartilla</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </div>
+      <div class="footer-contacto">
+        <h4>Contacto</h4>
+        <p>Tel: 0800-123-VIDA</p>
+        <p>Email: info@vidamed.com.ar</p>
+        <p>© 2025 Vida Med. Todos los derechos reservados.</p>
+      </div>
+    </div>
   </footer>
 
   <!-- EL MISMO JS QUE ME PASASTE -->
@@ -79,6 +126,10 @@
       const email = document.getElementById('email').value;
       const password = document.getElementById('password').value;
       const plan = document.getElementById('plan').value;
+      const direccion = document.getElementById('direccion').value;
+      const telefono = document.getElementById('telefono').value;
+      const localidad = document.getElementById('localidad').value;
+
 
       const usuariosGuardados = JSON.parse(localStorage.getItem('usuariosRegistrados')) || [];
 
@@ -88,7 +139,7 @@
         return;
       }
 
-      const nuevoUsuario = { nombre, dni, email, password, plan };
+      const nuevoUsuario = { nombre, dni, email, password, plan, direccion, telefono, localidad };
 
       usuariosGuardados.push(nuevoUsuario);
       localStorage.setItem('usuariosRegistrados', JSON.stringify(usuariosGuardados));

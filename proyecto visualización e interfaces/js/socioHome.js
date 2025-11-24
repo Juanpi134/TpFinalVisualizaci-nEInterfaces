@@ -14,5 +14,6 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function cerrarSesion() {
+  localStorage.removeItem("socioActivo");
   window.location.href = "index.html";
 }
