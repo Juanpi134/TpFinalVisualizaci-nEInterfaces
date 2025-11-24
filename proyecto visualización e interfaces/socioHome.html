@@ -21,7 +21,7 @@
     <header class="header-home">
       <div class="logo">
         <img
-          src="img/logo-opcion1.png"
+          src="img/logo-opcion2.png"
           alt="Vida Med"
           onclick="window.location.href='socioHome.html'"
         />
@@ -46,14 +46,47 @@
     </header>
 
     <main class="dashboard">
+      <!-- ✨ Bienvenida -->
       <section class="bienvenida">
         <h1>Bienvenido/a, <span id="nombreBienvenida"></span></h1>
         <p>Tu salud al alcance de un clic.</p>
       </section>
 
+      <!-- 🟩 GESTIONES -->
+      <h2 class="seccion-titulo">Gestiones</h2>
+
+      <section class="resumen">
+        <!-- 1️⃣ Mis Turnos -->
+        <div class="card">
+          <h3>Mis Turnos</h3>
+          <p>Consultá tus próximos turnos y resultados.</p>
+          <button id="btnTurnos" class="btn">Ver Turnos</button>
+        </div>
+
+        <!-- 2️⃣ Mis Pagos -->
+        <div class="card">
+          <h3>Mis Pagos</h3>
+          <p>Accedé a tus facturas y pagos realizados.</p>
+          <button class="btn" onclick="window.location.href='pagos.html'">
+            Ver Pagos
+          </button>
+        </div>
+
+        <!-- 3️⃣ Mis Trámites -->
+        <div class="card">
+          <h3>Mis Trámites</h3>
+          <p>Revisá tus trámites y gestiones en curso.</p>
+          <button class="btn" onclick="window.location.href='tramites.html'">
+            Ver Trámites
+          </button>
+        </div>
+      </section>
+
+      <!-- 🟦 MI PLAN -->
+      <h2 class="seccion-titulo">Información del Afiliado</h2>
       <section class="resumen">
         <div class="card">
-          <h3>Plan Actual</h3>
+          <h3>Mi Perfil</h3>
           <p id="planUsuario"></p>
           <a href="planes.html" class="btn">Ver beneficios</a>
         </div>
@@ -61,46 +94,13 @@
         <div class="card">
           <h3>Mi Credencial Digital</h3>
           <p>Descargá tu credencial para presentar en consultorios.</p>
-          <button id="btnCredencial" class="btn-secundario">
-            Ver Credencial
-          </button>
+          <button id="btnCredencial" class="btn">Ver Credencial</button>
         </div>
 
         <div class="card">
-          <h3>Próximo Turno</h3>
-          <p>Dr. Fernández - Clínica Central (12/11 - 10:30hs)</p>
-          <button
-            id="btnProximoTurno"
-            class="btn-secundario"
-            onclick="window.location.href='proximoTurno.html'"
-          >
-            Ver detalles
-          </button>
-        </div>
-      </section>
-
-      <section class="acciones">
-        <div class="accion">
-          <img src="img/icon_turnos.png" alt="Turnos" />
-          <h4>Mis Turnos</h4>
-          <p>Consultá tus próximos turnos y resultados.</p>
-          <button id="btnTurnos" class="btn">Ver Turnos</button>
-        </div>
-
-        <div class="accion">
-          <img src="img/icon_pago.png" alt="Pagos" />
-          <h4>Pagos y Facturas</h4>
-          <p>Accedé a tu historial de pagos o adherite al débito automático.</p>
-          <button class="btn" onclick="window.location.href='pagos.html'">
-            Ver Pagos
-          </button>
-        </div>
-
-        <div class="accion">
-          <img src="img/icon_contacto.png" alt="Contacto" />
-          <h4>Contactar Asesor</h4>
-          <p>Comunicate directamente con tu asesor personal.</p>
-          <button class="btn">Enviar Mensaje</button>
+          <h3>Mis Estudios</h3>
+          <p>Accedé a tus estudios y resultados médicos.</p>
+          <button id="btnCredencial" class="btn">Ver Estudios</button>
         </div>
       </section>
     </main>
@@ -110,7 +110,7 @@
         <!-- COLUMNA 1: LOGO + SLOGAN -->
         <div class="vm-footer-col">
           <img
-            src="img/logo-opcion1.png"
+            src="img/logo-opcion2.png"
             class="vm-footer-logo"
             alt="Vida Med"
           />
