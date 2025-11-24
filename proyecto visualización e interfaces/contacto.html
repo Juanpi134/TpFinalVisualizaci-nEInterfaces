@@ -1,69 +1,93 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contacto | Vida Med</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/home-header.css" />
-  <link rel="stylesheet" href="css/estilos.css">
-  <link rel="stylesheet" href="css/contacto.css">
-</head>
-<body>
-  <header>
-    <div class="logo">
-      <img src="img/vidaMedLogo.png" alt="Logo Vida Med">
-    </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contacto | Vida Med</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/home-header.css" />
+    <link rel="stylesheet" href="css/estilos.css" />
+    <link rel="stylesheet" href="css/contacto.css" />
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <img src="img/logo-opcion1.png" alt="Logo Vida Med" />
+      </div>
 
-    <nav class="menu">
-      <ul>
-        <li><a href="index.html">Inicio</a></li>
-        <li><a href="planes.html">Planes</a></li>
-        <li><a href="prestadores.html">Prestadores</a></li>
-        <li><a href="cartilla.html">Cartilla</a></li>
-        <li><a href="contacto.html" class = "active">Contacto</a></li>
-      </ul>
-    </nav>
+      <nav class="menu">
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="planes.html">Planes</a></li>
+          <li><a href="prestadores.html">Prestadores</a></li>
+          <li><a href="cartilla.html">Cartilla</a></li>
+          <li><a href="contacto.html" class="active">Contacto</a></li>
+        </ul>
+      </nav>
 
-    <div class="boton-socios">
-      <a href="socios.html" class="btn">Área de socios</a>
-    </div>
-  </header>
+      <div class="boton-socios">
+        <a href="socios.html" class="btn">Área de socios</a>
+      </div>
+    </header>
 
-  <main class="contacto-container">
-    <section class="form-contacto">
-      <h1>Contacto</h1>
-      <p>Completá el siguiente formulario y nuestro equipo se pondrá en contacto contigo.</p>
+    <main class="contacto-container">
+      <section class="form-contacto">
+        <h1>Contacto</h1>
+        <p>
+          Completá el siguiente formulario y nuestro equipo se pondrá en
+          contacto contigo.
+        </p>
 
-      <form>
-        <label for="nombre">Nombre completo</label>
-        <input type="text" id="nombre" name="nombre" required>
+        <form>
+          <label for="nombre">Nombre completo</label>
+          <input type="text" id="nombre" name="nombre" required />
 
-        <label for="email">Correo electrónico</label>
-        <input type="email" id="email" name="email" required>
+          <label for="email">Correo electrónico</label>
+          <input type="email" id="email" name="email" required />
 
-        <label for="asunto">Asunto</label>
-        <input type="text" id="asunto" name="asunto" required>
+          <label for="asunto">Asunto</label>
+          <input type="text" id="asunto" name="asunto" required />
 
-        <label for="mensaje">Mensaje</label>
-        <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
+          <label for="mensaje">Mensaje</label>
+          <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
 
-        <button type="submit">Enviar mensaje</button>
-      </form>
-    </section>
+          <button type="submit">Enviar mensaje</button>
+        </form>
+      </section>
 
-    <section class="info-contacto">
-      <h2>Otras formas de contacto</h2>
-      <p><strong>Teléfono:</strong> 0800-123-VIDA</p>
-      <p><strong>Email:</strong> info@vidamed.com.ar</p>
-      <p><strong>Dirección:</strong> Av. Corrientes 2500, CABA</p>
-    </section>
-  </main>
+      <section class="info-contacto">
+        <h2>Otras formas de contacto</h2>
+        <p><strong>Teléfono:</strong> 0800-123-VIDA</p>
+        <p><strong>Email:</strong> info@vidamed.com.ar</p>
+        <p><strong>Dirección:</strong> Av. Corrientes 2500, CABA</p>
+      </section>
+    </main>
 
-  <footer>
-    <p>&copy; 2025 Vida Med. Todos los derechos reservados.</p>
-  </footer>
-
-  <script src="js/contacto.js"></script>
-</body>
+    <footer>
+      <div class="footer-contenedor">
+        <div class="footer-logo">
+          <img src="img/logo-opcion2.png" alt="Logo VidaMed" />
+          <p>Tu salud, nuestra prioridad.</p>
+        </div>
+        <div class="footer-links">
+          <h4>Enlaces útiles</h4>
+          <ul>
+            <li><a href="planes.html">Planes</a></li>
+            <li><a href="cartilla.html">Cartilla</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+          </ul>
+        </div>
+        <div class="footer-contacto">
+          <h4>Contacto</h4>
+          <p>Tel: 0800-123-VIDA</p>
+          <p>Email: info@vidamed.com.ar</p>
+          <p>© 2025 Vida Med. Todos los derechos reservados.</p>
+        </div>
+      </div>
+    </footer>
+    <script src="js/contacto.js"></script>
+  </body>
 </html>

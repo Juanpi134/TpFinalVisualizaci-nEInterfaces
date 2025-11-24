@@ -1,102 +1,107 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Afiliate | Vida Med</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Afiliate | Vida Med</title>
 
-  <link rel="stylesheet" href="css/estilos.css" />
-  <link rel="stylesheet" href="css/socios.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans&display=swap" rel="stylesheet">
-</head>
+    <link rel="stylesheet" href="css/estilos.css" />
+    <link rel="stylesheet" href="css/socios.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans&display=swap"
+      rel="stylesheet"
+    />
+  </head>
 
-<body>
+  <body>
+    <header class="header">
+      <div class="logo">
+        <a href="index.html"
+          ><img src="img/logo-opcion1.png" alt="Logo Vida Med"
+        /></a>
+      </div>
+      <nav class="menu">
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="planes.html">Planes</a></li>
+          <li><a href="prestadores.html">Prestadores</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </nav>
+    </header>
 
-  <header class="header">
-    <div class="logo">
-      <a href="index.html"><img src="img/vidaMedLogo.png" alt="Logo Vida Med"></a>
-    </div>
-    <nav class="menu">
-      <ul>
-        <li><a href="index.html">Inicio</a></li>
-        <li><a href="planes.html">Planes</a></li>
-        <li><a href="prestadores.html">Prestadores</a></li>
-        <li><a href="contacto.html">Contacto</a></li>
-      </ul>
-    </nav>
-  </header>
+    <main class="login-section">
+      <div class="login-card">
+        <h2>Crear cuenta</h2>
+        <p>Completá tus datos para afiliarte</p>
 
-  <main class="login-section">
-    <div class="login-card">
-      <h2>Crear cuenta</h2>
-      <p>Completá tus datos para afiliarte</p>
+        <form id="registroForm" class="login-form">
+          <label for="nombre">Nombre completo</label>
+          <input type="text" id="nombre" required />
 
-      <form id="registroForm" class="login-form">
+          <label for="dni">DNI</label>
+          <input type="text" id="dni" required />
 
-        <label for="nombre">Nombre completo</label>
-        <input type="text" id="nombre" required>
+          <label for="email">Correo electrónico</label>
+          <input type="email" id="email" required />
 
-        <label for="dni">DNI</label>
-        <input type="text" id="dni" required>
+          <label for="password">Contraseña</label>
+          <input type="password" id="password" required />
 
-        <label for="email">Correo electrónico</label>
-        <input type="email" id="email" required>
+          <label for="plan">Seleccioná tu plan</label>
+          <select id="plan" required>
+            <option value="">-- Elegí un plan --</option>
+            <option value="Plan Esencial">Plan Esencial</option>
+            <option value="Plan Plus">Plan Plus</option>
+            <option value="Plan Premium">Plan Premium</option>
+          </select>
 
-        <label for="password">Contraseña</label>
-        <input type="password" id="password" required>
+          <button type="submit" class="btn-login">Crear cuenta</button>
 
-        <label for="plan">Seleccioná tu plan</label>
-        <select id="plan" required>
-          <option value="">-- Elegí un plan --</option>
-          <option value="Plan Esencial">Plan Esencial</option>
-          <option value="Plan Plus">Plan Plus</option>
-          <option value="Plan Premium">Plan Premium</option>
-        </select>
+          <div class="extras">
+            <a href="socios.html">¿Ya tenés cuenta? Ingresá aquí</a>
+          </div>
+        </form>
+      </div>
+    </main>
 
-        <button type="submit" class="btn-login">Crear cuenta</button>
+    <footer>
+      <p>© 2025 Vida Med. Todos los derechos reservados.</p>
+    </footer>
 
-        <div class="extras">
-          <a href="socios.html">¿Ya tenés cuenta? Ingresá aquí</a>
-        </div>
+    <!-- EL MISMO JS QUE ME PASASTE -->
+    <script>
+      const registroForm = document.getElementById("registroForm");
 
-      </form>
-    </div>
-  </main>
+      registroForm.addEventListener("submit", function (e) {
+        e.preventDefault();
 
-  <footer>
-    <p>© 2025 Vida Med. Todos los derechos reservados.</p>
-  </footer>
+        const nombre = document.getElementById("nombre").value;
+        const dni = document.getElementById("dni").value;
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+        const plan = document.getElementById("plan").value;
 
-  <!-- EL MISMO JS QUE ME PASASTE -->
-  <script>
-    const registroForm = document.getElementById('registroForm');
+        const usuariosGuardados =
+          JSON.parse(localStorage.getItem("usuariosRegistrados")) || [];
 
-    registroForm.addEventListener('submit', function(e) {
-      e.preventDefault();
+        const existe = usuariosGuardados.some((u) => u.email === email);
+        if (existe) {
+          alert("Este correo ya está registrado. Por favor, inicia sesión.");
+          return;
+        }
 
-      const nombre = document.getElementById('nombre').value;
-      const dni = document.getElementById('dni').value;
-      const email = document.getElementById('email').value;
-      const password = document.getElementById('password').value;
-      const plan = document.getElementById('plan').value;
+        const nuevoUsuario = { nombre, dni, email, password, plan };
 
-      const usuariosGuardados = JSON.parse(localStorage.getItem('usuariosRegistrados')) || [];
+        usuariosGuardados.push(nuevoUsuario);
+        localStorage.setItem(
+          "usuariosRegistrados",
+          JSON.stringify(usuariosGuardados)
+        );
 
-      const existe = usuariosGuardados.some(u => u.email === email);
-      if (existe) {
-        alert('Este correo ya está registrado. Por favor, inicia sesión.');
-        return;
-      }
-
-      const nuevoUsuario = { nombre, dni, email, password, plan };
-
-      usuariosGuardados.push(nuevoUsuario);
-      localStorage.setItem('usuariosRegistrados', JSON.stringify(usuariosGuardados));
-
-      alert(`¡Bienvenido a Vida Med, ${nombre}! Tu cuenta fue creada.`);
-      window.location.href = 'socios.html';
-    });
-  </script>
-
-</body>
+        alert(`¡Bienvenido a Vida Med, ${nombre}! Tu cuenta fue creada.`);
+        window.location.href = "socios.html";
+      });
+    </script>
+  </body>
 </html>

@@ -1,341 +1,391 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Elegir Profesional - Vida Med</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    
-    <link rel="stylesheet" type="text/css" href="css/turnosglobal.css">
-    <link rel="stylesheet" type="text/css" href="css/elegir-turno.css">
-    <link rel="stylesheet" href="css/header.css">
-    <link rel="stylesheet" href="css/footer.css">
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" type="text/css" href="css/turnosglobal.css" />
+    <link rel="stylesheet" type="text/css" href="css/elegir-turno.css" />
+    <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/footer.css" />
     <!-- Scripts de FullCalendar (¡Asegurate de que es.js esté!) -->
-    <script src='js/index.global.min.js'></script>
-    <script src='js/es.js'></script> <!-- SCRIPT DE IDIOMA ESPAÑOL -->
+    <script src="js/index.global.min.js"></script>
+    <script src="js/es.js"></script>
+    <!-- SCRIPT DE IDIOMA ESPAÑOL -->
 
     <script>
       // Todo nuestro código ahora vive dentro de este evento
-      document.addEventListener('DOMContentLoaded', function() {
-        
+      document.addEventListener("DOMContentLoaded", function () {
         // --- 0. Simulación de Datos ---
         const doctorTimes = {
-            '1': { 
-                '2025-11-18': ['09:00', '09:30', '10:00', '10:30'],
-                '2025-11-19': ['09:00', '09:30'],
-                '2025-11-20': ['10:00', '10:30']
-            },
-            '2': { 
-                '2025-11-18': ['14:00', '14:30', '15:00'],
-                '2025-11-20': ['14:00', '14:30']
-            },
-            '3': { 
-                '2025-11-19': ['11:00', '11:30', '12:00']
-            },
-            '4': { 
-                '2025-11-18': ['09:00', '10:00'],
-                '2025-11-19': ['16:00', '16:30'],
-                '2025-11-20': ['09:00', '16:00', '16:30']
-            }
+          1: {
+            "2025-11-18": ["09:00", "09:30", "10:00", "10:30"],
+            "2025-11-19": ["09:00", "09:30"],
+            "2025-11-20": ["10:00", "10:30"],
+          },
+          2: {
+            "2025-11-18": ["14:00", "14:30", "15:00"],
+            "2025-11-20": ["14:00", "14:30"],
+          },
+          3: {
+            "2025-11-19": ["11:00", "11:30", "12:00"],
+          },
+          4: {
+            "2025-11-18": ["09:00", "10:00"],
+            "2025-11-19": ["16:00", "16:30"],
+            "2025-11-20": ["09:00", "16:00", "16:30"],
+          },
         };
         const MOCK_DATA = {
-            "clinica": "Clínica Médica", "cardiologia": "Cardiología", "traumatologia": "Traumatología",
-            "salud-mental": "Salud Mental", "belgrano": "Centro Médico Belgrano",
-            "abasto": "Centro Médico Abasto", "virtual": "Atención Virtual"
+          clinica: "Clínica Médica",
+          cardiologia: "Cardiología",
+          traumatologia: "Traumatología",
+          "salud-mental": "Salud Mental",
+          belgrano: "Centro Médico Belgrano",
+          abasto: "Centro Médico Abasto",
+          virtual: "Atención Virtual",
         };
 
         // --- 1. Leer datos de la URL ---
         const params = new URLSearchParams(window.location.search);
-        const especialidadKey = params.get('especialidad');
-        const centroKey = params.get('centro');
-        const espEl = document.getElementById('context-especialidad');
-        const cenEl = document.getElementById('context-centro');
-        espEl.textContent = MOCK_DATA[especialidadKey] || 'No seleccionada';
-        cenEl.textContent = MOCK_DATA[centroKey] || 'No seleccionado';
+        const especialidadKey = params.get("especialidad");
+        const centroKey = params.get("centro");
+        const espEl = document.getElementById("context-especialidad");
+        const cenEl = document.getElementById("context-centro");
+        espEl.textContent = MOCK_DATA[especialidadKey] || "No seleccionada";
+        cenEl.textContent = MOCK_DATA[centroKey] || "No seleccionado";
 
         // --- 2. Seleccionar Elementos del DOM ---
-        const profesionalList = document.getElementById('profesional-list');
-        const allProfesionalCards = document.querySelectorAll('.profesional-card');
-        const btnSelectAll = document.getElementById('btn-select-all');
-        const btnClearAll = document.getElementById('btn-clear-all');
-        const horariosList = document.getElementById('horarios-list');
-        const horariosPlaceholder = document.getElementById('horarios-placeholder');
-        const btnConfirmar = document.getElementById('btn-confirmar');
-        
+        const profesionalList = document.getElementById("profesional-list");
+        const allProfesionalCards =
+          document.querySelectorAll(".profesional-card");
+        const btnSelectAll = document.getElementById("btn-select-all");
+        const btnClearAll = document.getElementById("btn-clear-all");
+        const horariosList = document.getElementById("horarios-list");
+        const horariosPlaceholder = document.getElementById(
+          "horarios-placeholder"
+        );
+        const btnConfirmar = document.getElementById("btn-confirmar");
+
         // Esta línea es la que vos pusiste (¡está perfecta!)
-        var calendarEl = document.getElementById('calendar');
+        var calendarEl = document.getElementById("calendar");
 
         // --- 3. Variables de Estado ---
         let selectedDoctorIDs = [];
         let selectedTimeSlot = null;
-        let selectedDate = null; 
+        let selectedDate = null;
         let selectedDateEl = null; // NUEVO: Para guardar el *elemento* del día seleccionado
 
         // --- 4. Inicializar FullCalendar (Fusionado) ---
         var calendar = new FullCalendar.Calendar(calendarEl, {
-            initialView: 'dayGridMonth',
-            locale: 'es', // Habilita el idioma español (requiere es.js)
-            headerToolbar: {
-                left: 'prev',
-                center: 'title',
-                right: 'next'
-            },
-            selectable: false, // CAMBIO: De 'true' a 'false'. Lo manejamos manualmente.
-            dateClick: function(info) {
-                // CAMBIO: Lógica para "fijar" la selección
-                
-                // 1. Si ya había un día seleccionado, le quitamos la clase
-                if (selectedDateEl) {
-                    selectedDateEl.classList.remove('fc-day-selected');
-                }
-                
-                // 2. Agregamos la clase al nuevo día y lo guardamos
-                info.dayEl.classList.add('fc-day-selected');
-                selectedDateEl = info.dayEl;
+          initialView: "dayGridMonth",
+          locale: "es", // Habilita el idioma español (requiere es.js)
+          headerToolbar: {
+            left: "prev",
+            center: "title",
+            right: "next",
+          },
+          selectable: false, // CAMBIO: De 'true' a 'false'. Lo manejamos manualmente.
+          dateClick: function (info) {
+            // CAMBIO: Lógica para "fijar" la selección
 
-                // 3. Guardamos la fecha (string) y actualizamos horarios
-                selectedDate = info.dateStr; 
-                updateHorarios(); 
-            },
-            validRange: {
-                start: new Date().toISOString().split('T')[0] // Deshabilita días pasados
+            // 1. Si ya había un día seleccionado, le quitamos la clase
+            if (selectedDateEl) {
+              selectedDateEl.classList.remove("fc-day-selected");
             }
+
+            // 2. Agregamos la clase al nuevo día y lo guardamos
+            info.dayEl.classList.add("fc-day-selected");
+            selectedDateEl = info.dayEl;
+
+            // 3. Guardamos la fecha (string) y actualizamos horarios
+            selectedDate = info.dateStr;
+            updateHorarios();
+          },
+          validRange: {
+            start: new Date().toISOString().split("T")[0], // Deshabilita días pasados
+          },
         });
         calendar.render();
 
         // --- 5. Funciones Principales ---
         function updateHorarios() {
-            selectedTimeSlot = null; 
-            
-            selectedDoctorIDs = Array.from(allProfesionalCards)
-                .filter(card => card.classList.contains('selected'))
-                .map(card => card.dataset.id);
-            
-            if (selectedDoctorIDs.length === 0 || !selectedDate) {
-                horariosList.innerHTML = ''; 
-                horariosPlaceholder.style.display = 'block';
-                horariosPlaceholder.textContent = (selectedDoctorIDs.length === 0)
-                    ? "Seleccioná uno o más profesionales."
-                    : "Seleccioná un día en el calendario.";
-                updateConfirmButtonState();
-                return;
-            }
+          selectedTimeSlot = null;
 
-            horariosPlaceholder.style.display = 'none';
-            
-            const allTimes = new Set();
-            selectedDoctorIDs.forEach(id => {
-                if (doctorTimes[id] && doctorTimes[id][selectedDate]) {
-                    doctorTimes[id][selectedDate].forEach(time => allTimes.add(time));
-                }
-            });
+          selectedDoctorIDs = Array.from(allProfesionalCards)
+            .filter((card) => card.classList.contains("selected"))
+            .map((card) => card.dataset.id);
 
-            const sortedTimes = Array.from(allTimes).sort();
-            
-            if (sortedTimes.length === 0) {
-                    horariosList.innerHTML = '<p class="horarios-placeholder">No hay horarios disponibles para los filtros seleccionados.</p>';
-            } else {
-                    horariosList.innerHTML = sortedTimes
-                    .map(time => `<button class="horario-slot btn btn-outline">${time}</button>`)
-                    .join('');
-            }
-            
+          if (selectedDoctorIDs.length === 0 || !selectedDate) {
+            horariosList.innerHTML = "";
+            horariosPlaceholder.style.display = "block";
+            horariosPlaceholder.textContent =
+              selectedDoctorIDs.length === 0
+                ? "Seleccioná uno o más profesionales."
+                : "Seleccioná un día en el calendario.";
             updateConfirmButtonState();
+            return;
+          }
+
+          horariosPlaceholder.style.display = "none";
+
+          const allTimes = new Set();
+          selectedDoctorIDs.forEach((id) => {
+            if (doctorTimes[id] && doctorTimes[id][selectedDate]) {
+              doctorTimes[id][selectedDate].forEach((time) =>
+                allTimes.add(time)
+              );
+            }
+          });
+
+          const sortedTimes = Array.from(allTimes).sort();
+
+          if (sortedTimes.length === 0) {
+            horariosList.innerHTML =
+              '<p class="horarios-placeholder">No hay horarios disponibles para los filtros seleccionados.</p>';
+          } else {
+            horariosList.innerHTML = sortedTimes
+              .map(
+                (time) =>
+                  `<button class="horario-slot btn btn-outline">${time}</button>`
+              )
+              .join("");
+          }
+
+          updateConfirmButtonState();
         }
 
         function updateConfirmButtonState() {
-            btnConfirmar.disabled = !selectedTimeSlot;
+          btnConfirmar.disabled = !selectedTimeSlot;
         }
 
         // --- 6. Asignar Event Listeners ---
-        profesionalList.addEventListener('click', (e) => {
-            const card = e.target.closest('.profesional-card');
-            if (card) {
-                card.classList.toggle('selected');
-                updateHorarios();
-            }
-        });
-
-        btnSelectAll.addEventListener('click', () => {
-            allProfesionalCards.forEach(card => card.classList.add('selected'));
+        profesionalList.addEventListener("click", (e) => {
+          const card = e.target.closest(".profesional-card");
+          if (card) {
+            card.classList.toggle("selected");
             updateHorarios();
+          }
         });
 
-        btnClearAll.addEventListener('click', () => {
-            allProfesionalCards.forEach(card => card.classList.remove('selected'));
-            updateHorarios();
+        btnSelectAll.addEventListener("click", () => {
+          allProfesionalCards.forEach((card) => card.classList.add("selected"));
+          updateHorarios();
         });
 
-        horariosList.addEventListener('click', (e) => {
-            const slot = e.target.closest('.horario-slot');
-            if (slot) {
-                if (selectedTimeSlot && selectedTimeSlot !== slot) {
-                    selectedTimeSlot.classList.remove('selected', 'btn-primario');
-                    selectedTimeSlot.classList.add('btn-outline');
-                }
-                slot.classList.toggle('selected');
-                slot.classList.toggle('btn-outline');
-                slot.classList.toggle('btn-primario');
-                
-                selectedTimeSlot = slot.classList.contains('selected') ? slot : null;
-                updateConfirmButtonState();
+        btnClearAll.addEventListener("click", () => {
+          allProfesionalCards.forEach((card) =>
+            card.classList.remove("selected")
+          );
+          updateHorarios();
+        });
+
+        horariosList.addEventListener("click", (e) => {
+          const slot = e.target.closest(".horario-slot");
+          if (slot) {
+            if (selectedTimeSlot && selectedTimeSlot !== slot) {
+              selectedTimeSlot.classList.remove("selected", "btn-primario");
+              selectedTimeSlot.classList.add("btn-outline");
             }
+            slot.classList.toggle("selected");
+            slot.classList.toggle("btn-outline");
+            slot.classList.toggle("btn-primario");
+
+            selectedTimeSlot = slot.classList.contains("selected")
+              ? slot
+              : null;
+            updateConfirmButtonState();
+          }
         });
 
         // --- 7. Estado Inicial ---
         updateHorarios(); // Llama al inicio (mostrará placeholder)
-
       });
     </script>
-</head>
-<body>
+  </head>
+  <body>
+    <header class="header-home">
+      <div class="logo">
+        <img
+          src="img/logo-opcion1.png"
+          alt="Vida Med"
+          onclick="window.location.href='socioHome.html'"
+        />
+      </div>
 
-        <header class="header-home">
-    <div class="logo">
-      <img src="img/vidaMedLogo.png" alt="Vida Med" onclick="window.location.href='socioHome.html'">
-    </div>
-
-    <nav class="menu-socio">
-      <a href="socioHome.html">Inicio</a>
-      <a href="misTurnos.html">Mis Turnos</a>
-      <a href="panel-credencial.html">Credencial</a>
-      <a href="mi-perfil.html">Mi Perfil</a>
-      <a href="tramites.html">Mis Trámites</a>
-      <a href="pagos.html">Pagos</a>
-      <a href="socioPrevencion.html">Prevencion</a>
-    </nav>
+      <nav class="menu-socio">
+        <a href="socioHome.html">Inicio</a>
+        <a href="misTurnos.html">Mis Turnos</a>
+        <a href="panel-credencial.html">Credencial</a>
+        <a href="mi-perfil.html">Mi Perfil</a>
+        <a href="tramites.html">Mis Trámites</a>
+        <a href="pagos.html">Pagos</a>
+        <a href="socioPrevencion.html">Prevencion</a>
+      </nav>
 
       <div class="user-info">
         <span id="nombreUsuario"></span>
-        <button id="logoutBtn" class="btn-cerrar" onclick="cerrarSesion()">Cerrar sesión</button>
+        <button id="logoutBtn" class="btn-cerrar" onclick="cerrarSesion()">
+          Cerrar sesión
+        </button>
       </div>
     </header>
 
     <main class="hub-container">
-
-        <div class="context-bar">
-            <div>
-                <span class="context-label">Especialidad:</span>
-                <span id="context-especialidad" class="context-value">Cargando...</span>
-            </div>
-            <div>
-                <span class="context-label">Centro Médico:</span>
-                <span id="context-centro" class="context-value">Cargando...</span>
-            </div>
-            <a href="agregar_turno.html" class="context-change-link">Cambiar</a>
+      <div class="context-bar">
+        <div>
+          <span class="context-label">Especialidad:</span>
+          <span id="context-especialidad" class="context-value"
+            >Cargando...</span
+          >
         </div>
-        
-        <h1 class="titulo-pagina">Elegir profesional</h1>
-
-        <div class="turno-selection-grid">
-
-            <div class="profesional-list-col">
-                <div class="card-vida-med">
-                    <h2 class="card-subtitulo">Profesionales disponibles</h2>
-                    
-                    <div class="profesional-list-filters">
-                        <!-- CAMBIO: Clases de botones invertidas -->
-                        <button id="btn-select-all" class="btn btn-outline btn-small">Seleccionar Todos</button>
-                        <button id="btn-clear-all" class="btn btn-secundario btn-small">Limpiar</button>
-                    </div>
-
-                    <div id="profesional-list" class="profesional-list-container">
-                        
-                        <article class="profesional-card" data-id="1">
-                            <img src="https://placehold.co/60x60/00a8a8/FFF?text=ML" alt="Foto Dr. Martín López" class="profesional-avatar">
-                            <div class="profesional-info">
-                                <h3>Dr. Martín López</h3>
-                                <p>Clínico Médico</p>
-                            </div>
-                        </article>
-
-                        <article class="profesional-card" data-id="2">
-                            <img src="https://placehold.co/60x60/00a8a8/FFF?text=AF" alt="Foto Lic. Ana Fernández" class="profesional-avatar">
-                            <div class="profesional-info">
-                                <h3>Lic. Ana Fernández</h3>
-                                <p>Clínica Médica</p>
-                            </div>
-                        </article>
-                        
-                        <article class="profesional-card" data-id="3">
-                            <img src="https://placehold.co/60x60/00a8a8/FFF?text=LG" alt="Foto Dra. Laura Giménez" class="profesional-avatar">
-                            <div class="profesional-info">
-                                <h3>Dra. Laura Giménez</h3>
-                                <p>Clínica Médica</p>
-                            </div>
-                        </article>
-                        
-                        <article class="profesional-card" data-id="4">
-                            <img src="https://placehold.co/60x60/00a8a8/FFF?text=EC" alt="Foto Dra. Elena Costa" class="profesional-avatar">
-                            <div class="profesional-info">
-                                <h3>Dra. Elena Costa</h3>
-                                <p>Clínica Médica</p>
-                            </div>
-                        </article>
-
-                    </div>
-                </div>
-            </div>
-
-            <div class="horarios-col">
-                
-                <div class="card-vida-med">
-                    <h2 class="card-subtitulo">Elegí una fecha</h2>
-                    <!-- Tu ID 'calendar' es el correcto -->
-                    <div id="calendar"></div>
-                </div>
-
-                <div class="card-vida-med">
-                    <h2 class="card-subtitulo">Horarios disponibles</h2>
-                    <div id="horarios-list" class="horarios-list-container">
-                        <p id="horarios-placeholder" class="horarios-placeholder">Seleccioná un profesional y luego un día en el calendario.</p>
-                        </div>
-                </div>
-
-            </div>
+        <div>
+          <span class="context-label">Centro Médico:</span>
+          <span id="context-centro" class="context-value">Cargando...</span>
         </div>
+        <a href="agregar_turno.html" class="context-change-link">Cambiar</a>
+      </div>
 
-        <div class="confirm-bar">
-            <button id="btn-confirmar" class="btn btn-primario btn-grande" disabled>Confirmar Turno</button>
+      <h1 class="titulo-pagina">Elegir profesional</h1>
+
+      <div class="turno-selection-grid">
+        <div class="profesional-list-col">
+          <div class="card-vida-med">
+            <h2 class="card-subtitulo">Profesionales disponibles</h2>
+
+            <div class="profesional-list-filters">
+              <!-- CAMBIO: Clases de botones invertidas -->
+              <button id="btn-select-all" class="btn btn-outline btn-small">
+                Seleccionar Todos
+              </button>
+              <button id="btn-clear-all" class="btn btn-secundario btn-small">
+                Limpiar
+              </button>
+            </div>
+
+            <div id="profesional-list" class="profesional-list-container">
+              <article class="profesional-card" data-id="1">
+                <img
+                  src="https://placehold.co/60x60/00a8a8/FFF?text=ML"
+                  alt="Foto Dr. Martín López"
+                  class="profesional-avatar"
+                />
+                <div class="profesional-info">
+                  <h3>Dr. Martín López</h3>
+                  <p>Clínico Médico</p>
+                </div>
+              </article>
+
+              <article class="profesional-card" data-id="2">
+                <img
+                  src="https://placehold.co/60x60/00a8a8/FFF?text=AF"
+                  alt="Foto Lic. Ana Fernández"
+                  class="profesional-avatar"
+                />
+                <div class="profesional-info">
+                  <h3>Lic. Ana Fernández</h3>
+                  <p>Clínica Médica</p>
+                </div>
+              </article>
+
+              <article class="profesional-card" data-id="3">
+                <img
+                  src="https://placehold.co/60x60/00a8a8/FFF?text=LG"
+                  alt="Foto Dra. Laura Giménez"
+                  class="profesional-avatar"
+                />
+                <div class="profesional-info">
+                  <h3>Dra. Laura Giménez</h3>
+                  <p>Clínica Médica</p>
+                </div>
+              </article>
+
+              <article class="profesional-card" data-id="4">
+                <img
+                  src="https://placehold.co/60x60/00a8a8/FFF?text=EC"
+                  alt="Foto Dra. Elena Costa"
+                  class="profesional-avatar"
+                />
+                <div class="profesional-info">
+                  <h3>Dra. Elena Costa</h3>
+                  <p>Clínica Médica</p>
+                </div>
+              </article>
+            </div>
+          </div>
         </div>
 
+        <div class="horarios-col">
+          <div class="card-vida-med">
+            <h2 class="card-subtitulo">Elegí una fecha</h2>
+            <!-- Tu ID 'calendar' es el correcto -->
+            <div id="calendar"></div>
+          </div>
+
+          <div class="card-vida-med">
+            <h2 class="card-subtitulo">Horarios disponibles</h2>
+            <div id="horarios-list" class="horarios-list-container">
+              <p id="horarios-placeholder" class="horarios-placeholder">
+                Seleccioná un profesional y luego un día en el calendario.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="confirm-bar">
+        <button id="btn-confirmar" class="btn btn-primario btn-grande" disabled>
+          Confirmar Turno
+        </button>
+      </div>
     </main>
     <footer class="vm-footer">
-  <div class="vm-footer-grid">
+      <div class="vm-footer-grid">
+        <!-- COLUMNA 1: LOGO + SLOGAN -->
+        <div class="vm-footer-col">
+          <img
+            src="img/logo-opcion1.png"
+            class="vm-footer-logo"
+            alt="Vida Med"
+          />
+          <p class="vm-footer-slogan">Tu salud, nuestra prioridad.</p>
+        </div>
 
-    <!-- COLUMNA 1: LOGO + SLOGAN -->
-    <div class="vm-footer-col">
-      <img src="img/vidaMedLogo.png" class="vm-footer-logo" alt="Vida Med">
-      <p class="vm-footer-slogan">Tu salud, nuestra prioridad.</p>
-    </div>
+        <!-- COLUMNA 2: ENLACES -->
+        <div class="vm-footer-col">
+          <h4 class="vm-footer-title">Enlaces útiles</h4>
+          <ul class="vm-footer-list">
+            <li><a href="socioHome.html">Inicio</a></li>
+            <li><a href="misTurnos.html">Turnos</a></li>
+            <li><a href="tramites.html">Trámites</a></li>
+            <li><a href="pagos.html">Pagos</a></li>
+            <li><a href="mi-perfil.html">Mi Perfil</a></li>
+            <li><a href="panel-credencial.html">Credencial</a></li>
+            <li><a href="socioPrevencion.html">Prevención</a></li>
+          </ul>
+        </div>
 
-    <!-- COLUMNA 2: ENLACES -->
-    <div class="vm-footer-col">
-      <h4 class="vm-footer-title">Enlaces útiles</h4>
-      <ul class="vm-footer-list">
-        <li><a href="socioHome.html">Inicio</a></li>
-        <li><a href="misTurnos.html">Turnos</a></li>
-        <li><a href="tramites.html">Trámites</a></li>
-        <li><a href="pagos.html">Pagos</a></li>
-        <li><a href="mi-perfil.html">Mi Perfil</a></li>
-        <li><a href="panel-credencial.html">Credencial</a></li>
-        <li><a href="socioPrevencion.html">Prevención</a></li>
-      </ul>
-    </div>
-
-    <!-- COLUMNA 3: CONTACTO -->
-    <div class="vm-footer-col">
-      <h4 class="vm-footer-title">Contacto</h4>
-      <p class="vm-footer-contact">Tel: 0800-123-VIDA</p>
-      <p class="vm-footer-contact">Email: info@vidamed.com.ar</p>
-      <p class="vm-footer-copy">© 2025 Vida Med — Todos los derechos reservados.</p>
-    </div>
-
-  </div>
-</footer>
+        <!-- COLUMNA 3: CONTACTO -->
+        <div class="vm-footer-col">
+          <h4 class="vm-footer-title">Contacto</h4>
+          <p class="vm-footer-contact">Tel: 0800-123-VIDA</p>
+          <p class="vm-footer-contact">Email: info@vidamed.com.ar</p>
+          <p class="vm-footer-copy">
+            © 2025 Vida Med — Todos los derechos reservados.
+          </p>
+        </div>
+      </div>
+    </footer>
     <script src="js/socioHome.js"></script>
-
-</body>
+  </body>
 </html>

@@ -6,7 +6,7 @@
 
 .encabezado-estudios h1 {
   font-size: 2rem;
-  color: #1d4ed8;
+  color: #000000;
   margin-bottom: 6px;
 }
 
@@ -27,7 +27,7 @@
   padding: 20px;
   border-radius: 14px;
   box-shadow: 0 4px 10px rgba(30, 64, 175, 0.15);
-  border-left: 6px solid #1d4ed8;
+  border-left: 6px solid #00a8a8;
   transition: transform 0.15s ease;
 }
 
@@ -83,7 +83,7 @@
 .recomendaciones h2 {
   margin-bottom: 12px;
   font-size: 1.4rem;
-  color: #1d4ed8;
+  color: #000000;
 }
 
 .rec-box {
@@ -109,7 +109,7 @@
 }
 
 .historial h2 {
-  color: #1d4ed8;
+  color: #000000;
   margin-bottom: 12px;
 }
 
@@ -150,43 +150,59 @@
   padding: 8px 10px;
   border-radius: 8px;
   border: none;
-  background:#2e2f75;
+  background: #2e2f75;
   color: white;
-  font-weight:600;
-  cursor:pointer;
-  margin:6px 6px 0 0;
+  font-weight: 600;
+  cursor: pointer;
+  margin: 6px 6px 0 0;
 }
-.btn-small:hover{ opacity:0.95; }
+.btn-small:hover {
+  opacity: 0.95;
+}
 
-.card-actions { margin-top:10px; display:flex; gap:8px; justify-content:center; flex-wrap:wrap; }
+.card-actions {
+  margin-top: 10px;
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
 
 /* Modal */
 .modal {
   position: fixed;
-  inset:0;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background: rgba(0,0,0,0.45);
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.45);
   z-index: 120;
 }
-.modal.hidden { display:none; }
+.modal.hidden {
+  display: none;
+}
 .modal-inner {
   width: 92%;
   max-width: 520px;
   background: #fff;
   padding: 18px;
   border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 .modal-close {
-  background:transparent;
-  border:none;
-  font-size:22px;
-  float:right;
-  cursor:pointer;
+  background: transparent;
+  border: none;
+  font-size: 22px;
+  float: right;
+  cursor: pointer;
 }
-.modal-actions { display:flex; gap:8px; margin-top:12px; justify-content:flex-end; flex-wrap:wrap;}
+.modal-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
 
 /* Responsive */
 @media (min-width: 700px) {

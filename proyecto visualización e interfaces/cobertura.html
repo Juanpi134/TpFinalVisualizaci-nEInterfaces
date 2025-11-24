@@ -1,138 +1,168 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Cobertura | Vida Med</title>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Cobertura | Vida Med</title>
 
-  <!-- Leaflet (mapa) -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" 
-        integrity="sha256-sA+e2bqH6kGk2gkQ4v1mX4q1nqD2Gv1d3v0mH0h0ZQA=" crossorigin=""/>
-  <!-- Fuentes y CSS -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/cobertura.css">
-</head>
-<body>
+    <!-- Leaflet (mapa) -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-sA+e2bqH6kGk2gkQ4v1mX4q1nqD2Gv1d3v0mH0h0ZQA="
+      crossorigin=""
+    />
+    <!-- Fuentes y CSS -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/cobertura.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="container inner">
+        <a href="index.html" class="logo"
+          ><img src="img/logo-opcion1.png" alt="Vida Med" /> Vida Med</a
+        >
+        <nav class="nav">
+          <a href="index.html">Inicio</a>
+          <a href="planes.html">Planes</a>
+          <a href="prestadores.html">Prestadores</a>
+          <a href="cartilla.html">Cartilla</a>
+          <a href="socios.html">Área socios</a>
+        </nav>
+      </div>
+    </header>
 
-  <header class="header">
-    <div class="container inner">
-      <a href="index.html" class="logo"><img src="img/vidaMedLogo.png" alt="Vida Med"> Vida Med</a>
-      <nav class="nav">
-        <a href="index.html">Inicio</a>
-        <a href="planes.html">Planes</a>
-        <a href="prestadores.html">Prestadores</a>
-        <a href="cartilla.html">Cartilla</a>
-        <a href="socios.html">Área socios</a>
-      </nav>
-    </div>
-  </header>
+    <main class="main container">
+      <section class="top">
+        <h1>Verificá cobertura en tu domicilio</h1>
+        <p class="lead">
+          Ingresá tu provincia y localidad o código postal. Te mostramos si Vida
+          Med puede atender en tu zona y qué planes tienen cobertura.
+        </p>
 
-  <main class="main container">
-    <section class="top">
-      <h1>Verificá cobertura en tu domicilio</h1>
-      <p class="lead">Ingresá tu provincia y localidad o código postal. Te mostramos si Vida Med puede atender en tu zona y qué planes tienen cobertura.</p>
+        <div class="panel form-panel">
+          <form id="formCobertura" autocomplete="off">
+            <div class="row">
+              <div class="col">
+                <label for="provincia">Provincia</label>
+                <select id="provincia" required>
+                  <option value="">Seleccioná provincia</option>
+                  <option value="Buenos Aires">Buenos Aires</option>
+                  <option value="Ciudad Autónoma de Buenos Aires">CABA</option>
+                  <option value="Córdoba">Córdoba</option>
+                  <option value="Santa Fe">Santa Fe</option>
+                  <option value="Mendoza">Mendoza</option>
+                  <option value="Formosa">Formosa</option>
+                  <option value="Otra">Otra</option>
+                </select>
+              </div>
 
-      <div class="panel form-panel">
-        <form id="formCobertura" autocomplete="off">
+              <div class="col">
+                <label for="localidad">Localidad / Código Postal</label>
+                <input
+                  id="localidad"
+                  placeholder="Ej: La Plata / 1900"
+                  required
+                />
+              </div>
+
+              <div class="col actions-col">
+                <label>&nbsp;</label>
+                <div class="actions">
+                  <button type="submit" class="btn btn-primary">
+                    Verificar cobertura
+                  </button>
+                  <button type="button" id="btnContact" class="btn btn-outline">
+                    Quiero que me contacten
+                  </button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <section id="resultado" class="panel resultado hidden" aria-live="polite">
+        <!-- contenido dinámico por JS -->
+      </section>
+
+      <section class="panel mapa-panel hidden" id="mapaWrap">
+        <h3>Prestadores cercanos</h3>
+        <div id="map" style="height: 320px"></div>
+        <p class="map-note">
+          Los marcadores son ejemplos de prestadores dentro de la cartilla.
+        </p>
+      </section>
+
+      <section id="contactModal" class="panel contact-panel hidden">
+        <h3>Solicitar contacto</h3>
+        <p>
+          Dejanos tus datos y un asesor se comunicará para verificar cobertura y
+          ayudarte con la afiliación.
+        </p>
+        <form id="formContact">
           <div class="row">
             <div class="col">
-              <label for="provincia">Provincia</label>
-              <select id="provincia" required>
-                <option value="">Seleccioná provincia</option>
-                <option value="Buenos Aires">Buenos Aires</option>
-                <option value="Ciudad Autónoma de Buenos Aires">CABA</option>
-                <option value="Córdoba">Córdoba</option>
-                <option value="Santa Fe">Santa Fe</option>
-                <option value="Mendoza">Mendoza</option>
-                <option value="Formosa">Formosa</option>
-                <option value="Otra">Otra</option>
-              </select>
+              <label for="c_nombre">Nombre completo</label>
+              <input id="c_nombre" required />
             </div>
-
             <div class="col">
-              <label for="localidad">Localidad / Código Postal</label>
-              <input id="localidad" placeholder="Ej: La Plata / 1900" required />
+              <label for="c_email">Email</label>
+              <input id="c_email" type="email" required />
             </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <label for="c_tel">Teléfono</label>
+              <input id="c_tel" placeholder="+54 9 ..." />
+            </div>
+            <div class="col">
+              <label for="c_msg">Comentario (opcional)</label>
+              <input id="c_msg" />
+            </div>
+          </div>
 
+          <div class="row">
             <div class="col actions-col">
-              <label>&nbsp;</label>
-              <div class="actions">
-                <button type="submit" class="btn btn-primary">Verificar cobertura</button>
-                <button type="button" id="btnContact" class="btn btn-outline">Quiero que me contacten</button>
-              </div>
+              <button class="btn btn-primary" type="submit">
+                Enviar solicitud
+              </button>
+              <button id="cancelContact" type="button" class="btn btn-outline">
+                Cancelar
+              </button>
             </div>
           </div>
         </form>
-      </div>
-    </section>
+      </section>
+    </main>
 
-    <section id="resultado" class="panel resultado hidden" aria-live="polite">
-      <!-- contenido dinámico por JS -->
-    </section>
-
-    <section class="panel mapa-panel hidden" id="mapaWrap">
-      <h3>Prestadores cercanos</h3>
-      <div id="map" style="height: 320px;"></div>
-      <p class="map-note">Los marcadores son ejemplos de prestadores dentro de la cartilla.</p>
-    </section>
-
-    <section id="contactModal" class="panel contact-panel hidden">
-      <h3>Solicitar contacto</h3>
-      <p>Dejanos tus datos y un asesor se comunicará para verificar cobertura y ayudarte con la afiliación.</p>
-      <form id="formContact">
-        <div class="row">
-          <div class="col">
-            <label for="c_nombre">Nombre completo</label>
-            <input id="c_nombre" required />
-          </div>
-          <div class="col">
-            <label for="c_email">Email</label>
-            <input id="c_email" type="email" required />
-          </div>
+    <footer class="footer">
+      <div class="container inner">
+        <div>
+          <img src="img/vidaMedLogo.png" alt="Vida Med" style="height: 36px" />
+          <p class="muted">Tu salud, nuestra prioridad.</p>
         </div>
-        <div class="row">
-          <div class="col">
-            <label for="c_tel">Teléfono</label>
-            <input id="c_tel" placeholder="+54 9 ..." />
-          </div>
-          <div class="col">
-            <label for="c_msg">Comentario (opcional)</label>
-            <input id="c_msg" />
-          </div>
+        <div class="foot-links">
+          <a href="planes.html">Planes</a>
+          <a href="prestadores.html">Prestadores</a>
         </div>
-
-        <div class="row">
-          <div class="col actions-col">
-            <button class="btn btn-primary" type="submit">Enviar solicitud</button>
-            <button id="cancelContact" type="button" class="btn btn-outline">Cancelar</button>
-          </div>
+        <div class="foot-contact">
+          <p>0800-123-VIDA</p>
+          <p>info@vidamed.com.ar</p>
         </div>
-      </form>
-    </section>
-
-  </main>
-
-  <footer class="footer">
-    <div class="container inner">
-      <div>
-        <img src="img/vidaMedLogo.png" alt="Vida Med" style="height:36px;">
-        <p class="muted">Tu salud, nuestra prioridad.</p>
       </div>
-      <div class="foot-links">
-        <a href="planes.html">Planes</a>
-        <a href="prestadores.html">Prestadores</a>
-      </div>
-      <div class="foot-contact">
-        <p>0800-123-VIDA</p>
-        <p>info@vidamed.com.ar</p>
-      </div>
-    </div>
-  </footer>
+    </footer>
 
-  <!-- Leaflet -->
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-    integrity="sha256-o9N1j7kF0M1o4v2rB5w0wUDjo2JmGqkP4syvM5v9g2U=" crossorigin=""></script>
+    <!-- Leaflet -->
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-o9N1j7kF0M1o4v2rB5w0wUDjo2JmGqkP4syvM5v9g2U="
+      crossorigin=""
+    ></script>
 
-  <script src="js/cobertura.js"></script>
-</body>
+    <script src="js/cobertura.js"></script>
+  </body>
 </html>

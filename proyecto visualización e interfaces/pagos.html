@@ -1,153 +1,164 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/pagos.css">
-    <link rel="stylesheet" href="css/header.css">
-    <link rel="stylesheet" href="css/footer.css">
-
-</head>
-<body>
-   <header class="header-home">
-    <div class="logo">
-      <img src="img/vidaMedLogo.png" alt="Vida Med" onclick="window.location.href='socioHome.html'">
-    </div>
-
-    <nav class="menu-socio">
-      <a href="socioHome.html">Inicio</a>
-      <a href="misTurnos.html">Mis Turnos</a>
-      <a href="panel-credencial.html">Credencial</a>
-      <a href="mi-perfil.html">Mi Perfil</a>
-      <a href="tramites.html">Mis Trámites</a>
-      <a href="pagos.html" class="active">Pagos</a>
-      <a href="socioPrevencion.html">Prevencion</a>
-    </nav>
-
-    <div class="user-info">
-      <span id="nombreUsuario"></span>
-      <button id="logoutBtn" class="btn-cerrar" onclick="cerrarSesion()">Cerrar sesión</button>
-    </div>
-  </header>
-
-  <header class="header">
-    <h2>Pagos</h2>
-  </header>
-
-  <main class="main">
-
-    <!-- Estado -->
-    <section class="card">
-      <h3>Tu estado</h3>
-      <div class="saldo">
-        <p class="label">Saldo actual</p>
-        <p class="monto">$12.450</p>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/pagos.css" />
+    <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/footer.css" />
+  </head>
+  <body>
+    <header class="header-home">
+      <div class="logo">
+        <img
+          src="img/logo-opcion1.png"
+          alt="Vida Med"
+          onclick="window.location.href='socioHome.html'"
+        />
       </div>
 
-      <div class="acciones">
-        <button class="btn primary" onclick="abrirModal()">Nuevo pago</button>
-        <button class="btn outline">Descargar comprobantes</button>
+      <nav class="menu-socio">
+        <a href="socioHome.html">Inicio</a>
+        <a href="misTurnos.html">Mis Turnos</a>
+        <a href="panel-credencial.html">Credencial</a>
+        <a href="mi-perfil.html">Mi Perfil</a>
+        <a href="tramites.html">Mis Trámites</a>
+        <a href="pagos.html" class="active">Pagos</a>
+        <a href="socioPrevencion.html">Prevencion</a>
+      </nav>
+
+      <div class="user-info">
+        <span id="nombreUsuario"></span>
+        <button id="logoutBtn" class="btn-cerrar" onclick="cerrarSesion()">
+          Cerrar sesión
+        </button>
       </div>
-    </section>
+    </header>
 
-    <!-- Métodos -->
-    <section class="card">
-      <h3>Métodos de pago</h3>
+    <header class="header">
+      <h2>Pagos</h2>
+    </header>
 
-      <div class="cards-list">
-        <div class="card-method">
-          <span>Visa •••• 4123</span>
-          <small class="meta">Preferido</small>
+    <main class="main">
+      <!-- Estado -->
+      <section class="card">
+        <h3>Tu estado</h3>
+        <div class="saldo">
+          <p class="label">Saldo actual</p>
+          <p class="monto">$12.450</p>
         </div>
 
-        <div class="card-method">
-          <span>MercadoPago</span>
+        <div class="acciones">
+          <button class="btn primary" onclick="abrirModal()">Nuevo pago</button>
+          <button class="btn outline">Descargar comprobantes</button>
+        </div>
+      </section>
+
+      <!-- Métodos -->
+      <section class="card">
+        <h3>Métodos de pago</h3>
+
+        <div class="cards-list">
+          <div class="card-method">
+            <span>Visa •••• 4123</span>
+            <small class="meta">Preferido</small>
+          </div>
+
+          <div class="card-method">
+            <span>MercadoPago</span>
+          </div>
+        </div>
+
+        <button class="btn sec">Agregar método</button>
+      </section>
+
+      <!-- Historial -->
+      <section class="card">
+        <div class="hist-head">
+          <h3>Historial</h3>
+        </div>
+
+        <table class="table" id="tabla">
+          <thead>
+            <tr>
+              <th>Fecha</th>
+              <th>Detalle</th>
+              <th>Monto</th>
+              <th>Estado</th>
+            </tr>
+          </thead>
+
+          <tbody id="listaPagos"></tbody>
+        </table>
+      </section>
+    </main>
+
+    <!-- Modal -->
+    <div id="modal" class="modal hidden">
+      <div class="modal-content">
+        <h4>Registrar pago</h4>
+
+        <label>Detalle</label>
+        <input type="text" id="detalle" />
+
+        <label>Monto</label>
+        <input type="number" id="monto" />
+
+        <div class="modal-actions">
+          <button class="btn outline" onclick="cerrarModal()">Cancelar</button>
+          <button class="btn primary" onclick="guardarPago()">Guardar</button>
         </div>
       </div>
+    </div>
 
-      <button class="btn sec">Agregar método</button>
-    </section>
+    <footer class="vm-footer">
+      <div class="vm-footer-grid">
+        <!-- COLUMNA 1: LOGO + SLOGAN -->
+        <div class="vm-footer-col">
+          <img
+            src="img/logo-opcion1.png"
+            class="vm-footer-logo"
+            alt="Vida Med"
+          />
+          <p class="vm-footer-slogan">Tu salud, nuestra prioridad.</p>
+        </div>
 
-    <!-- Historial -->
-    <section class="card">
-      <div class="hist-head">
-        <h3>Historial</h3>
+        <!-- COLUMNA 2: ENLACES -->
+        <div class="vm-footer-col">
+          <h4 class="vm-footer-title">Enlaces útiles</h4>
+          <ul class="vm-footer-list">
+            <li><a href="socioHome.html">Inicio</a></li>
+            <li><a href="misTurnos.html">Turnos</a></li>
+            <li><a href="tramites.html">Trámites</a></li>
+            <li><a href="pagos.html">Pagos</a></li>
+            <li><a href="mi-perfil.html">Mi Perfil</a></li>
+            <li><a href="panel-credencial.html">Credencial</a></li>
+            <li><a href="socioPrevencion.html">Prevención</a></li>
+          </ul>
+        </div>
+
+        <!-- COLUMNA 3: CONTACTO -->
+        <div class="vm-footer-col">
+          <h4 class="vm-footer-title">Contacto</h4>
+          <p class="vm-footer-contact">Tel: 0800-123-VIDA</p>
+          <p class="vm-footer-contact">Email: info@vidamed.com.ar</p>
+          <p class="vm-footer-copy">
+            © 2025 Vida Med — Todos los derechos reservados.
+          </p>
+        </div>
       </div>
+    </footer>
 
-      <table class="table" id="tabla">
-        <thead>
-          <tr>
-            <th>Fecha</th>
-            <th>Detalle</th>
-            <th>Monto</th>
-            <th>Estado</th>
-          </tr>
-        </thead>
-
-        <tbody id="listaPagos"></tbody>
-      </table>
-    </section>
-
-  </main>
-
-  <!-- Modal -->
-  <div id="modal" class="modal hidden">
-    <div class="modal-content">
-      <h4>Registrar pago</h4>
-
-      <label>Detalle</label>
-      <input type="text" id="detalle">
-
-      <label>Monto</label>
-      <input type="number" id="monto">
-
-      <div class="modal-actions">
-        <button class="btn outline" onclick="cerrarModal()">Cancelar</button>
-        <button class="btn primary" onclick="guardarPago()">Guardar</button>
-      </div>
-    </div>
-  </div>
-
-
-<footer class="vm-footer">
-  <div class="vm-footer-grid">
-
-    <!-- COLUMNA 1: LOGO + SLOGAN -->
-    <div class="vm-footer-col">
-      <img src="img/vidaMedLogo.png" class="vm-footer-logo" alt="Vida Med">
-      <p class="vm-footer-slogan">Tu salud, nuestra prioridad.</p>
-    </div>
-
-    <!-- COLUMNA 2: ENLACES -->
-    <div class="vm-footer-col">
-      <h4 class="vm-footer-title">Enlaces útiles</h4>
-      <ul class="vm-footer-list">
-        <li><a href="socioHome.html">Inicio</a></li>
-        <li><a href="misTurnos.html">Turnos</a></li>
-        <li><a href="tramites.html">Trámites</a></li>
-        <li><a href="pagos.html">Pagos</a></li>
-        <li><a href="mi-perfil.html">Mi Perfil</a></li>
-        <li><a href="panel-credencial.html">Credencial</a></li>
-        <li><a href="socioPrevencion.html">Prevención</a></li>
-      </ul>
-    </div>
-
-    <!-- COLUMNA 3: CONTACTO -->
-    <div class="vm-footer-col">
-      <h4 class="vm-footer-title">Contacto</h4>
-      <p class="vm-footer-contact">Tel: 0800-123-VIDA</p>
-      <p class="vm-footer-contact">Email: info@vidamed.com.ar</p>
-      <p class="vm-footer-copy">© 2025 Vida Med — Todos los derechos reservados.</p>
-    </div>
-
-  </div>
-</footer>
-
-
-<script src="js/socioHome.js"></script>
-<script src="js/pagos.js"></script>
-</body>
+    <script src="js/socioHome.js"></script>
+    <script src="js/pagos.js"></script>
+  </body>
 </html>
