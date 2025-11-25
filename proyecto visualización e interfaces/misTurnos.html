@@ -1,243 +1,314 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mis Turnos - Vida Med</title>
 
     <!-- 1. Fuente (Montserrat) -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    
-    <!-- 2. Link al CSS Unificado -->
-    <link rel="stylesheet" type="text/css" href="css/misTurnos.css">
-    <link rel="stylesheet" type="text/css" href="css/turnosglobal.css">
-    <link rel="stylesheet" href="css/header.css">
-    <link rel="stylesheet" href="css/footer.css">
-</head>
-<body>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
 
+    <!-- 2. Link al CSS Unificado -->
+    <link rel="stylesheet" type="text/css" href="css/misTurnos.css" />
+    <link rel="stylesheet" type="text/css" href="css/turnosglobal.css" />
+    <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/footer.css" />
+  </head>
+  <body>
     <!-- Header adaptado al nuevo estilo -->
     <header class="header-home">
-    <div class="logo">
-      <img src="img/vidaMedLogo.png" alt="Vida Med" onclick="window.location.href='socioHome.html'">
-    </div>
+      <div class="logo">
+        <img
+          src="img/logo-opcion2.png"
+          alt="Vida Med"
+          onclick="window.location.href='socioHome.html'"
+        />
+      </div>
 
-    <nav class="menu-socio">
-      <a href="socioHome.html">Inicio</a>
-      <a href="misTurnos.html" class="active">Mis Turnos</a>
-      <a href="panel-credencial.html">Credencial</a>
-      <a href="mi-perfil.html">Mi Perfil</a>
-      <a href="tramites.html">Mis Trámites</a>
-      <a href="pagos.html">Pagos</a>
-      <a href="socioPrevencion.html">Prevencion</a>
-    </nav>
+      <nav class="menu-socio">
+        <a href="socioHome.html">Inicio</a>
+        <a href="misTurnos.html" class="active">Mis Turnos</a>
+        <a href="panel-credencial.html">Credencial</a>
+        <a href="mi-perfil.html">Mi Perfil</a>
+        <a href="tramites.html">Mis Trámites</a>
+        <a href="pagos.html">Pagos</a>
+        <a href="socioPrevencion.html">Prevencion</a>
+      </nav>
 
-    <div class="user-info">
-      <span id="nombreUsuario"></span>
-      <button id="logoutBtn" class="btn-cerrar" onclick="cerrarSesion()">Cerrar sesión</button>
-    </div>
-  </header>
+      <div class="user-info">
+        <span id="nombreUsuario"></span>
+        <button id="logoutBtn" class="btn-cerrar" onclick="cerrarSesion()">
+          Cerrar sesión
+        </button>
+      </div>
+    </header>
 
     <main class="hub-container">
-        
-        <!-- Título adaptado -->
-        <h1 class="titulo-pagina">Mis Turnos</h1>
+      <!-- Título adaptado -->
+      <h1 class="titulo-pagina">Mis Turnos</h1>
 
-        <div class="hub-grid">
+      <div class="hub-grid">
+        <!-- Columna Principal -->
+        <div class="col-principal">
+          <!-- Card adaptada -->
+          <section class="card-vida-med">
+            <h2 class="card-subtitulo">Agregar nuevo turno</h2>
+            <!-- Botón adaptado -->
+            <a
+              href="agregar-turno.html"
+              class="btn btn-primario btn-grande full-width"
+              >Agendar una nueva consulta</a
+            >
+          </section>
 
-            <!-- Columna Principal -->
-            <div class="col-principal">
-                
-                <!-- Card adaptada -->
-                <section class="card-vida-med">
-                    <h2 class="card-subtitulo">Agregar nuevo turno</h2>
-                    <!-- Botón adaptado -->
-                    <a href="agregar-turno.html" class="btn btn-primario btn-grande full-width">Agendar una nueva consulta</a>
-                </section>
+          <section class="card-vida-med">
+            <h2 class="card-subtitulo">Próximos turnos</h2>
+            <div class="grilla-turnos">
+              <article class="turno-card">
+                <div class="turno-card-icono">🩺</div>
+                <div class="turno-card-info">
+                  <h3>Clínica Médica</h3>
+                  <p>Dr. Martín López</p>
+                  <p><strong>Mañana, 16 Nov - 10:30 hs</strong></p>
+                </div>
+              </article>
 
-                <section class="card-vida-med">
-                    <h2 class="card-subtitulo">Próximos turnos</h2>
-                    <div class="grilla-turnos">
-                        
-                        <article class="turno-card">
-                            <div class="turno-card-icono">🩺</div>
-                            <div class="turno-card-info">
-                                <h3>Clínica Médica</h3>
-                                <p>Dr. Martín López</p>
-                                <p><strong>Mañana, 16 Nov - 10:30 hs</strong></p>
-                            </div>
-                        </article>
+              <article class="turno-card">
+                <div class="turno-card-icono">🧠</div>
+                <div class="turno-card-info">
+                  <h3>Salud Mental</h3>
+                  <p>Lic. Ana Fernández</p>
+                  <p><strong>Vie, 21 Nov - 17:00 hs</strong></p>
+                </div>
+              </article>
 
-                        <article class="turno-card">
-                            <div class="turno-card-icono">🧠</div>
-                            <div class="turno-card-info">
-                                <h3>Salud Mental</h3>
-                                <p>Lic. Ana Fernández</p>
-                                <p><strong>Vie, 21 Nov - 17:00 hs</strong></p>
-                            </div>
-                        </article>
-
-                        <article class="turno-card">
-                            <div class="turno-card-icono">🦴</div>
-                            <div class="turno-card-info">
-                                <h3>Traumatología</h3>
-                                <p>Dra. Laura Giménez</p>
-                                <p><strong>Mar, 25 Nov - 09:15 hs</strong></p>
-                            </div>
-                        </article>
-                    </div>
-                </section>
+              <article class="turno-card">
+                <div class="turno-card-icono">🦴</div>
+                <div class="turno-card-info">
+                  <h3>Traumatología</h3>
+                  <p>Dra. Laura Giménez</p>
+                  <p><strong>Mar, 25 Nov - 09:15 hs</strong></p>
+                </div>
+              </article>
             </div>
-
-            <!-- Columna Lateral -->
-            <div class="col-lateral">
-
-                <section class="card-vida-med">
-                    <h2 class="card-subtitulo">Órdenes médicas</h2>
-                    <div class="lista-ordenes">
-                        
-                        <article class="orden-card">
-                            <h3>¡Es hora de tu chequeo preventivo!</h3>
-                            <p>Tu plan incluye un chequeo anual para cuidarte.</p>
-                            <!-- Botón adaptado -->
-                            <a href="#" class="btn btn-primario full-width">Agendar chequeo</a>
-                        </article>
-
-                        <article class="orden-card">
-                            <h3>Análisis de laboratorio</h3>
-                            <p>Ordenado por: Dr. Martín López</p>
-                            <!-- Botón adaptado -->
-                            <a href="#" class="btn btn-primario full-width">Buscar laboratorio</a>
-                        </article>
-
-                    </div>
-                </section>
-
-                <section class="card-vida-med">
-                    <h2 class="card-subtitulo">Historial de turnos</h2>
-                    <p class="historial-descripcion">Revisá tus consultas pasadas, calificá la atención y volvé a pedir un turno con el mismo profesional.</p>
-                    <!-- Botón adaptado -->
-                    <button id="btn-abrir-historial" class="btn btn-outline full-width">Ver historial completo</button>
-                </section>
-            </div>
-
+          </section>
         </div>
 
+        <!-- Columna Lateral -->
+        <div class="col-lateral">
+          <section class="card-vida-med">
+            <h2 class="card-subtitulo">Órdenes médicas</h2>
+            <div class="lista-ordenes">
+              <article class="orden-card">
+                <h3>¡Es hora de tu chequeo preventivo!</h3>
+                <p>Tu plan incluye un chequeo anual para cuidarte.</p>
+                <!-- Botón adaptado -->
+                <a href="#" class="btn btn-primario full-width"
+                  >Agendar chequeo</a
+                >
+              </article>
+
+              <article class="orden-card">
+                <h3>Análisis de laboratorio</h3>
+                <p>Ordenado por: Dr. Martín López</p>
+                <!-- Botón adaptado -->
+                <a href="#" class="btn btn-primario full-width"
+                  >Buscar laboratorio</a
+                >
+              </article>
+            </div>
+          </section>
+
+          <section class="card-vida-med">
+            <h2 class="card-subtitulo">Historial de turnos</h2>
+            <p class="historial-descripcion">
+              Revisá tus consultas pasadas, calificá la atención y volvé a pedir
+              un turno con el mismo profesional.
+            </p>
+            <!-- Botón adaptado -->
+            <button id="btn-abrir-historial" class="btn btn-outline full-width">
+              Ver historial completo
+            </button>
+          </section>
+        </div>
+      </div>
     </main>
 
     <!-- Modal (la estructura interna se actualiza con las nuevas clases de botones) -->
     <div id="modal-historial" class="modal-overlay">
-        <div class="modal-content">
-            <button id="btn-cerrar-modal" class="modal-close-btn" title="Cerrar">&times;</button>
-            <h2 class="card-subtitulo">Historial de Turnos</h2>
-            
-            <div class="modal-lista-historial">
-                
-                <!-- Item Historial 1 -->
-                <div class="modal-historial-item">
-                    <div class="historial-info">
-                        <p>Cardiología</p>
-                        <span>Dra. Elena Costa - 15/09/2025</span>
-                    </div>
-                    <div class="historial-acciones">
-                        <div class="estrellas-rating">
-                            <input type="radio" id="h1-star5" name="rating1" value="5"><label for="h1-star5" title="5 estrellas">★</label>
-                            <input type="radio" id="h1-star4" name="rating1" value="4"><label for="h1-star4" title="4 estrellas">★</label>
-                            <input type="radio" id="h1-star3" name="rating1" value="3"><label for="h1-star3" title="3 estrellas">★</label>
-                            <input type="radio" id="h1-star2" name="rating1" value="2"><label for="h1-star2" title="2 estrellas">★</label>
-                            <input type="radio" id="h1-star1" name="rating1" value="1"><label for="h1-star1" title="1 estrella">★</label>
-                        </div>
-                        <!-- Botón adaptado -->
-                        <button class="btn btn-secundario">Volver a pedir</button>
-                    </div>
-                </div>
+      <div class="modal-content">
+        <button id="btn-cerrar-modal" class="modal-close-btn" title="Cerrar">
+          &times;
+        </button>
+        <h2 class="card-subtitulo">Historial de Turnos</h2>
 
-                <!-- Item Historial 2 -->
-                <div class="modal-historial-item">
-                    <div class="historial-info">
-                        <p>Clínica Médica</p>
-                        <span>Dr. Martín López - 02/09/2025</span>
-                    </div>
-                    <div class="historial-acciones">
-                        <div class="estrellas-rating">
-                            <input type="radio" id="h2-star5" name="rating2" value="5"><label for="h2-star5" title="5 estrellas">★</label>
-                            <input type="radio" id="h2-star4" name="rating2" value="4"><label for="h2-star4" title="4 estrellas">★</label>
-                            <input type="radio" id="h2-star3" name="rating2" value="3"><label for="h2-star3" title="3 estrellas">★</label>
-                            <input type="radio" id="h2-star2" name="rating2" value="2"><label for="h2-star2" title="2 estrellas">★</label>
-                            <input type="radio" id="h2-star1" name="rating2" value="1"><label for="h2-star1" title="1 estrella">★</label>
-                        </div>
-                        <button class="btn btn-secundario">Volver a pedir</button>
-                    </div>
-                </div>
-
+        <div class="modal-lista-historial">
+          <!-- Item Historial 1 -->
+          <div class="modal-historial-item">
+            <div class="historial-info">
+              <p>Cardiología</p>
+              <span>Dra. Elena Costa - 15/09/2025</span>
             </div>
-            
-            <!-- Botón adaptado -->
-            <button class="btn btn-primario btn-grande full-width">Exportar Historial a PDF</button>
+            <div class="historial-acciones">
+              <div class="estrellas-rating">
+                <input
+                  type="radio"
+                  id="h1-star5"
+                  name="rating1"
+                  value="5"
+                /><label for="h1-star5" title="5 estrellas">★</label>
+                <input
+                  type="radio"
+                  id="h1-star4"
+                  name="rating1"
+                  value="4"
+                /><label for="h1-star4" title="4 estrellas">★</label>
+                <input
+                  type="radio"
+                  id="h1-star3"
+                  name="rating1"
+                  value="3"
+                /><label for="h1-star3" title="3 estrellas">★</label>
+                <input
+                  type="radio"
+                  id="h1-star2"
+                  name="rating1"
+                  value="2"
+                /><label for="h1-star2" title="2 estrellas">★</label>
+                <input
+                  type="radio"
+                  id="h1-star1"
+                  name="rating1"
+                  value="1"
+                /><label for="h1-star1" title="1 estrella">★</label>
+              </div>
+              <!-- Botón adaptado -->
+              <button class="btn btn-secundario">Volver a pedir</button>
+            </div>
+          </div>
+
+          <!-- Item Historial 2 -->
+          <div class="modal-historial-item">
+            <div class="historial-info">
+              <p>Clínica Médica</p>
+              <span>Dr. Martín López - 02/09/2025</span>
+            </div>
+            <div class="historial-acciones">
+              <div class="estrellas-rating">
+                <input
+                  type="radio"
+                  id="h2-star5"
+                  name="rating2"
+                  value="5"
+                /><label for="h2-star5" title="5 estrellas">★</label>
+                <input
+                  type="radio"
+                  id="h2-star4"
+                  name="rating2"
+                  value="4"
+                /><label for="h2-star4" title="4 estrellas">★</label>
+                <input
+                  type="radio"
+                  id="h2-star3"
+                  name="rating2"
+                  value="3"
+                /><label for="h2-star3" title="3 estrellas">★</label>
+                <input
+                  type="radio"
+                  id="h2-star2"
+                  name="rating2"
+                  value="2"
+                /><label for="h2-star2" title="2 estrellas">★</label>
+                <input
+                  type="radio"
+                  id="h2-star1"
+                  name="rating2"
+                  value="1"
+                /><label for="h2-star1" title="1 estrella">★</label>
+              </div>
+              <button class="btn btn-secundario">Volver a pedir</button>
+            </div>
+          </div>
         </div>
+
+        <!-- Botón adaptado -->
+        <button class="btn btn-primario btn-grande full-width">
+          Exportar Historial a PDF
+        </button>
+      </div>
     </div>
 
     <footer class="vm-footer">
-  <div class="vm-footer-grid">
+      <div class="vm-footer-grid">
+        <!-- COLUMNA 1: LOGO + SLOGAN -->
+        <div class="vm-footer-col">
+          <img
+            src="img/logo-opcion2.png"
+            class="vm-footer-logo"
+            alt="Vida Med"
+          />
+          <p class="vm-footer-slogan">Tu salud, nuestra prioridad.</p>
+        </div>
 
-    <!-- COLUMNA 1: LOGO + SLOGAN -->
-    <div class="vm-footer-col">
-      <img src="img/vidaMedLogo.png" class="vm-footer-logo" alt="Vida Med">
-      <p class="vm-footer-slogan">Tu salud, nuestra prioridad.</p>
-    </div>
+        <!-- COLUMNA 2: ENLACES -->
+        <div class="vm-footer-col">
+          <h4 class="vm-footer-title">Enlaces útiles</h4>
+          <ul class="vm-footer-list">
+            <li><a href="socioHome.html">Inicio</a></li>
+            <li><a href="misTurnos.html">Turnos</a></li>
+            <li><a href="tramites.html">Trámites</a></li>
+            <li><a href="pagos.html">Pagos</a></li>
+            <li><a href="mi-perfil.html">Mi Perfil</a></li>
+            <li><a href="panel-credencial.html">Credencial</a></li>
+            <li><a href="socioPrevencion.html">Prevención</a></li>
+          </ul>
+        </div>
 
-    <!-- COLUMNA 2: ENLACES -->
-    <div class="vm-footer-col">
-      <h4 class="vm-footer-title">Enlaces útiles</h4>
-      <ul class="vm-footer-list">
-        <li><a href="socioHome.html">Inicio</a></li>
-        <li><a href="misTurnos.html">Turnos</a></li>
-        <li><a href="tramites.html">Trámites</a></li>
-        <li><a href="pagos.html">Pagos</a></li>
-        <li><a href="mi-perfil.html">Mi Perfil</a></li>
-        <li><a href="panel-credencial.html">Credencial</a></li>
-        <li><a href="socioPrevencion.html">Prevención</a></li>
-      </ul>
-    </div>
-
-    <!-- COLUMNA 3: CONTACTO -->
-    <div class="vm-footer-col">
-      <h4 class="vm-footer-title">Contacto</h4>
-      <p class="vm-footer-contact">Tel: 0800-123-VIDA</p>
-      <p class="vm-footer-contact">Email: info@vidamed.com.ar</p>
-      <p class="vm-footer-copy">© 2025 Vida Med — Todos los derechos reservados.</p>
-    </div>
-
-  </div>
-</footer>
+        <!-- COLUMNA 3: CONTACTO -->
+        <div class="vm-footer-col">
+          <h4 class="vm-footer-title">Contacto</h4>
+          <p class="vm-footer-contact">Tel: 0800-123-VIDA</p>
+          <p class="vm-footer-contact">Email: info@vidamed.com.ar</p>
+          <p class="vm-footer-copy">
+            © 2025 Vida Med — Todos los derechos reservados.
+          </p>
+        </div>
+      </div>
+    </footer>
 
     <!-- JavaScript (sin cambios) -->
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const modal = document.getElementById('modal-historial');
-            const btnAbrir = document.getElementById('btn-abrir-historial');
-            const btnCerrar = document.getElementById('btn-cerrar-modal');
-            
-            if (btnAbrir) {
-                btnAbrir.addEventListener('click', () => {
-                    modal.classList.add('visible');
-                });
+      document.addEventListener("DOMContentLoaded", () => {
+        const modal = document.getElementById("modal-historial");
+        const btnAbrir = document.getElementById("btn-abrir-historial");
+        const btnCerrar = document.getElementById("btn-cerrar-modal");
+
+        if (btnAbrir) {
+          btnAbrir.addEventListener("click", () => {
+            modal.classList.add("visible");
+          });
+        }
+        if (btnCerrar) {
+          btnCerrar.addEventListener("click", () => {
+            modal.classList.remove("visible");
+          });
+        }
+        if (modal) {
+          modal.addEventListener("click", (e) => {
+            if (e.target === modal) {
+              modal.classList.remove("visible");
             }
-            if (btnCerrar) {
-                btnCerrar.addEventListener('click', () => {
-                    modal.classList.remove('visible');
-                });
-            }
-            if (modal) {
-                modal.addEventListener('click', (e) => {
-                    if (e.target === modal) {
-                        modal.classList.remove('visible');
-                    }
-                });
-            }
-        });
+          });
+        }
+      });
     </script>
     <script src="js/socioHome.js"></script>
-</body>
+  </body>
 </html>

@@ -1,125 +1,207 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="css/misEstudios.css">
-</head>
-<body>
-  <main class="estudios">
-
-  <!-- Encabezado -->
-  <section class="encabezado-estudios">
-    <h1>Mis Estudios y Controles</h1>
-    <p class="sub">Seguimiento claro, visual y actualizado de tu salud.</p>
-  </section>
-
-  <!-- Últimos Estudios -->
- <section class="cards-estudios">
-
-  <div class="card-estudio ok" data-id="chk1" data-date="2025-09-10" data-type="chequeo">
-    <div class="icono">🩺</div>
-    <h3>Chequeo Médico General</h3>
-    <p class="fecha">📅 Hace 2 meses</p>
-    <p class="estado">✔ Todo al día</p>
-    <div class="card-actions">
-      <button class="btn-small btn-detail">Ver detalle</button>
-      <button class="btn-small btn-download">Descargar</button>
-    </div>
-  </div>
-
-  <div class="card-estudio ok" data-id="lab1" data-date="2025-07-15" data-type="analisis">
-    <div class="icono">🧪</div>
-    <h3>Análisis de Sangre</h3>
-    <p class="fecha">📅 Hace 3 meses</p>
-    <p class="estado">✔ Reciente</p>
-    <div class="card-actions">
-      <button class="btn-small btn-detail">Ver detalle</button>
-      <button class="btn-small btn-download">Descargar</button>
-    </div>
-  </div>
-
-  <div class="card-estudio warn" data-id="dent1" data-date="2024-04-01" data-type="odontologia">
-    <div class="icono">🦷</div>
-    <h3>Control Odontológico</h3>
-    <p class="fecha">📅 Hace más de 6 meses</p>
-    <p class="estado">⚠ Recomendado agendar</p>
-    <div class="card-actions">
-      <button class="btn-small btn-detail">Ver detalle</button>
-      <button class="btn-small btn-schedule">Agendar</button>
-    </div>
-  </div>
-
-</section>
-
-  <!-- Recomendaciones -->
-  <section class="recomendaciones">
-    <h2>Próximas Recomendaciones</h2>
-
-    <div class="rec-box">
-      <ul>
-        <li>🦷 <strong>Odontología:</strong> control recomendado cuanto antes.</li>
-        <li>🧪 <strong>Análisis de sangre:</strong> repetir en 3 meses.</li>
-        <li>🩺 <strong>Chequeo anual:</strong> se encuentra al día.</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- Historial -->
-  <section class="historial">
-    <h2>Historial de Estudios</h2>
-
-    <div class="timeline">
-
-      <div class="item">
-        <div class="punto ok"></div>
-        <div class="contenido">
-          <strong>Chequeo General</strong>
-          <span>2025 – Hace 2 meses</span>
-        </div>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/misEstudios.css" />
+    <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/footer.css" />
+  </head>
+  <body>
+    <header class="header-home">
+      <div class="logo">
+        <img
+          src="img/logo-opcion2.png"
+          alt="Vida Med"
+          onclick="window.location.href='socioHome.html'"
+        />
       </div>
 
-      <div class="item">
-        <div class="punto ok"></div>
-        <div class="contenido">
-          <strong>Análisis de Sangre</strong>
-          <span>2025 – Hace 3 meses</span>
+      <nav class="menu-socio">
+        <a href="socioHome.html">Inicio</a>
+        <a href="misTurnos.html" class="active">Mis Turnos</a>
+        <a href="panel-credencial.html">Credencial</a>
+        <a href="mi-perfil.html">Mi Perfil</a>
+        <a href="tramites.html">Mis Trámites</a>
+        <a href="pagos.html">Pagos</a>
+        <a href="socioPrevencion.html">Prevencion</a>
+      </nav>
+
+      <div class="user-info">
+        <span id="nombreUsuario"></span>
+        <button id="logoutBtn" class="btn-cerrar" onclick="cerrarSesion()">
+          Cerrar sesión
+        </button>
+      </div>
+    </header>
+    <main class="estudios">
+      <!-- Encabezado -->
+      <section class="encabezado-estudios">
+        <h1>Mis Estudios y Controles</h1>
+        <p class="sub">Seguimiento claro, visual y actualizado de tu salud.</p>
+      </section>
+
+      <!-- Últimos Estudios -->
+      <section class="cards-estudios">
+        <div
+          class="card-estudio ok"
+          data-id="chk1"
+          data-date="2025-09-10"
+          data-type="chequeo"
+        >
+          <div class="icono">🩺</div>
+          <h3>Chequeo Médico General</h3>
+          <p class="fecha">📅 Hace 2 meses</p>
+          <p class="estado">✔ Todo al día</p>
+          <div class="card-actions">
+            <button class="btn-small btn-detail">Ver detalle</button>
+            <button class="btn-small btn-download">Descargar</button>
+          </div>
+        </div>
+
+        <div
+          class="card-estudio ok"
+          data-id="lab1"
+          data-date="2025-07-15"
+          data-type="analisis"
+        >
+          <div class="icono">🧪</div>
+          <h3>Análisis de Sangre</h3>
+          <p class="fecha">📅 Hace 3 meses</p>
+          <p class="estado">✔ Reciente</p>
+          <div class="card-actions">
+            <button class="btn-small btn-detail">Ver detalle</button>
+            <button class="btn-small btn-download">Descargar</button>
+          </div>
+        </div>
+
+        <div
+          class="card-estudio warn"
+          data-id="dent1"
+          data-date="2024-04-01"
+          data-type="odontologia"
+        >
+          <div class="icono">🦷</div>
+          <h3>Control Odontológico</h3>
+          <p class="fecha">📅 Hace más de 6 meses</p>
+          <p class="estado">⚠ Recomendado agendar</p>
+          <div class="card-actions">
+            <button class="btn-small btn-detail">Ver detalle</button>
+            <button class="btn-small btn-schedule">Agendar</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Recomendaciones -->
+      <section class="recomendaciones">
+        <h2>Próximas Recomendaciones</h2>
+
+        <div class="rec-box">
+          <ul>
+            <li>
+              🦷 <strong>Odontología:</strong> control recomendado cuanto antes.
+            </li>
+            <li>🧪 <strong>Análisis de sangre:</strong> repetir en 3 meses.</li>
+            <li>🩺 <strong>Chequeo anual:</strong> se encuentra al día.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Historial -->
+      <section class="historial">
+        <h2>Historial de Estudios</h2>
+
+        <div class="timeline">
+          <div class="item">
+            <div class="punto ok"></div>
+            <div class="contenido">
+              <strong>Chequeo General</strong>
+              <span>2025 – Hace 2 meses</span>
+            </div>
+          </div>
+
+          <div class="item">
+            <div class="punto ok"></div>
+            <div class="contenido">
+              <strong>Análisis de Sangre</strong>
+              <span>2025 – Hace 3 meses</span>
+            </div>
+          </div>
+
+          <div class="item">
+            <div class="punto warn"></div>
+            <div class="contenido">
+              <strong>Control Odontológico</strong>
+              <span>2024 – Hace más de 6 meses</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div id="modalDetalle" class="modal hidden">
+      <div class="modal-inner">
+        <button id="closeModal" class="modal-close">&times;</button>
+        <h3 id="modalTitulo"></h3>
+        <p id="modalFecha"></p>
+        <p id="modalTipo"></p>
+        <p id="modalObservacion"></p>
+
+        <div class="modal-actions">
+          <button id="marcarRealizado" class="btn-small">
+            Marcar como realizado
+          </button>
+          <button id="modalDescargar" class="btn-small">
+            Descargar resumen
+          </button>
+          <button id="irTurnos" class="btn-small">Agendar turno</button>
         </div>
       </div>
+    </div>
+    <footer class="vm-footer">
+      <div class="vm-footer-grid">
+        <div class="vm-footer-col">
+          <img
+            src="img/logo-opcion2.png"
+            class="vm-footer-logo"
+            alt="Vida Med"
+          />
+          <p class="vm-footer-slogan">Tu salud, nuestra prioridad.</p>
+        </div>
 
-      <div class="item">
-        <div class="punto warn"></div>
-        <div class="contenido">
-          <strong>Control Odontológico</strong>
-          <span>2024 – Hace más de 6 meses</span>
+        <div class="vm-footer-col">
+          <h4 class="vm-footer-title">Enlaces útiles</h4>
+          <ul class="vm-footer-list">
+            <li><a href="socioHome.html">Inicio</a></li>
+            <li><a href="misTurnos.html">Turnos</a></li>
+            <li><a href="tramites.html">Trámites</a></li>
+            <li><a href="pagos.html">Pagos</a></li>
+            <li><a href="mi-perfil.html">Mi Perfil</a></li>
+            <li><a href="panel-credencial.html">Credencial</a></li>
+            <li><a href="socioPrevencion.html">Prevención</a></li>
+          </ul>
+        </div>
+
+        <div class="vm-footer-col">
+          <h4 class="vm-footer-title">Contacto</h4>
+          <p class="vm-footer-contact">Tel: 0800-123-VIDA</p>
+          <p class="vm-footer-contact">Email: info@vidamed.com.ar</p>
+          <p class="vm-footer-copy">
+            © 2025 Vida Med — Todos los derechos reservados.
+          </p>
         </div>
       </div>
+    </footer>
 
-    </div>
-
-  </section>
-
-</main>
-
-
-<div id="modalDetalle" class="modal hidden">
-  <div class="modal-inner">
-    <button id="closeModal" class="modal-close">&times;</button>
-    <h3 id="modalTitulo"></h3>
-    <p id="modalFecha"></p>
-    <p id="modalTipo"></p>
-    <p id="modalObservacion"></p>
-
-    <div class="modal-actions">
-      <button id="marcarRealizado" class="btn-small">Marcar como realizado</button>
-      <button id="modalDescargar" class="btn-small">Descargar resumen</button>
-      <button id="irTurnos" class="btn-small">Agendar turno</button>
-    </div>
-  </div>
-</div>
-
-<script src="js/misEstudios.js"></script>
-
-</body>
+    <script src="js/misEstudios.js"></script>
+  </body>
 </html>

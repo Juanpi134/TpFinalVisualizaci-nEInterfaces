@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="./css/home-header.css">
 </head>
 
-<body>
+  <body>
 
   <header>
     <div class="logo">
@@ -33,14 +33,12 @@
     </div>
   </header>
 
-  <main class="login-section">
-    <div class="login-card">
-      <h2>Crear cuenta</h2>
-      <p>Completá tus datos para afiliarte</p>
+    <main class="login-section">
+      <div class="login-card">
+        <h2>Crear cuenta</h2>
+        <p>Completá tus datos para afiliarte</p>
 
-      <form id="registroForm" class="login-form">
-
-
+        <form id="registroForm" class="login-form">
         <div>
             <label for="nombre">Nombre completo</label>
             <input type="text" id="nombre" required>
@@ -82,15 +80,14 @@
 
         <button type="submit" class="btn-login">Crear cuenta</button>
 
-        <div class="extras">
-          <a href="socios.html">¿Ya tenés cuenta? Ingresá aquí</a>
-        </div>
+          <div class="extras">
+            <a href="socios.html">¿Ya tenés cuenta? Ingresá aquí</a>
+          </div>
+          
+      </div>
+    </main>
 
-      </form>
-    </div>
-  </main>
-
-  <footer>
+    <footer>
     <div class="footer-contenedor">
       <div class="footer-logo">
         <img src="img/vidaMedLogo.png" alt="Logo VidaMed">
@@ -114,30 +111,30 @@
     </div>
   </footer>
 
-  <!-- EL MISMO JS QUE ME PASASTE -->
-  <script>
-    const registroForm = document.getElementById('registroForm');
+    <!-- EL MISMO JS QUE ME PASASTE -->
+    <script>
+      const registroForm = document.getElementById("registroForm");
 
-    registroForm.addEventListener('submit', function(e) {
-      e.preventDefault();
+      registroForm.addEventListener("submit", function (e) {
+        e.preventDefault();
 
-      const nombre = document.getElementById('nombre').value;
-      const dni = document.getElementById('dni').value;
-      const email = document.getElementById('email').value;
-      const password = document.getElementById('password').value;
-      const plan = document.getElementById('plan').value;
-      const direccion = document.getElementById('direccion').value;
-      const telefono = document.getElementById('telefono').value;
-      const localidad = document.getElementById('localidad').value;
+        const nombre = document.getElementById('nombre').value;
+        const dni = document.getElementById('dni').value;
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        const plan = document.getElementById('plan').value;
+        const direccion = document.getElementById('direccion').value;
+        const telefono = document.getElementById('telefono').value;
+        const localidad = document.getElementById('localidad').value;
 
+        const usuariosGuardados =
+          JSON.parse(localStorage.getItem("usuariosRegistrados")) || [];
 
-      const usuariosGuardados = JSON.parse(localStorage.getItem('usuariosRegistrados')) || [];
-
-      const existe = usuariosGuardados.some(u => u.email === email);
-      if (existe) {
-        alert('Este correo ya está registrado. Por favor, inicia sesión.');
-        return;
-      }
+        const existe = usuariosGuardados.some((u) => u.email === email);
+        if (existe) {
+          alert("Este correo ya está registrado. Por favor, inicia sesión.");
+          return;
+        }
 
       const nuevoUsuario = { nombre, dni, email, password, plan, direccion, telefono, localidad };
 
@@ -147,7 +144,6 @@
       alert(`¡Bienvenido a Vida Med, ${nombre}! Tu cuenta fue creada.`);
       window.location.href = 'socios.html';
     });
-  </script>
-
-</body>
+    </script>
+  </body>
 </html>

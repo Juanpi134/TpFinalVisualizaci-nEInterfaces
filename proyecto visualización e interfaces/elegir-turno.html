@@ -1,211 +1,248 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Elegir Profesional - Vida Med</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    
-    <link rel="stylesheet" type="text/css" href="css/turnosglobal.css">
-    <link rel="stylesheet" type="text/css" href="css/elegir-turno.css">
-    <link rel="stylesheet" href="css/header.css">
-    <link rel="stylesheet" href="css/footer.css">
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" type="text/css" href="css/turnosglobal.css" />
+    <link rel="stylesheet" type="text/css" href="css/elegir-turno.css" />
+    <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/footer.css" />
     <!-- Scripts de FullCalendar (¡Asegurate de que es.js esté!) -->
-    <script src='js/index.global.min.js'></script>
-    <script src='js/es.js'></script> <!-- SCRIPT DE IDIOMA ESPAÑOL -->
-    <script src='js/elegir-turno.js'></script>
+    <script src="js/index.global.min.js"></script>
+    <script src="js/es.js"></script>
+    <!-- SCRIPT DE IDIOMA ESPAÑOL -->
+    <script src="js/elegir-turno.js"></script>
+  </head>
+  <body>
+    <header class="header-home">
+      <div class="logo">
+        <img
+          src="img/logo-opcion2.png"
+          alt="Vida Med"
+          onclick="window.location.href='socioHome.html'"
+        />
+      </div>
 
-</head>
-<body>
-
-        <header class="header-home">
-    <div class="logo">
-      <img src="img/vidaMedLogo.png" alt="Vida Med" onclick="window.location.href='socioHome.html'">
-    </div>
-
-    <nav class="menu-socio">
-      <a href="socioHome.html">Inicio</a>
-      <a href="misTurnos.html">Mis Turnos</a>
-      <a href="panel-credencial.html">Credencial</a>
-      <a href="mi-perfil.html">Mi Perfil</a>
-      <a href="tramites.html">Mis Trámites</a>
-      <a href="pagos.html">Pagos</a>
-      <a href="socioPrevencion.html">Prevencion</a>
-    </nav>
+      <nav class="menu-socio">
+        <a href="socioHome.html">Inicio</a>
+        <a href="misTurnos.html">Mis Turnos</a>
+        <a href="panel-credencial.html">Credencial</a>
+        <a href="mi-perfil.html">Mi Perfil</a>
+        <a href="tramites.html">Mis Trámites</a>
+        <a href="pagos.html">Pagos</a>
+        <a href="socioPrevencion.html">Prevencion</a>
+      </nav>
 
       <div class="user-info">
         <span id="nombreUsuario"></span>
-        <button id="logoutBtn" class="btn-cerrar" onclick="cerrarSesion()">Cerrar sesión</button>
+        <button id="logoutBtn" class="btn-cerrar" onclick="cerrarSesion()">
+          Cerrar sesión
+        </button>
       </div>
     </header>
 
     <main class="hub-container">
-
-        <div class="context-bar">
-            <div>
-                <span class="context-label">Especialidad:</span>
-                <span id="context-especialidad" class="context-value">Cargando...</span>
-            </div>
-            <div>
-                <span class="context-label">Centro Médico:</span>
-                <span id="context-centro" class="context-value">Cargando...</span>
-            </div>
-            <a href="agregar-turno.html" class="context-change-link">Cambiar</a>
+      <div class="context-bar">
+        <div>
+          <span class="context-label">Especialidad:</span>
+          <span id="context-especialidad" class="context-value"
+            >Cargando...</span
+          >
         </div>
-        
-        <h1 class="titulo-pagina">Elegir profesional</h1>
-
-        <div class="turno-selection-grid">
-
-            <div class="profesional-list-col">
-                <div class="card-vida-med">
-                    <h2 class="card-subtitulo">Profesionales disponibles</h2>
-                    
-                    <div class="profesional-list-filters">
-                        <!-- CAMBIO: Clases de botones invertidas -->
-                        <button id="btn-select-all" class="btn btn-outline btn-small">Seleccionar Todos</button>
-                        <button id="btn-clear-all" class="btn btn-secundario btn-small">Limpiar</button>
-                    </div>
-
-                    <div id="profesional-list" class="profesional-list-container">
-                        
-                        <article class="profesional-card" data-id="1">
-                            <img src="https://placehold.co/60x60/00a8a8/FFF?text=ML" alt="Foto Dr. Martín López" class="profesional-avatar">
-                            <div class="profesional-info">
-                                <h3>Dr. Martín López</h3>
-                                <p>Clínico Médico</p>
-                            </div>
-                        </article>
-
-                        <article class="profesional-card" data-id="2">
-                            <img src="https://placehold.co/60x60/00a8a8/FFF?text=AF" alt="Foto Lic. Ana Fernández" class="profesional-avatar">
-                            <div class="profesional-info">
-                                <h3>Lic. Ana Fernández</h3>
-                                <p>Clínica Médica</p>
-                            </div>
-                        </article>
-                        
-                        <article class="profesional-card" data-id="3">
-                            <img src="https://placehold.co/60x60/00a8a8/FFF?text=LG" alt="Foto Dra. Laura Giménez" class="profesional-avatar">
-                            <div class="profesional-info">
-                                <h3>Dra. Laura Giménez</h3>
-                                <p>Clínica Médica</p>
-                            </div>
-                        </article>
-                        
-                        <article class="profesional-card" data-id="4">
-                            <img src="https://placehold.co/60x60/00a8a8/FFF?text=EC" alt="Foto Dra. Elena Costa" class="profesional-avatar">
-                            <div class="profesional-info">
-                                <h3>Dra. Elena Costa</h3>
-                                <p>Clínica Médica</p>
-                            </div>
-                        </article>
-
-                    </div>
-                </div>
-            </div>
-
-            <div class="horarios-col">
-                
-                <div class="card-vida-med">
-                    <h2 class="card-subtitulo">Elegí una fecha</h2>
-                    <!-- Tu ID 'calendar' es el correcto -->
-                    <div id="calendar"></div>
-                </div>
-
-                <div class="card-vida-med">
-                    <h2 class="card-subtitulo">Horarios disponibles</h2>
-                    <div id="horarios-list" class="horarios-list-container">
-                        <p id="horarios-placeholder" class="horarios-placeholder">Seleccioná un profesional y luego un día en el calendario.</p>
-                        </div>
-                </div>
-
-            </div>
+        <div>
+          <span class="context-label">Centro Médico:</span>
+          <span id="context-centro" class="context-value">Cargando...</span>
         </div>
+        <a href="agregar_turno.html" class="context-change-link">Cambiar</a>
+      </div>
 
-        <div class="confirm-bar">
-            <button id="btn-confirmar" class="btn btn-primario btn-grande" disabled>Confirmar Turno</button>
+      <h1 class="titulo-pagina">Elegir profesional</h1>
+
+      <div class="turno-selection-grid">
+        <div class="profesional-list-col">
+          <div class="card-vida-med">
+            <h2 class="card-subtitulo">Profesionales disponibles</h2>
+
+            <div class="profesional-list-filters">
+              <!-- CAMBIO: Clases de botones invertidas -->
+              <button id="btn-select-all" class="btn btn-outline btn-small">
+                Seleccionar Todos
+              </button>
+              <button id="btn-clear-all" class="btn btn-secundario btn-small">
+                Limpiar
+              </button>
+            </div>
+
+            <div id="profesional-list" class="profesional-list-container">
+              <article class="profesional-card" data-id="1">
+                <img
+                  src="https://placehold.co/60x60/00a8a8/FFF?text=ML"
+                  alt="Foto Dr. Martín López"
+                  class="profesional-avatar"
+                />
+                <div class="profesional-info">
+                  <h3>Dr. Martín López</h3>
+                  <p>Clínico Médico</p>
+                </div>
+              </article>
+
+              <article class="profesional-card" data-id="2">
+                <img
+                  src="https://placehold.co/60x60/00a8a8/FFF?text=AF"
+                  alt="Foto Lic. Ana Fernández"
+                  class="profesional-avatar"
+                />
+                <div class="profesional-info">
+                  <h3>Lic. Ana Fernández</h3>
+                  <p>Clínica Médica</p>
+                </div>
+              </article>
+
+              <article class="profesional-card" data-id="3">
+                <img
+                  src="https://placehold.co/60x60/00a8a8/FFF?text=LG"
+                  alt="Foto Dra. Laura Giménez"
+                  class="profesional-avatar"
+                />
+                <div class="profesional-info">
+                  <h3>Dra. Laura Giménez</h3>
+                  <p>Clínica Médica</p>
+                </div>
+              </article>
+
+              <article class="profesional-card" data-id="4">
+                <img
+                  src="https://placehold.co/60x60/00a8a8/FFF?text=EC"
+                  alt="Foto Dra. Elena Costa"
+                  class="profesional-avatar"
+                />
+                <div class="profesional-info">
+                  <h3>Dra. Elena Costa</h3>
+                  <p>Clínica Médica</p>
+                </div>
+              </article>
+            </div>
+          </div>
         </div>
 
+        <div class="horarios-col">
+          <div class="card-vida-med">
+            <h2 class="card-subtitulo">Elegí una fecha</h2>
+            <!-- Tu ID 'calendar' es el correcto -->
+            <div id="calendar"></div>
+          </div>
+
+          <div class="card-vida-med">
+            <h2 class="card-subtitulo">Horarios disponibles</h2>
+            <div id="horarios-list" class="horarios-list-container">
+              <p id="horarios-placeholder" class="horarios-placeholder">
+                Seleccioná un profesional y luego un día en el calendario.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="confirm-bar">
+        <button id="btn-confirmar" class="btn btn-primario btn-grande" disabled>
+          Confirmar Turno
+        </button>
+      </div>
     </main>
     <div id="modal-confirmacion" class="modal-overlay">
-    <div class="modal-content card-vida-med">
-        
+      <div class="modal-content card-vida-med">
         <div class="modal-header">
-            <h3>Confirmar Turno</h3>
-            <button id="btn-cerrar-modal" class="btn-close-icon">&times;</button>
+          <h3>Confirmar Turno</h3>
+          <button id="btn-cerrar-modal" class="btn-close-icon">&times;</button>
         </div>
 
         <div class="modal-body">
-            <p class="modal-description">Por favor verificá los datos antes de confirmar.</p>
-            
-            <div class="modal-data-grid">
-                <div class="modal-data-item">
-                    <span class="data-label">Especialidad:</span>
-                    <span id="modal-especialidad" class="data-value">...</span>
-                </div>
-                <div class="modal-data-item">
-                    <span class="data-label">Centro Médico:</span>
-                    <span id="modal-centro" class="data-value">...</span>
-                </div>
-                <div class="modal-data-item">
-                    <span class="data-label">Profesional:</span>
-                    <span id="modal-medico" class="data-value">...</span>
-                </div>
-                <div class="modal-data-item">
-                    <span class="data-label">Fecha:</span>
-                    <span id="modal-fecha" class="data-value">...</span>
-                </div>
-                <div class="modal-data-item">
-                    <span class="data-label">Hora:</span>
-                    <span id="modal-hora" class="data-value">...</span>
-                </div>
+          <p class="modal-description">
+            Por favor verificá los datos antes de confirmar.
+          </p>
+
+          <div class="modal-data-grid">
+            <div class="modal-data-item">
+              <span class="data-label">Especialidad:</span>
+              <span id="modal-especialidad" class="data-value">...</span>
             </div>
+            <div class="modal-data-item">
+              <span class="data-label">Centro Médico:</span>
+              <span id="modal-centro" class="data-value">...</span>
+            </div>
+            <div class="modal-data-item">
+              <span class="data-label">Profesional:</span>
+              <span id="modal-medico" class="data-value">...</span>
+            </div>
+            <div class="modal-data-item">
+              <span class="data-label">Fecha:</span>
+              <span id="modal-fecha" class="data-value">...</span>
+            </div>
+            <div class="modal-data-item">
+              <span class="data-label">Hora:</span>
+              <span id="modal-hora" class="data-value">...</span>
+            </div>
+          </div>
         </div>
 
         <div class="modal-footer">
-            <button id="btn-cancelar-turno" class="btn btn-secundario">Cancelar</button>
-            <button id="btn-confirmar-final" class="btn btn-primario">¡Confirmar!</button>
+          <button id="btn-cancelar-turno" class="btn btn-secundario">
+            Cancelar
+          </button>
+          <button id="btn-confirmar-final" class="btn btn-primario">
+            ¡Confirmar!
+          </button>
+        </div>
+      </div>
+    </div>
+    <footer class="vm-footer">
+      <div class="vm-footer-grid">
+        <!-- COLUMNA 1: LOGO + SLOGAN -->
+        <div class="vm-footer-col">
+          <img
+            src="img/logo-opcion2.png"
+            class="vm-footer-logo"
+            alt="Vida Med"
+          />
+          <p class="vm-footer-slogan">Tu salud, nuestra prioridad.</p>
         </div>
 
-    </div>
-</div>
-    <footer class="vm-footer">
-  <div class="vm-footer-grid">
+        <!-- COLUMNA 2: ENLACES -->
+        <div class="vm-footer-col">
+          <h4 class="vm-footer-title">Enlaces útiles</h4>
+          <ul class="vm-footer-list">
+            <li><a href="socioHome.html">Inicio</a></li>
+            <li><a href="misTurnos.html">Turnos</a></li>
+            <li><a href="tramites.html">Trámites</a></li>
+            <li><a href="pagos.html">Pagos</a></li>
+            <li><a href="mi-perfil.html">Mi Perfil</a></li>
+            <li><a href="panel-credencial.html">Credencial</a></li>
+            <li><a href="socioPrevencion.html">Prevención</a></li>
+          </ul>
+        </div>
 
-    <!-- COLUMNA 1: LOGO + SLOGAN -->
-    <div class="vm-footer-col">
-      <img src="img/vidaMedLogo.png" class="vm-footer-logo" alt="Vida Med">
-      <p class="vm-footer-slogan">Tu salud, nuestra prioridad.</p>
-    </div>
-
-    <!-- COLUMNA 2: ENLACES -->
-    <div class="vm-footer-col">
-      <h4 class="vm-footer-title">Enlaces útiles</h4>
-      <ul class="vm-footer-list">
-        <li><a href="socioHome.html">Inicio</a></li>
-        <li><a href="misTurnos.html">Turnos</a></li>
-        <li><a href="tramites.html">Trámites</a></li>
-        <li><a href="pagos.html">Pagos</a></li>
-        <li><a href="mi-perfil.html">Mi Perfil</a></li>
-        <li><a href="panel-credencial.html">Credencial</a></li>
-        <li><a href="socioPrevencion.html">Prevención</a></li>
-      </ul>
-    </div>
-
-    <!-- COLUMNA 3: CONTACTO -->
-    <div class="vm-footer-col">
-      <h4 class="vm-footer-title">Contacto</h4>
-      <p class="vm-footer-contact">Tel: 0800-123-VIDA</p>
-      <p class="vm-footer-contact">Email: info@vidamed.com.ar</p>
-      <p class="vm-footer-copy">© 2025 Vida Med — Todos los derechos reservados.</p>
-    </div>
-
-  </div>
-</footer>
+        <!-- COLUMNA 3: CONTACTO -->
+        <div class="vm-footer-col">
+          <h4 class="vm-footer-title">Contacto</h4>
+          <p class="vm-footer-contact">Tel: 0800-123-VIDA</p>
+          <p class="vm-footer-contact">Email: info@vidamed.com.ar</p>
+          <p class="vm-footer-copy">
+            © 2025 Vida Med — Todos los derechos reservados.
+          </p>
+        </div>
+      </div>
+    </footer>
     <script src="js/socioHome.js"></script>
-
-</body>
+  </body>
 </html>

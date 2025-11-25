@@ -1,65 +1,61 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta viewport="width=device-width, initial-scale=1.0">
-  <title>Ingreso de Socio | Vida Med</title>
-  <link rel="stylesheet" href="css/login.css">
-  <script src="js/usuarios.js"></script>
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta viewport="width=device-width, initial-scale=1.0" />
+    <title>Ingreso de Socio | Vida Med</title>
+    <link rel="stylesheet" href="css/login.css" />
+    <script src="js/usuarios.js"></script>
+  </head>
 
-<body>
+  <body>
+    <div class="vm-login-container">
+      <a href="index.html">
+        <img src="img/logo-opcion1.png" alt="Vida Med" class="vm-login-logo" />
+      </a>
 
-  <div class="vm-login-container">
+      <h2 class="vm-login-title">Ingresar a tu cuenta</h2>
 
-    <a href="index.html">
-      <img src="img/vidaMedLogo.png" alt="Vida Med" class="vm-login-logo">
-    </a>
+      <form id="loginForm" class="vm-login-form">
+        <label for="email">Correo electrónico</label>
+        <input type="email" id="email" required />
 
-    <h2 class="vm-login-title">Ingresar a tu cuenta</h2>
+        <label for="password">Contraseña</label>
+        <input type="password" id="password" required />
 
-    <form id="loginForm" class="vm-login-form">
+        <button type="submit" class="vm-btn vm-btn-primary">Ingresar</button>
+      </form>
 
-      <label for="email">Correo electrónico</label>
-      <input type="email" id="email" required>
+      <p class="vm-login-footer">
+        ¿No tenés cuenta?
+        <a href="afiliados.html" class="vm-link">Afiliate aquí</a>
+      </p>
+    </div>
 
-      <label for="password">Contraseña</label>
-      <input type="password" id="password" required>
+    <!-- Tu script original, intacto -->
+    <script>
+      const form = document.getElementById("loginForm");
 
-      <button type="submit" class="vm-btn vm-btn-primary">
-        Ingresar
-      </button>
-    </form>
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
 
-    <p class="vm-login-footer">
-      ¿No tenés cuenta?
-      <a href="afiliados.html" class="vm-link">Afiliate aquí</a>
-    </p>
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
 
-  </div>
+        const usuariosGuardados =
+          JSON.parse(localStorage.getItem("usuariosRegistrados")) || [];
+        const usuario = usuariosGuardados.find(
+          (u) => u.email === email && u.password === password
+        );
 
-  <!-- Tu script original, intacto -->
-  <script>
-    const form = document.getElementById('loginForm');
-
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
-
-      const email = document.getElementById('email').value;
-      const password = document.getElementById('password').value;
-
-      const usuariosGuardados = JSON.parse(localStorage.getItem('usuariosRegistrados')) || [];
-      const usuario = usuariosGuardados.find(u => u.email === email && u.password === password);
-
-      if (usuario) {
-        localStorage.setItem('socioActivo', JSON.stringify(usuario));
-        alert(`Bienvenido, ${usuario.nombre}`);
-        window.location.href = 'socioHome.html';
-      } else {
-        alert('Usuario o contraseña incorrectos');
-      }
-    });
-  </script>
-
-</body>
+        if (usuario) {
+          localStorage.setItem("socioActivo", JSON.stringify(usuario));
+          alert(`Bienvenido, ${usuario.nombre}`);
+          window.location.href = "socioHome.html";
+        } else {
+          alert("Usuario o contraseña incorrectos");
+        }
+      });
+    </script>
+  </body>
 </html>

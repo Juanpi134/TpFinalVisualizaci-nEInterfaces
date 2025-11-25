@@ -1,172 +1,190 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Credencial Virtual | Vida Med</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Credencial Virtual | Vida Med</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="css/socioHome.css">
-  <link rel="stylesheet" href="css/plan-socio.css">
-  <link rel="stylesheet" href="css/panel-credencial.css">
-  <link rel="stylesheet" href="css/header.css">
-  <link rel="stylesheet" href="css/footer.css">
-</head>
-<body>
-  <header class="header-home">
-    <div class="logo">
-      <img src="img/vidaMedLogo.png" alt="Vida Med" onclick="window.location.href='socioHome.html'">
-    </div>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/socioHome.css" />
+    <link rel="stylesheet" href="css/plan-socio.css" />
+    <link rel="stylesheet" href="css/panel-credencial.css" />
+    <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/footer.css" />
+  </head>
+  <body>
+    <header class="header-home">
+      <div class="logo">
+        <img
+          src="img/logo-opcion2.png"
+          alt="Vida Med"
+          onclick="window.location.href='socioHome.html'"
+        />
+      </div>
 
-    <nav class="menu-socio">
-      <a href="socioHome.html">Inicio</a>
-      <a href="misTurnos.html">Mis Turnos</a>
-      <a href="panel-credencial.html" class="active">Credencial</a>
-      <a href="mi-perfil.html">Mi Perfil</a>
-      <a href="tramites.html">Mis Trámites</a>
-      <a href="pagos.html">Pagos</a>
-      <a href="socioPrevencion.html">Prevencion</a>
-    </nav>
+      <nav class="menu-socio">
+        <a href="socioHome.html">Inicio</a>
+        <a href="misTurnos.html">Mis Turnos</a>
+        <a href="panel-credencial.html" class="active">Credencial</a>
+        <a href="mi-perfil.html">Mi Perfil</a>
+        <a href="tramites.html">Mis Trámites</a>
+        <a href="pagos.html">Pagos</a>
+        <a href="socioPrevencion.html">Prevencion</a>
+      </nav>
 
       <div class="user-info">
         <span id="nombreUsuario"></span>
-        <button id="logoutBtn" class="btn-cerrar" onclick="cerrarSesion()">Cerrar sesión</button>
+        <button id="logoutBtn" class="btn-cerrar" onclick="cerrarSesion()">
+          Cerrar sesión
+        </button>
       </div>
     </header>
 
-  <!-- CONTENIDO PRINCIPAL -->
-   <main class="panel-container panel-credencial-layout">
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="panel-container panel-credencial-layout">
+      <!-- CONTENIDO DERECHO -->
+      <section class="panel-main">
+        <!-- Título superior -->
+        <div class="panel-topbar-credencial">
+          <h1>Mi Credencial Digital</h1>
+          <p>Mostrá esta credencial en consultorios y farmacias.</p>
+        </div>
 
-    <!-- CONTENIDO DERECHO -->
-    <section class="panel-main">
-      <!-- Título superior -->
-      <div class="panel-topbar-credencial">
-        <h1>Mi Credencial Digital</h1>
-        <p>Mostrá esta credencial en consultorios y farmacias.</p>
-      </div>
+        <!-- Tarjeta de credencial -->
+        <div class="credencial-wrapper">
+          <article class="credencial-card">
+            <header class="credencial-card-header">
+              <div class="token-box">
+                <span class="token-label">TOKEN</span>
+                <span class="token-value" id="tokenActual">7852</span>
+              </div>
+              <div class="credencial-logo-mini">
+                <img src="img/logo-opcion1.png" alt="VidaMed" />
+              </div>
+            </header>
 
-      <!-- Tarjeta de credencial -->
-      <div class="credencial-wrapper">
-        <article class="credencial-card">
-          <header class="credencial-card-header">
-            <div class="token-box">
-              <span class="token-label">TOKEN</span>
-              <span class="token-value" id="tokenActual">7852</span>
-            </div>
-            <div class="credencial-logo-mini">
-              <img src="img/vidaMedLogo.png" alt="VidaMed">
-            </div>
-          </header>
+            <section class="credencial-card-body">
+              <p class="credencial-nombre">
+                <strong id="nombreSocioCredencial">Nombre del Socio</strong>
+              </p>
+              <p id="numeroSocioCredencial">N° Socio 44813037</p>
+              <p id="planSocioCredencial">Plan Premium</p>
 
-          <section class="credencial-card-body">
-            <p class="credencial-nombre">
-              <strong id="nombreSocioCredencial">Nombre del Socio</strong>
-            </p>
-            <p id="numeroSocioCredencial">N° Socio 44813037</p>
-            <p id="planSocioCredencial">Plan Premium</p>
+              <p class="credencial-extra">
+                Región: AMBA | Farmacia: SI<br />
+                Factor Sanguíneo: RH+<br />
+                Teléfono de contacto: 1144588577
+              </p>
 
-            <p class="credencial-extra">
-              Región: AMBA | Farmacia: SI<br>
-              Factor Sanguíneo: RH+<br>
-              Teléfono de contacto: 1144588577
-            </p>
+              <hr />
 
-            <hr>
+              <div class="credencial-vigencia">
+                <p>Vigencia desde: 10/11/25</p>
+                <p>Hasta: 10/05/30</p>
+              </div>
 
-            <div class="credencial-vigencia">
-              <p>Vigencia desde: 10/11/25</p>
-              <p>Hasta: 10/05/30</p>
-            </div>
+              <p class="credencial-iva">IVA: NO GRAV</p>
+            </section>
+          </article>
 
-            <p class="credencial-iva">IVA: NO GRAV</p>
-          </section>
-        </article>
+          <!-- Botones -->
+          <div class="credencial-actions">
+            <button class="btn-credencial secundario" id="btnNuevoToken">
+              Generar nuevo Token
+            </button>
 
-        <!-- Botones -->
-        <div class="credencial-actions">
-          <button class="btn-credencial secundario" id="btnNuevoToken">
-            Generar nuevo Token
-          </button>
+            <button class="btn-credencial primario" id="btnCompartir">
+              Compartir Credencial
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
 
-          <button class="btn-credencial primario" id="btnCompartir">
-            Compartir Credencial
-          </button>
+    <footer class="vm-footer">
+      <div class="vm-footer-grid">
+        <!-- COLUMNA 1: LOGO + SLOGAN -->
+        <div class="vm-footer-col">
+          <img
+            src="img/logo-opcion2.png"
+            class="vm-footer-logo"
+            alt="Vida Med"
+          />
+          <p class="vm-footer-slogan">Tu salud, nuestra prioridad.</p>
+        </div>
+
+        <!-- COLUMNA 2: ENLACES -->
+        <div class="vm-footer-col">
+          <h4 class="vm-footer-title">Enlaces útiles</h4>
+          <ul class="vm-footer-list">
+            <li><a href="socioHome.html">Inicio</a></li>
+            <li><a href="misTurnos.html">Turnos</a></li>
+            <li><a href="tramites.html">Trámites</a></li>
+            <li><a href="pagos.html">Pagos</a></li>
+            <li><a href="mi-perfil.html">Mi Perfil</a></li>
+            <li><a href="panel-credencial.html">Credencial</a></li>
+            <li><a href="socioPrevencion.html">Prevención</a></li>
+          </ul>
+        </div>
+
+        <!-- COLUMNA 3: CONTACTO -->
+        <div class="vm-footer-col">
+          <h4 class="vm-footer-title">Contacto</h4>
+          <p class="vm-footer-contact">Tel: 0800-123-VIDA</p>
+          <p class="vm-footer-contact">Email: info@vidamed.com.ar</p>
+          <p class="vm-footer-copy">
+            © 2025 Vida Med — Todos los derechos reservados.
+          </p>
         </div>
       </div>
-    </section>
-  </main>
+    </footer>
 
-  <footer class="vm-footer">
-  <div class="vm-footer-grid">
+    <script src="js/socioHome.js"></script>
+    <script>
+      const tokenSpan = document.getElementById("tokenActual");
+      const btnNuevoToken = document.getElementById("btnNuevoToken");
+      const btnCompartir = document.getElementById("btnCompartir");
 
-    <!-- COLUMNA 1: LOGO + SLOGAN -->
-    <div class="vm-footer-col">
-      <img src="img/vidaMedLogo.png" class="vm-footer-logo" alt="Vida Med">
-      <p class="vm-footer-slogan">Tu salud, nuestra prioridad.</p>
-    </div>
+      btnNuevoToken.addEventListener("click", () => {
+        const nuevo = Math.floor(1000 + Math.random() * 9000);
+        tokenSpan.textContent = nuevo;
+      });
 
-    <!-- COLUMNA 2: ENLACES -->
-    <div class="vm-footer-col">
-      <h4 class="vm-footer-title">Enlaces útiles</h4>
-      <ul class="vm-footer-list">
-        <li><a href="socioHome.html">Inicio</a></li>
-        <li><a href="misTurnos.html">Turnos</a></li>
-        <li><a href="tramites.html">Trámites</a></li>
-        <li><a href="pagos.html">Pagos</a></li>
-        <li><a href="mi-perfil.html">Mi Perfil</a></li>
-        <li><a href="panel-credencial.html">Credencial</a></li>
-        <li><a href="socioPrevencion.html">Prevención</a></li>
-      </ul>
-    </div>
+      btnCompartir.addEventListener("click", () => {
+        alert(
+          "Tu credencial se puede compartir por mail o WhatsApp.\n(Esta acción es solo demostrativa en el TP)."
+        );
+      });
 
-    <!-- COLUMNA 3: CONTACTO -->
-    <div class="vm-footer-col">
-      <h4 class="vm-footer-title">Contacto</h4>
-      <p class="vm-footer-contact">Tel: 0800-123-VIDA</p>
-      <p class="vm-footer-contact">Email: info@vidamed.com.ar</p>
-      <p class="vm-footer-copy">© 2025 Vida Med — Todos los derechos reservados.</p>
-    </div>
+      document.addEventListener("DOMContentLoaded", () => {
+        const socioJSON = localStorage.getItem("socioActivo");
+        if (!socioJSON) return;
+        const socio = JSON.parse(socioJSON);
 
-  </div>
-</footer>
+        // Nombre y plan en la tarjeta
+        const nombreCred = document.getElementById("nombreSocioCredencial");
+        const planCred = document.getElementById("planSocioCredencial");
 
-  <script src="js/socioHome.js"></script>
-  <script>
-    const tokenSpan = document.getElementById("tokenActual");
-    const btnNuevoToken = document.getElementById("btnNuevoToken");
-    const btnCompartir = document.getElementById("btnCompartir");
+        if (nombreCred) nombreCred.textContent = socio.nombre;
+        if (planCred) planCred.textContent = socio.plan;
 
-    btnNuevoToken.addEventListener("click", () => {
-      const nuevo = Math.floor(1000 + Math.random() * 9000);
-      tokenSpan.textContent = nuevo;
-    });
+        // Nombre y plan en el bloque de la izquierda (avatar)
+        const nombreSidebar = document.getElementById("nombreSidebar");
+        const planSidebar = document.getElementById("planSidebar");
+        const avatarSpan = document.querySelector(".user-avatar--panel span");
 
-    btnCompartir.addEventListener("click", () => {
-      alert("Tu credencial se puede compartir por mail o WhatsApp.\n(Esta acción es solo demostrativa en el TP).");
-    });
-
-    document.addEventListener("DOMContentLoaded", () => {
-      const socioJSON = localStorage.getItem("socioActivo");
-      if (!socioJSON) return;
-      const socio = JSON.parse(socioJSON);
-
-      // Nombre y plan en la tarjeta
-      const nombreCred = document.getElementById("nombreSocioCredencial");
-      const planCred   = document.getElementById("planSocioCredencial");
-
-      if (nombreCred) nombreCred.textContent = socio.nombre;
-      if (planCred)   planCred.textContent   = socio.plan;
-
-      // Nombre y plan en el bloque de la izquierda (avatar)
-      const nombreSidebar = document.getElementById("nombreSidebar");
-      const planSidebar   = document.getElementById("planSidebar");
-      const avatarSpan    = document.querySelector(".user-avatar--panel span");
-
-      if (nombreSidebar) nombreSidebar.textContent = socio.nombre;
-      if (planSidebar)   planSidebar.textContent   = socio.plan;
-      if (avatarSpan)    avatarSpan.textContent    = socio.nombre.charAt(0).toUpperCase();
-    });
-  </script>
-</body>
+        if (nombreSidebar) nombreSidebar.textContent = socio.nombre;
+        if (planSidebar) planSidebar.textContent = socio.plan;
+        if (avatarSpan)
+          avatarSpan.textContent = socio.nombre.charAt(0).toUpperCase();
+      });
+    </script>
+  </body>
 </html>

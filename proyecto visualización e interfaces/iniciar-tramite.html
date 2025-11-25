@@ -1,169 +1,184 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Trámite | Vida Med</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="css/iniciar-tramite.css">
-     <link rel="stylesheet" href="css/header.css">
-    <link rel="stylesheet" href="css/footer.css">
-</head>
-<body>
-   <header class="header-home">
-    <div class="logo">
-      <img src="img/vidaMedLogo.png" alt="Vida Med" onclick="window.location.href='socioHome.html'">
-    </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trámite | Vida Med</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/iniciar-tramite.css" />
+    <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/footer.css" />
+  </head>
+  <body>
+    <header class="header-home">
+      <div class="logo">
+        <img
+          src="img/logo-opcion1.png"
+          alt="Vida Med"
+          onclick="window.location.href='socioHome.html'"
+        />
+      </div>
 
-    <nav class="menu-socio">
-      <a href="socioHome.html">Inicio</a>
-      <a href="misTurnos.html">Mis Turnos</a>
-      <a href="panel-credencial.html">Credencial</a>
-      <a href="mi-perfil.html">Mi Perfil</a>
-      <a href="tramites.html">Mis Trámites</a>
-      <a href="pagos.html">Pagos</a>
-      <a href="socioPrevencion.html">Prevencion</a>
-    </nav>
+      <nav class="menu-socio">
+        <a href="socioHome.html">Inicio</a>
+        <a href="misTurnos.html">Mis Turnos</a>
+        <a href="panel-credencial.html">Credencial</a>
+        <a href="mi-perfil.html">Mi Perfil</a>
+        <a href="tramites.html">Mis Trámites</a>
+        <a href="pagos.html">Pagos</a>
+        <a href="socioPrevencion.html">Prevencion</a>
+      </nav>
 
       <div class="user-info">
         <span id="nombreUsuario"></span>
-        <button id="logoutBtn" class="btn-cerrar" onclick="cerrarSesion()">Cerrar sesión</button>
+        <button id="logoutBtn" class="btn-cerrar" onclick="cerrarSesion()">
+          Cerrar sesión
+        </button>
       </div>
     </header>
 
-<div class="container mt-4 mb-5">
+    <div class="container mt-4 mb-5">
+      <!-- BOTÓN VOLVER -->
+      <button class="btn-volver mb-3" onclick="history.back()">
+        <span class="flecha">←</span> Volver
+      </button>
 
-  <!-- BOTÓN VOLVER -->
-  <button class="btn-volver mb-3" onclick="history.back()">
-    <span class="flecha">←</span> Volver
-  </button>
+      <!-- TÍTULO -->
+      <h2 class="mb-4 titulo-tramite">Iniciar trámite</h2>
 
-  <!-- TÍTULO -->
-  <h2 class="mb-4 titulo-tramite">Iniciar trámite</h2>
+      <!-- PASOS -->
+      <div class="steps-container mb-4">
+        <div class="step-item active" data-step="1">
+          <div class="step-circle">1</div>
+          <span class="step-label">Datos del afiliado</span>
+        </div>
 
-  <!-- PASOS -->
-  <div class="steps-container mb-4">
-  <div class="step-item active" data-step="1">
-    <div class="step-circle">1</div>
-    <span class="step-label">Datos del afiliado</span>
-  </div>
+        <div class="step-item" data-step="2">
+          <div class="step-circle">2</div>
+          <span class="step-label">Documentación</span>
+        </div>
 
-  <div class="step-item" data-step="2">
-    <div class="step-circle">2</div>
-    <span class="step-label">Documentación</span>
-  </div>
-
-  <div class="step-item" data-step="3">
-    <div class="step-circle">3</div>
-    <span class="step-label">Confirmación</span>
-  </div>
-</div>
-
-
-
-
-  <!-- PASO 1 — DATOS DEL AFILIADO -->
-  <div id="paso1" class="card card-contenido">
-    <div class="card-body">
-
-      <h4 class="mb-3">Datos del afiliado</h4>
-
-      <div class="info-box">
-        <p><strong>Nombre:</strong> test</p>
-        <p><strong>N° de Afiliado:</strong> 1754</p>
-        <p><strong>Teléfono:</strong> 1134651234</p>
-        <p><strong>Email:</strong> test@hotmail.com</p>
-        <p><strong>Plan:</strong> VidaMed Premium</p>
+        <div class="step-item" data-step="3">
+          <div class="step-circle">3</div>
+          <span class="step-label">Confirmación</span>
+        </div>
       </div>
 
-      <div class="text-end mt-4">
-        <button class="btn btn-vidamed" onclick="mostrarPaso(2)">Continuar</button>
+      <!-- PASO 1 — DATOS DEL AFILIADO -->
+      <div id="paso1" class="card card-contenido">
+        <div class="card-body">
+          <h4 class="mb-3">Datos del afiliado</h4>
+
+          <div class="info-box">
+            <p><strong>Nombre:</strong> test</p>
+            <p><strong>N° de Afiliado:</strong> 1754</p>
+            <p><strong>Teléfono:</strong> 1134651234</p>
+            <p><strong>Email:</strong> test@hotmail.com</p>
+            <p><strong>Plan:</strong> VidaMed Premium</p>
+          </div>
+
+          <div class="text-end mt-4">
+            <button class="btn btn-vidamed" onclick="mostrarPaso(2)">
+              Continuar
+            </button>
+          </div>
+        </div>
       </div>
 
-    </div>
-  </div>
+      <!-- PASO 2 — DOCUMENTACIÓN -->
+      <div id="paso2" class="card card-contenido d-none">
+        <div class="card-body">
+          <h4 class="mb-3">Documentación requerida</h4>
 
+          <label class="fw-semibold"
+            >Subí la orden, factura o comprobante</label
+          >
+          <input type="file" class="form-control mt-2 mb-4" />
 
-
-
-  <!-- PASO 2 — DOCUMENTACIÓN -->
-  <div id="paso2" class="card card-contenido d-none">
-    <div class="card-body">
-
-      <h4 class="mb-3">Documentación requerida</h4>
-
-      <label class="fw-semibold">Subí la orden, factura o comprobante</label>
-      <input type="file" class="form-control mt-2 mb-4">
-
-      <div class="d-flex justify-content-between">
-        <button class="btn btn-secundario" onclick="mostrarPaso(1)">Volver</button>
-        <button class="btn btn-vidamed" onclick="mostrarPaso(3)">Continuar</button>
+          <div class="d-flex justify-content-between">
+            <button class="btn btn-secundario" onclick="mostrarPaso(1)">
+              Volver
+            </button>
+            <button class="btn btn-vidamed" onclick="mostrarPaso(3)">
+              Continuar
+            </button>
+          </div>
+        </div>
       </div>
 
-    </div>
-  </div>
+      <!-- PASO 3 — CONFIRMACIÓN -->
+      <div id="paso3" class="card card-contenido d-none">
+        <div class="card-body">
+          <h4 class="mb-3">Confirmación del trámite</h4>
 
+          <p>Revisá la información antes de enviarla.</p>
+          <ul class="list-group mb-4">
+            <li class="list-group-item">Tipo de trámite: Reintegro</li>
+            <li class="list-group-item">
+              Documentación: Adjuntada correctamente
+            </li>
+            <li class="list-group-item">Datos del afiliado: Verificados</li>
+          </ul>
 
-
-
-  <!-- PASO 3 — CONFIRMACIÓN -->
-  <div id="paso3" class="card card-contenido d-none">
-    <div class="card-body">
-
-      <h4 class="mb-3">Confirmación del trámite</h4>
-
-      <p>Revisá la información antes de enviarla.</p>
-      <ul class="list-group mb-4">
-        <li class="list-group-item">Tipo de trámite: Reintegro</li>
-        <li class="list-group-item">Documentación: Adjuntada correctamente</li>
-        <li class="list-group-item">Datos del afiliado: Verificados</li>
-      </ul>
-
-      <div class="d-flex justify-content-between">
-        <button class="btn btn-secundario" onclick="mostrarPaso(2)">Volver</button>
-        <button class="btn btn-vidamed" onclick="window.location.href='tramites.html'">Enviar Trámite</button>
+          <div class="d-flex justify-content-between">
+            <button class="btn btn-secundario" onclick="mostrarPaso(2)">
+              Volver
+            </button>
+            <button
+              class="btn btn-vidamed"
+              onclick="window.location.href='tramites.html'"
+            >
+              Enviar Trámite
+            </button>
+          </div>
+        </div>
       </div>
-
     </div>
-  </div>
+    <footer class="vm-footer">
+      <div class="vm-footer-grid">
+        <!-- COLUMNA 1: LOGO + SLOGAN -->
+        <div class="vm-footer-col">
+          <img
+            src="img/logo-opcion1.png"
+            class="vm-footer-logo"
+            alt="Vida Med"
+          />
+          <p class="vm-footer-slogan">Tu salud, nuestra prioridad.</p>
+        </div>
 
-</div>
-   <footer class="vm-footer">
-  <div class="vm-footer-grid">
+        <!-- COLUMNA 2: ENLACES -->
+        <div class="vm-footer-col">
+          <h4 class="vm-footer-title">Enlaces útiles</h4>
+          <ul class="vm-footer-list">
+            <li><a href="socioHome.html">Inicio</a></li>
+            <li><a href="misTurnos.html">Turnos</a></li>
+            <li><a href="tramites.html">Trámites</a></li>
+            <li><a href="pagos.html">Pagos</a></li>
+            <li><a href="mi-perfil.html">Mi Perfil</a></li>
+            <li><a href="panel-credencial.html">Credencial</a></li>
+            <li><a href="socioPrevencion.html">Prevención</a></li>
+          </ul>
+        </div>
 
-    <!-- COLUMNA 1: LOGO + SLOGAN -->
-    <div class="vm-footer-col">
-      <img src="img/vidaMedLogo.png" class="vm-footer-logo" alt="Vida Med">
-      <p class="vm-footer-slogan">Tu salud, nuestra prioridad.</p>
-    </div>
-
-    <!-- COLUMNA 2: ENLACES -->
-    <div class="vm-footer-col">
-      <h4 class="vm-footer-title">Enlaces útiles</h4>
-      <ul class="vm-footer-list">
-        <li><a href="socioHome.html">Inicio</a></li>
-        <li><a href="misTurnos.html">Turnos</a></li>
-        <li><a href="tramites.html">Trámites</a></li>
-        <li><a href="pagos.html">Pagos</a></li>
-        <li><a href="mi-perfil.html">Mi Perfil</a></li>
-        <li><a href="panel-credencial.html">Credencial</a></li>
-        <li><a href="socioPrevencion.html">Prevención</a></li>
-      </ul>
-    </div>
-
-    <!-- COLUMNA 3: CONTACTO -->
-    <div class="vm-footer-col">
-      <h4 class="vm-footer-title">Contacto</h4>
-      <p class="vm-footer-contact">Tel: 0800-123-VIDA</p>
-      <p class="vm-footer-contact">Email: info@vidamed.com.ar</p>
-      <p class="vm-footer-copy">© 2025 Vida Med — Todos los derechos reservados.</p>
-    </div>
-
-  </div>
-</footer>
-<script src="js/iniciar-tramite.js"></script>
+        <!-- COLUMNA 3: CONTACTO -->
+        <div class="vm-footer-col">
+          <h4 class="vm-footer-title">Contacto</h4>
+          <p class="vm-footer-contact">Tel: 0800-123-VIDA</p>
+          <p class="vm-footer-contact">Email: info@vidamed.com.ar</p>
+          <p class="vm-footer-copy">
+            © 2025 Vida Med — Todos los derechos reservados.
+          </p>
+        </div>
+      </div>
+    </footer>
+    <script src="js/iniciar-tramite.js"></script>
     <script src="js/socioHome.js"></script>
-
-</body>
+  </body>
 </html>
