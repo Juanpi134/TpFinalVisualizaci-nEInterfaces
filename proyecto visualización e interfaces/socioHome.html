@@ -36,6 +36,7 @@
         <a href="tramites.html">Mis Trámites</a>
         <a href="pagos.html">Pagos</a>
         <a href="socioPrevencion.html">Prevencion</a>
+        <a href="misEstudios.html">Mis Estudios</a>
       </nav>
 
       <div class="user-info">
@@ -61,7 +62,7 @@
         <div class="card">
           <h3>Mis Turnos</h3>
           <p>Consultá tus próximos turnos y resultados.</p>
-          <button id="btnTurnos" class="btn">Ver Turnos</button>
+          <button id="btnTurnos" class="btn" onclick="window.location.href='misTurnos.html'">Ver Turnos</button>
         </div>
 
         <!-- 2️⃣ Mis Pagos -->
@@ -88,20 +89,20 @@
       <section class="resumen">
         <div class="card">
           <h3>Mi Perfil</h3>
-          <p id="planUsuario"></p>
-          <a href="planes.html" class="btn">Ver beneficios</a>
+          <p>Accede a tu perfil para ver tus datos personales</p>
+          <button id="btnPerfil" class="btn" onclick="window.location.href='mi-perfil.html'">Ver Perfil</button>
         </div>
 
         <div class="card">
           <h3>Mi Credencial Digital</h3>
           <p>Descargá tu credencial para presentar en consultorios.</p>
-          <button id="btnCredencial" class="btn">Ver Credencial</button>
+          <button id="btnCredencial" class="btn" onclick="window.location.href='panel-credencial.html'">Ver Credencial</button>
         </div>
 
         <div class="card">
           <h3>Mis Estudios</h3>
           <p>Accedé a tus estudios y resultados médicos.</p>
-          <button id="btnCredencial" class="btn">Ver Estudios</button>
+          <button id="btnEstudios" class="btn" onclick="window.location.href='misEstudios.html'">Ver Estudios</button>
         </div>
       </section>
     </main>
