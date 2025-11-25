@@ -1,5 +1,6 @@
 .planes-main {
   padding: 3rem 5%;
+  background-color: var(--gris-claro);
 }
 
 /* INTRO */
@@ -110,4 +111,37 @@ tbody tr:hover {
     font-size: 0.9rem;
     padding: 0.7rem;
   }
+}
+
+.btn-primario, .btn-secundario {
+  display: inline-block;
+  padding: 0.7rem 1.5rem;
+  border-radius: 5px; 
+  text-decoration: none;
+  font-weight: bold;
+  margin-top: 1.5rem;
+  transition: all 0.3s ease;
+  border: 2px solid transparent; 
+}
+
+.btn-primario {
+  background-color: var(--azul-principal);
+  color: var(--blanco);
+  border-color: var(--azul-principal);
+}
+
+.btn-primario:hover {
+  background-color: var(--azul-oscuro);
+  border-color: var(--azul-oscuro);
+}
+
+.btn-secundario {
+  background-color: transparent;
+  color: var(--azul-principal);
+  border: 2px solid var(--azul-principal);
+}
+
+.btn-secundario:hover {
+  background-color: var(--azul-principal);
+  color: var(--blanco);
 }
