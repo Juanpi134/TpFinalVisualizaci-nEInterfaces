@@ -22,8 +22,7 @@ body {
   border-radius: 12px;
   box-shadow: 0 4px 20px rgba(0,0,0,0.15);
   padding: 40px 50px;
-  width: 100%;
-  max-width: 420px;
+  width: 40%;
   text-align: center;
 }
 
@@ -87,6 +86,43 @@ body {
 .extras a:hover {
   text-decoration: underline;
 }
+
+.login-form select {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 15px;
+  background-color: white;
+  cursor: pointer;
+  transition: border 0.3s ease;
+}
+
+.login-form select:focus {
+  border-color: #1e7a8a;
+  outline: none;
+}
+
+.login-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* 2 columnas */
+  gap: 20px 25px; /* separación entre filas y columnas */
+}
+
+.login-form div {
+  display: flex;
+  flex-direction: column;
+}
+
+.btn-login {
+  grid-column: span 2;
+}
+
+.extras {
+  grid-column: span 2;
+}
+
 
 /* Responsive */
 @media (max-width: 600px) {
