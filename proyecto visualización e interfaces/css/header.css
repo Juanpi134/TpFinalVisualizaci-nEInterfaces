@@ -99,3 +99,51 @@ body {
     max-width: 200px;
   }
 }
+/*BOTON WSP */
+/* =========================================
+   BOTÓN FLOTANTE WHATSAPP (Versión Imagen)
+   ========================================= */
+
+.btn-whatsapp {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: 60px;
+    height: 60px;
+    background-color: #25D366; /* Verde WhatsApp */
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    z-index: 900;
+    transition: all 0.3s ease;
+}
+
+.btn-whatsapp:hover {
+    transform: scale(1.1) translateY(-5px);
+    background-color: #20BA5A;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4);
+}
+
+/* Estilo específico para la imagen dentro del botón */
+.whatsapp-icon {
+    width: 40px;       /* Tamaño del logo */
+    height: 40px;
+    object-fit: contain;
+    pointer-events: none; /* Evita que arrastres la imagen por error */
+}
+
+/* Ajuste Mobile */
+@media (max-width: 768px) {
+    .btn-whatsapp {
+        width: 50px;
+        height: 50px;
+        bottom: 20px;
+        right: 20px;
+    }
+    .whatsapp-icon {
+        width: 28px;
+        height: 28px;
+    }
+}
