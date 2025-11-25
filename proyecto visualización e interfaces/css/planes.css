@@ -1,8 +1,8 @@
 .planes-main {
   padding: 3rem 5%;
+  background-color: var(--gris-claro);
 }
 
-/* INTRO */
 .intro-planes {
   text-align: center;
   max-width: 800px;
@@ -14,9 +14,9 @@
   font-size: 2rem;
   color: var(--azul-principal);
   margin-bottom: 1rem;
+  font-weight: 700; 
 }
 
-/* PLANES */
 .planes-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
@@ -40,6 +40,7 @@
 .plan-card h2 {
   color: var(--azul-principal);
   margin-bottom: 0.5rem;
+  font-weight: 600;
 }
 
 .plan-card p {
@@ -68,7 +69,6 @@
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
-/* COMPARATIVA */
 .comparativa {
   background-color: var(--blanco);
   padding: 3rem 2rem;
@@ -78,6 +78,7 @@
 
 .comparativa h2 {
   text-align: center;
+  font-weight: 600;
   margin-bottom: 2rem;
   color: var(--azul-principal);
 }
@@ -110,4 +111,37 @@ tbody tr:hover {
     font-size: 0.9rem;
     padding: 0.7rem;
   }
+}
+
+.btn-primario, .btn-secundario {
+  display: inline-block;
+  padding: 0.7rem 1.5rem;
+  border-radius: 5px; 
+  text-decoration: none;
+  font-weight: bold;
+  margin-top: 1.5rem;
+  transition: all 0.3s ease;
+  border: 2px solid transparent; 
+}
+
+.btn-primario {
+  background-color: var(--azul-principal);
+  color: var(--blanco);
+  border-color: var(--azul-principal);
+}
+
+.btn-primario:hover {
+  background-color: var(--azul-oscuro);
+  border-color: var(--azul-oscuro);
+}
+
+.btn-secundario {
+  background-color: transparent;
+  color: var(--azul-principal);
+  border: 2px solid var(--azul-principal);
+}
+
+.btn-secundario:hover {
+  background-color: var(--azul-principal);
+  color: var(--blanco);
 }
