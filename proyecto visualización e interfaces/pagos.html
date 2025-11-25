@@ -3,132 +3,142 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="css/pagos.css" />
-    <link rel="stylesheet" href="css/header.css" />
-    <link rel="stylesheet" href="css/footer.css" />
+    <title>Pagos | Vida Med</title>
+
+    <!-- Tipografía -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- CSS propio -->
+    <link rel="stylesheet" href="css/pagos.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/footer.css">
   </head>
-  <body>
-    <header class="header-home">
+
+<body>
+
+  <!-- HEADER -->
+  <header class="header-home">
       <div class="logo">
-        <img
-          src="img/logo-opcion2.png"
-          alt="Vida Med"
-          onclick="window.location.href='socioHome.html'"
-        />
+          <img src="img/logo-opcion2.png" alt="Vida Med" onclick="window.location.href='socioHome.html'">
       </div>
 
       <nav class="menu-socio">
-        <a href="socioHome.html">Inicio</a>
-        <a href="misTurnos.html">Mis Turnos</a>
-        <a href="panel-credencial.html">Credencial</a>
-        <a href="mi-perfil.html">Mi Perfil</a>
-        <a href="tramites.html">Mis Trámites</a>
-        <a href="pagos.html" class="active">Pagos</a>
-        <a href="socioPrevencion.html">Prevencion</a>
-        <a href="misEstudios.html">Mis Estudios</a>
+          <a href="socioHome.html">Inicio</a>
+          <a href="misTurnos.html">Mis Turnos</a>
+          <a href="panel-credencial.html">Credencial</a>
+          <a href="mi-perfil.html">Mi Perfil</a>
+          <a href="tramites.html">Mis Trámites</a>
+          <a href="pagos.html" class="active">Pagos</a>
+          <a href="socioPrevencion.html">Prevención</a>
+          <a href="misEstudios.html">Mis Estudios</a>
       </nav>
 
       <div class="user-info">
-        <span id="nombreUsuario"></span>
-        <button id="logoutBtn" class="btn-cerrar" onclick="cerrarSesion()">
-          Cerrar sesión
-        </button>
+          <span id="nombreUsuario"></span>
+          <button id="logoutBtn" class="btn-cerrar" onclick="cerrarSesion()">Cerrar sesión</button>
       </div>
-    </header>
+  </header>
 
-    <header class="header">
-      <h2>Pagos</h2>
-    </header>
+  <!-- TÍTULO DE SECCIÓN -->
+  <section class="text-center mt-4">
+      <h2 class="perfil-titulo">Pagos</h2>
+  </section>
 
-    <main class="main">
-      <!-- Estado -->
-      <section class="card">
-        <h3>Tu estado</h3>
-        <div class="saldo">
-          <p class="label">Saldo actual</p>
-          <p class="monto">$12.450</p>
-        </div>
+  <!-- CONTENIDO -->
+  <main class="container my-4">
 
-        <div class="acciones">
-          <button class="btn primary" onclick="abrirModal()">Nuevo pago</button>
-          <button class="btn outline">Descargar comprobantes</button>
-        </div>
-      </section>
+      <div class="row g-4 justify-content-center">
 
-      <!-- Métodos -->
-      <section class="card">
-        <h3>Métodos de pago</h3>
+          <!-- ESTADO -->
+          <div class="col-lg-4">
+              <div class="card">
+                  <h3 class="perfil-subtitulo text-center">Tu estado</h3>
 
-        <div class="cards-list">
-          <div class="card-method">
-            <span>Visa •••• 4123</span>
-            <small class="meta">Preferido</small>
+                  <div class="saldo text-center">
+                      <p class="label">Saldo actual</p>
+                      <p class="monto">$12.450</p>
+                  </div>
+
+                  <div class="d-flex flex-column gap-2 mt-3">
+                      <button class="btn primary w-100" onclick="abrirModal()">Nuevo pago</button>
+                      <button class="btn outline w-100">Descargar comprobantes</button>
+                  </div>
+              </div>
           </div>
 
-          <div class="card-method">
-            <span>MercadoPago</span>
+          <!-- MÉTODOS DE PAGO -->
+          <div class="col-lg-4">
+              <div class="card">
+                  <h3 class="perfil-subtitulo text-center">Métodos de pago</h3>
+
+                  <div class="cards-list">
+                      <div class="card-method">
+                          <span>Visa •••• 4123</span>
+                          <small class="meta">Preferido</small>
+                      </div>
+
+                      <div class="card-method">
+                          <span>MercadoPago</span>
+                      </div>
+                  </div>
+
+                  <button class="btn sec w-100 mt-3">Agregar método</button>
+              </div>
           </div>
-        </div>
 
-        <button class="btn sec">Agregar método</button>
-      </section>
+          <!-- HISTORIAL -->
+          <div class="col-lg-10">
+              <div class="card">
+                  <h3 class="perfil-subtitulo">Historial de pagos</h3>
 
-      <!-- Historial -->
-      <section class="card">
-        <div class="hist-head">
-          <h3>Historial</h3>
-        </div>
+                  <div class="table-responsive mt-3">
+                      <table class="table table-bordered" id="tabla">
+                          <thead>
+                              <tr>
+                                  <th>Fecha</th>
+                                  <th>Detalle</th>
+                                  <th>Monto</th>
+                                  <th>Estado</th>
+                              </tr>
+                          </thead>
+                          <tbody id="listaPagos"></tbody>
+                      </table>
+                  </div>
+              </div>
+          </div>
 
-        <table class="table" id="tabla">
-          <thead>
-            <tr>
-              <th>Fecha</th>
-              <th>Detalle</th>
-              <th>Monto</th>
-              <th>Estado</th>
-            </tr>
-          </thead>
+      </div>
+  </main>
 
-          <tbody id="listaPagos"></tbody>
-        </table>
-      </section>
-    </main>
-
-    <!-- Modal -->
-    <div id="modal" class="modal hidden">
+  <!-- MODAL -->
+  <div id="modal" class="modal hidden">
       <div class="modal-content">
-        <h4>Registrar pago</h4>
+          <h4>Registrar pago</h4>
 
-        <label>Detalle</label>
-        <input type="text" id="detalle" />
+          <label>Detalle</label>
+          <input type="text" id="detalle">
 
-        <label>Monto</label>
-        <input type="number" id="monto" />
+          <label>Monto</label>
+          <input type="number" id="monto">
 
-        <div class="modal-actions">
-          <button class="btn outline" onclick="cerrarModal()">Cancelar</button>
-          <button class="btn primary" onclick="guardarPago()">Guardar</button>
-        </div>
+          <div class="modal-actions d-flex justify-content-between mt-3">
+              <button class="btn outline" onclick="cerrarModal()">Cancelar</button>
+              <button class="btn primary" onclick="guardarPago()">Guardar</button>
+          </div>
       </div>
-    </div>
-    <a href="https://wa.me/5491123629534?text=Hola%20Vida%20Med,%20necesito%20ayuda." 
-          class="btn-whatsapp" 
-          target="_blank">
-            
-            <img src="./img/WhatsAppIcon.svg" 
-                alt="WhatsApp" 
-                class="whatsapp-icon">
-        </a>
-    <footer class="vm-footer">
+  </div>
+
+  <!-- BOTON WHATSAPP -->
+  <a href="https://wa.me/5491123629534?text=Hola%20Vida%20Med,%20necesito%20ayuda."
+     class="btn-whatsapp" target="_blank">
+      <img src="img/WhatsAppIcon.svg" alt="WhatsApp" class="whatsapp-icon">
+  </a>
+
+  <!-- FOOTER -->
+  <footer class="vm-footer">
       <div class="vm-footer-grid">
         <!-- COLUMNA 1: LOGO + SLOGAN -->
         <div class="vm-footer-col">
@@ -166,7 +176,8 @@
       </div>
     </footer>
 
-    <script src="js/socioHome.js"></script>
-    <script src="js/pagos.js"></script>
-  </body>
+  <!-- SCRIPTS -->
+  <script src="js/socioHome.js"></script>
+  <script src="js/pagos.js"></script>
+</body>
 </html>

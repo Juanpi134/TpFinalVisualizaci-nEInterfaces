@@ -7,110 +7,181 @@
   --sombra: 0 4px 14px rgba(0,0,0,0.07);
 }
 
-body {
-  margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background: var(--fondo);
+/* ================================
+   PAGOS – Estilo unificado Vida Med
+   Coincide con mi-perfil.css
+================================ */
+
+/* ---------- TITULO ---------- */
+h2 {
+  color: #00a8a8;
+  font-weight: 600;
+  text-align: center;
+  margin: 30px 0;
 }
 
-.header {
-  padding: 16px;
-  background: var(--card);
-  box-shadow: var(--sombra);
-  margin-bottom: 16px;
-}
-
-.main {
-  padding: 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-}
-
-/* Card */
+/* ---------- CARDS GENERALES ---------- */
 .card {
-  background: var(--card);
-  padding: 18px;
-  border-radius: var(--radio);
-  box-shadow: var(--sombra);
-}
-
-/* saldo */
-.saldo {
-  margin: 10px 0;
-}
-.label { color: var(--gris); }
-.monto { font-size: 28px; font-weight: 800; color: var(--azul); }
-
-/* Botones */
-.btn {
-  padding: 12px;
+  background: white;
   border-radius: 12px;
-  font-weight: 700;
-  border: none;
-  width: 100%;
-  margin-top: 8px;
-  cursor: pointer;
-}
-.primary { background: var(--azul); color: white; }
-.outline {
-  border: 2px solid var(--azul);
-  background: transparent;
-  color: var(--azul);
-}
-.sec {
-  background: #eef2ff;
-  color: var(--azul);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  padding: 25px;
+  margin-bottom: 25px;
 }
 
-/* Métodos */
+/* ---------- SALDO ---------- */
+.saldo .label {
+  font-weight: 600;
+  color: #555;
+}
+
+.saldo .monto {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #00a8a8;
+}
+
+/* ---------- BOTONES ---------- */
+.btn.primary,
+.btn.sec,
+.btn.outline {
+  border-radius: 6px;
+  padding: 10px 18px;
+  font-weight: 600;
+}
+
+/* Botón principal */
+.btn.primary {
+  background: #00a8a8;
+  color: white;
+  border: none;
+}
+
+.btn.primary:hover {
+  background: #008c8c;
+}
+
+/* Botón secundario (gris) */
+.btn.sec {
+  background: #f0f0f0;
+  border: none;
+  color: #333;
+}
+
+.btn.sec:hover {
+  background: #e3e3e3;
+}
+
+/* Botón outline */
+.btn.outline {
+  background: transparent;
+  border: 2px solid #00a8a8;
+  color: #00a8a8;
+}
+
+.btn.outline:hover {
+  background: #e8ffff;
+}
+
+/* ---------- TARJETAS DE MÉTODO ---------- */
 .card-method {
-  background: #f8faff;
-  border: 1px solid #e3e9f7;
-  padding: 12px;
-  border-radius: 10px;
+  padding: 12px 15px;
+  background: #fafafa;
+  border: 1px solid #dcdcdc;
+  border-radius: 8px;
   margin-bottom: 10px;
   display: flex;
   justify-content: space-between;
+  font-weight: 500;
 }
 
-/* tabla */
-.table {
+.card-method .meta {
+  color: #00a8a8;
+  font-weight: 600;
+}
+
+/* ---------- TABLA ---------- */
+.table th {
+  background: #00a8a8;
+  color: white;
+  font-weight: 600;
+}
+
+.table td {
+  vertical-align: middle;
+}
+
+/* Estados */
+.estado-pago {
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.estado-success {
+  background: #d9f7f2;
+  color: #008c7e;
+}
+
+.estado-pend {
+  background: #ffeecc;
+  color: #b77b00;
+}
+
+/* ---------- MODAL ---------- */
+.modal-content {
+  padding: 30px;
+  border-radius: 12px;
+  width: 350px;
+}
+
+.modal-content h4 {
+  font-weight: 600;
+  color: #00a8a8;
+}
+
+/* Inputs del modal */
+.modal-content input {
   width: 100%;
-  border-collapse: collapse;
-  margin-top: 10px;
-}
-.table th, .table td {
   padding: 10px;
-  border-bottom: 1px solid #e3e8f5;
-  text-align: center;
+  background: #fafafa;
+  border-radius: 8px;
+  border: 1px solid #dcdcdc;
+  margin-bottom: 12px;
 }
 
-/* Modal */
+.modal-content input:focus {
+  border-color: #00a8a8;
+  background: white;
+  box-shadow: 0 0 4px rgba(0,168,168,0.3);
+}
+
+/* Fondo del modal */
 .modal {
   position: fixed;
-  inset: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background: rgba(0,0,0,0.45);
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 16px;
-}
-.modal.hidden { display: none; }
-
-.modal-content {
-  background: white;
-  padding: 20px;
-  border-radius: var(--radio);
-  width: 100%;
-  max-width: 400px;
 }
 
-.modal-actions {
-  margin-top: 14px;
-  display: flex;
-  gap: 10px;
+.hidden {
+  display: none !important;
 }
-.modal-actions .btn {
-  width: 100%;
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 768px) {
+  .acciones {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .cards-list {
+    flex-direction: column;
+  }
 }
